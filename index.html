@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pink AI Radar：经核验的全球 AI 资讯精选。" />
+  <title>Pink AI Radar｜AI 资讯雷达</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
+    <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#sources">信源矩阵</a><a href="#method">核验方法</a></nav>
+    <button class="subscribe" id="subscribeBtn">订阅早报 <span>↗</span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> 2026.10.11 · 上海时间 09:30 更新</div>
+      <h1>把 AI 世界的喧嚣，<br><em>过滤成值得读的 7 条。</em></h1>
+      <p class="hero-copy">追踪全球与中文互联网的一手动态。每条资讯都经过来源确认、上下文补全与人工式摘要，让你 5 分钟掌握真正重要的变化。</p>
+      <div class="hero-actions"><a class="primary" href="#briefing">阅读今日简报 <span>↓</span></a><a class="secondary" href="#method">查看核验标准</a></div>
+      <div class="hero-meta"><span><strong>12</strong> 个重点渠道</span><i></i><span><strong>7</strong> 条今日精选</span><i></i><span><strong>100%</strong> 原始来源可追溯</span></div>
+      <div class="orbit-card" aria-hidden="true"><div class="orbit-ring"><span class="orb o1">O</span><span class="orb o2">G</span><span class="orb o3">A</span><span class="orb o4">百</span><div class="center-spark">✦</div></div><p>Signal, not noise.</p></div>
+    </section>
+
+    <section class="briefing" id="briefing">
+      <div class="section-head"><div><span class="kicker">TODAY'S BRIEFING</span><h2>今日 AI 精选</h2></div><p>按发布时间排序 · 点击卡片查看背景与核验说明</p></div>
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="资讯来源筛选"><button class="active" data-filter="all">全部</button><button data-filter="global">全球</button><button data-filter="china">中国</button><button data-filter="product">产品</button><button data-filter="industry">产业</button></div>
+        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索公司或关键词" aria-label="搜索资讯"></label>
+      </div>
+      <div class="news-grid" id="newsGrid"></div>
+      <div class="empty" id="emptyState" hidden>没有找到匹配的资讯，换个关键词试试。</div>
+    </section>
+
+    <section class="sources" id="sources">
+      <div class="section-head light"><div><span class="kicker">SOURCE MAP</span><h2>全天候信源矩阵</h2></div><p>官方渠道优先，社交平台用于发现线索而非单独定论。</p></div>
+      <div class="source-marquee"><span>OpenAI</span><span>Google</span><span>Microsoft</span><span>Anthropic</span><span>百度</span><span>腾讯</span><span>知乎</span><span>微博</span><span>微信公众号</span></div>
+      <div class="source-stats"><article><b>01</b><h3>发现</h3><p>持续扫描官方博客、研究发布与公开社交渠道。</p></article><article><b>02</b><h3>核验</h3><p>回到原始发布页，检查日期、主体与关键表述。</p></article><article><b>03</b><h3>提炼</h3><p>补足事件背景，压缩为可快速决策的中文摘要。</p></article><article><b>04</b><h3>标注</h3><p>保留来源链接、核验等级与更新时间，全程可追溯。</p></article></div>
+    </section>
+
+    <section class="method" id="method">
+      <div class="method-copy"><span class="kicker">EDITORIAL STANDARD</span><h2>不是搬运，<br>是经过验证的判断。</h2><p>我们把“可信”设计进每一条资讯。官方原始发布标为 A 级；经两家独立权威媒体互证标为 B 级；只有社交平台单一信源的内容只进入观察池，不进入今日精选。</p><div class="legend"><span><i class="grade a">A</i> 官方原始来源</span><span><i class="grade b">B</i> 多源交叉确认</span><span><i class="grade c">C</i> 观察中，不发布</span></div></div>
+      <div class="method-card"><div class="check-row"><span>✓</span><div><b>主体确认</b><small>发布账号与机构官网相互匹配</small></div></div><div class="check-row"><span>✓</span><div><b>时间确认</b><small>区分发布日期、事件日期与更新时间</small></div></div><div class="check-row"><span>✓</span><div><b>语境确认</b><small>不省略限制条件，不把预览写成正式发布</small></div></div><div class="check-row"><span>✓</span><div><b>链接留档</b><small>读者可直接回到原文复核</small></div></div></div>
+    </section>
+  </main>
+
+  <footer><div class="brand"><span class="logo">P</span><span>Pink AI Radar</span></div><p>少一点噪音，多一点确定。</p><span>© 2026 · Curated with care</span></footer>
+
+  <dialog id="newsDialog"><button class="dialog-close" aria-label="关闭">×</button><div id="dialogContent"></div></dialog>
+  <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">♡</span><h2>明早见。</h2><p>留下邮箱，每天 9:30 收到 5–8 条经核验的 AI 资讯。</p><form id="subscribeForm"><input type="email" placeholder="you@example.com" required><button type="submit">订阅早报</button></form><small>演示页面 · 不会真实收集或发送数据</small></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
+
