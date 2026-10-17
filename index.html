@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Pink AI Radar：经核验的全球 AI 资讯精选。" />
   <title>Pink AI Radar｜AI 资讯雷达</title>
+  <link rel="alternate" type="application/rss+xml" title="Pink AI Radar RSS" href="feed.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +16,7 @@
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
     <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#archive">历史简报</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
-    <button class="subscribe" id="subscribeBtn">订阅早报 <span>↗</span></button>
+    <button class="subscribe" id="subscribeBtn">订阅更新 <span>↗</span></button>
   </header>
 
   <main id="top">
@@ -68,7 +69,7 @@
   <footer><div class="brand"><span class="logo">P</span><span>Pink AI Radar</span></div><p>少一点噪音，多一点确定。</p><span>© 2026 · Curated with care</span></footer>
 
   <dialog id="newsDialog"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialogContent"></div></dialog>
-  <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">♡</span><h2>明早见。</h2><p>留下邮箱，每天 9:30 收到 5–8 条经核验的 AI 资讯。</p><form id="subscribeForm"><input type="email" placeholder="you@example.com" required><button type="submit">订阅早报</button></form><small>演示页面 · 不会真实收集或发送数据</small></div></dialog>
+  <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">◌</span><h2>订阅可信更新。</h2><p>把正式发布的简报加入你的 RSS 阅读器。只有通过人工审核的内容才会进入订阅源。</p><div class="subscribe-actions"><a class="rss-subscribe" href="feed.xml" target="_blank" rel="noopener">打开 RSS 订阅源 ↗</a><button id="copyFeed" type="button">复制订阅地址</button></div><p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p><small>无需邮箱 · 不收集个人信息 · 更新频率以实际发布为准</small></div></dialog>
   <div class="save-toast" id="saveToast" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="data/news.js"></script>
   <script src="app.js"></script>

@@ -4,6 +4,7 @@ import {resolve} from 'node:path';
 const root=resolve(import.meta.dirname,'..');
 const inputPath=resolve(root,'data/news.json');
 const outputPath=resolve(root,'data/news.js');
+const feedPath=resolve(root,'feed.xml');
 const requiredStrings=['source','icon','date','display','verified','status','title','summary','fact','background','why','url','accent','grade','sourceTitle','sourceReason','sourceType'];
 const requiredArrays=['impact','actions','tags','group'];
 
@@ -43,15 +44,41 @@ if(errors.length){
 const sorted=[...data].sort((a,b)=>b.date.localeCompare(a.date)||a.id-b.id);
 const generatedOn=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const output=`// 此文件由 scripts/build-data.mjs 自动生成，请勿手动编辑。\nwindow.PINK_AI_META=${JSON.stringify({generatedOn,coverageThrough:sorted[0].date})};\nwindow.PINK_AI_NEWS=${JSON.stringify(sorted,null,2)};\n`;
+const xmlEscape=value=>String(value).replace(/[<>&'\"]/g,character=>({'<':'&lt;','>':'&gt;','&':'&amp;',"'":'&apos;','"':'&quot;'}[character]));
+const siteUrl='https://scott33333345-hue.github.io/pink-ai-radar/';
+const feedItems=sorted.map(item=>`    <item>
+      <title>${xmlEscape(item.title)}</title>
+      <link>${siteUrl}?news=${item.id}</link>
+      <guid isPermaLink="false">pink-ai-radar-${item.id}</guid>
+      <pubDate>${new Date(`${item.date}T12:00:00+08:00`).toUTCString()}</pubDate>
+      <description>${xmlEscape(`${item.summary}\n\n为什么重要：${item.why}\n\n精确原文：${item.url}`)}</description>
+      <category>${xmlEscape(item.source)}</category>
+      <source url="${xmlEscape(item.url)}">${xmlEscape(item.source)}</source>
+    </item>`).join('\n');
+const feed=`<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Pink AI Radar</title>
+    <link>${siteUrl}</link>
+    <description>面向中文产品从业者的 AI 决策简报</description>
+    <language>zh-CN</language>
+    <lastBuildDate>${new Date(`${generatedOn}T12:00:00+08:00`).toUTCString()}</lastBuildDate>
+    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="${siteUrl}feed.xml" rel="self" type="application/rss+xml" />
+${feedItems}
+  </channel>
+</rss>
+`;
 
 if(process.argv.includes('--check')){
   const current=await readFile(outputPath,'utf8').catch(()=>null);
-  if(current!==output){
-    console.error('data/news.js 不是最新版本，请运行 npm run data:build');
+  const currentFeed=await readFile(feedPath,'utf8').catch(()=>null);
+  if(current!==output||currentFeed!==feed){
+    console.error('生成数据不是最新版本，请运行 npm run data:build');
     process.exit(1);
   }
-  console.log(`数据校验通过：${sorted.length} 条资讯，生成文件已同步。`);
+  console.log(`数据校验通过：${sorted.length} 条资讯，网页数据与 RSS 已同步。`);
 }else{
   await writeFile(outputPath,output,'utf8');
-  console.log(`数据构建完成：${sorted.length} 条资讯 → data/news.js`);
+  await writeFile(feedPath,feed,'utf8');
+  console.log(`数据构建完成：${sorted.length} 条资讯 → data/news.js + feed.xml`);
 }

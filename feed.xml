@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Pink AI Radar</title>
+    <link>https://scott33333345-hue.github.io/pink-ai-radar/</link>
+    <description>面向中文产品从业者的 AI 决策简报</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 17 Oct 2026 04:00:00 GMT</lastBuildDate>
+    <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://scott33333345-hue.github.io/pink-ai-radar/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Stack Overflow 用 ChatGPT 插件把 Agent 产品嵌入分发入口</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=9</link>
+      <guid isPermaLink="false">pink-ai-radar-9</guid>
+      <pubDate>Fri, 16 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Stack Overflow for Agents 通过 ChatGPT 插件降低发现和使用门槛，展示 AI 产品从独立站点走向宿主平台入口的分发思路。
+
+为什么重要：对产品经理而言，这个案例比单纯增加功能更有启示：先判断用户在哪个工作环境中产生需求，再决定产品入口。
+
+精确原文：https://openai.com/index/stack-overflow-chatgpt-plugin</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/stack-overflow-chatgpt-plugin">OpenAI</source>
+    </item>
+    <item>
+      <title>巴西银行 Itaú 用治理平台支撑面向客户的生成式 AI</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=10</link>
+      <guid isPermaLink="false">pink-ai-radar-10</guid>
+      <pubDate>Fri, 16 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Itaú 将对话式客户入口与内部治理平台并行建设，说明受监管行业规模化使用 AI 时，体验与治理需要同步产品化。
+
+为什么重要：企业 AI 的关键基础设施往往不是聊天界面，而是让不同团队可以安全复用模型能力的治理层。
+
+精确原文：https://openai.com/index/itau-generative-ai</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/itau-generative-ai">OpenAI</source>
+    </item>
+    <item>
+      <title>Third Moment 展示万级 Agent 长时运行的工程方法</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=11</link>
+      <guid isPermaLink="false">pink-ai-radar-11</guid>
+      <pubDate>Wed, 14 Oct 2026 04:00:00 GMT</pubDate>
+      <description>案例展示 1 万个 Agent 并发、持续 36–48 小时的研究系统，并通过外层调度、缓存优化和安全测试控制长任务。
+
+为什么重要：这为长任务产品提供了可迁移的系统设计框架：外层调度器、明确终止条件、人工升级与成本可观测性。
+
+精确原文：https://openai.com/index/third-moment-research</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/third-moment-research">OpenAI</source>
+    </item>
+    <item>
+      <title>Amp 将编程 Agent 延伸到产品规划、设计与增长工作</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=12</link>
+      <guid isPermaLink="false">pink-ai-radar-12</guid>
+      <pubDate>Wed, 14 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Amp 的使用场景从写代码扩展到决定做什么、设计页面和市场增长，体现 Agent 产品边界正在由岗位工具转向跨流程协作。
+
+为什么重要：产品团队应重新审视功能边界：用户需要的可能不是更多生成按钮，而是跨阶段保持上下文的连续工作流。
+
+精确原文：https://openai.com/index/amp-beyond-coding</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/amp-beyond-coding">OpenAI</source>
+    </item>
+    <item>
+      <title>Google 发布 Gemini 4 Argon，面向复杂专业任务开放</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=8</link>
+      <guid isPermaLink="false">pink-ai-radar-8</guid>
+      <pubDate>Tue, 13 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Gemini 4 Argon 已向开发者、企业及订阅用户开放，主打长程推理、复杂工程与专业工作流，首发价格设有期限。
+
+为什么重要：产品团队评估模型时需要同时考虑任务持续时间、工具调用、单位成本和风险控制，而不只是基准分数。
+
+精确原文：https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/</description>
+      <category>Google AI</category>
+      <source url="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/">Google AI</source>
+    </item>
+    <item>
+      <title>OpenAI 更新 AI 滥用行动报告，披露“虚假门面”操作</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=1</link>
+      <guid isPermaLink="false">pink-ai-radar-1</guid>
+      <pubDate>Thu, 08 Oct 2026 04:00:00 GMT</pubDate>
+      <description>官方安全报告聚焦利用生成式 AI 包装虚假身份与组织的行为，并说明平台如何识别、阻断相关网络。
+
+为什么重要：AI 内容治理的重点正在从“识别一条假内容”转向“识别一整套虚假身份和传播网络”，产品的风控设计也需要随之升级。
+
+精确原文：https://openai.com/index/disrupting-ai-enabled-false-front-operations/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/disrupting-ai-enabled-false-front-operations/">OpenAI</source>
+    </item>
+    <item>
+      <title>Google Cloud 发布面向企业工作的通用 Gemini Agent</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=2</link>
+      <guid isPermaLink="false">pink-ai-radar-2</guid>
+      <pubDate>Thu, 08 Oct 2026 04:00:00 GMT</pubDate>
+      <description>新 Agent 可结合企业上下文，调用技能和工具完成知识工作、内容创作与编码任务，并带有成本和治理控制。
+
+为什么重要：企业 Agent 的产品门槛不再只是模型能力，还包括权限、数据连接和可审计的任务执行。
+
+精确原文：https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026</description>
+      <category>Google</category>
+      <source url="https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026">Google</source>
+    </item>
+    <item>
+      <title>Anthropic 发布 2026 年 Usage Policy 更新</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=3</link>
+      <guid isPermaLink="false">pink-ai-radar-3</guid>
+      <pubDate>Thu, 08 Oct 2026 04:00:00 GMT</pubDate>
+      <description>新版使用政策进一步整理高风险场景与平台责任边界，反映前沿模型进入更多专业场景后的治理需求。
+
+为什么重要：政策变化可能直接影响功能设计、客户准入、内容审核和行业解决方案的上线范围。
+
+精确原文：https://www.anthropic.com/news/2026-usage-policy-update</description>
+      <category>Anthropic</category>
+      <source url="https://www.anthropic.com/news/2026-usage-policy-update">Anthropic</source>
+    </item>
+    <item>
+      <title>Claude Haiku 5.5 发布：主打高吞吐与成本敏感任务</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=4</link>
+      <guid isPermaLink="false">pink-ai-radar-4</guid>
+      <pubDate>Wed, 07 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Anthropic 将其定义为更快、更便宜的小型模型，目标是高并发客服、分类、提取等大规模工作负载。
+
+为什么重要：模型选型可以从“能力最高”转向“任务匹配”，为大规模产品降低单位调用成本。
+
+精确原文：https://www.anthropic.com/claude-haiku-5-5</description>
+      <category>Anthropic</category>
+      <source url="https://www.anthropic.com/claude-haiku-5-5">Anthropic</source>
+    </item>
+    <item>
+      <title>OpenAI 发布 GPT-6 与 Intelligent UI 面向大众的新进展</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=5</link>
+      <guid isPermaLink="false">pink-ai-radar-5</guid>
+      <pubDate>Wed, 07 Oct 2026 04:00:00 GMT</pubDate>
+      <description>更新聚焦模型与界面的协同：回答不再局限于文本墙，而是根据任务动态组织更可操作的交互界面。
+
+为什么重要：AI 产品的差异化可能从回答质量扩展到信息如何被组织、操作和继续执行。
+
+精确原文：https://openai.com/index/gpt-6-for-everyone/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/gpt-6-for-everyone/">OpenAI</source>
+    </item>
+    <item>
+      <title>腾讯云通知 MiMo-V2.5-Pro 下线，建议迁移至 V2.6-Pro</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=6</link>
+      <guid isPermaLink="false">pink-ai-radar-6</guid>
+      <pubDate>Tue, 29 Sep 2026 04:00:00 GMT</pubDate>
+      <description>旧模型计划于 10 月 20 日晚停止服务，使用 TokenHub 的开发者需提前修改 model 参数并验证成本与效果。
+
+为什么重要：这不是一般产品新闻，而是带有明确截止时间的线上服务风险。
+
+精确原文：https://intl.cloud.tencent.com/zh/announce/detail/101536</description>
+      <category>腾讯云</category>
+      <source url="https://intl.cloud.tencent.com/zh/announce/detail/101536">腾讯云</source>
+    </item>
+    <item>
+      <title>百度端到端语音语言大模型 Flex 开启公测</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=7</link>
+      <guid isPermaLink="false">pink-ai-radar-7</guid>
+      <pubDate>Wed, 16 Sep 2026 04:00:00 GMT</pubDate>
+      <description>模型将语音理解与任务执行结合，并支持 Function Call，面向更自然的实时语音交互与业务办理。
+
+为什么重要：语音产品可以重新评估链路复杂度、响应速度和任务执行体验。
+
+精确原文：https://ai.baidu.com/support/news?action=detail&amp;id=3285</description>
+      <category>百度 AI</category>
+      <source url="https://ai.baidu.com/support/news?action=detail&amp;id=3285">百度 AI</source>
+    </item>
+  </channel>
+</rss>

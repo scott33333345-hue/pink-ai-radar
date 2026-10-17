@@ -251,7 +251,18 @@ document.querySelectorAll('.dialog-close').forEach(button=>button.addEventListen
 document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{if(dialog===newsDialog)openNewsId=null})});
 const subscribeDialog=document.querySelector('#subscribeDialog');
 document.querySelector('#subscribeBtn').addEventListener('click',()=>subscribeDialog.showModal());
-document.querySelector('#subscribeForm').addEventListener('submit',event=>{event.preventDefault();event.target.innerHTML='<p class="subscribe-success">订阅演示完成</p>'});
+document.querySelector('#copyFeed').addEventListener('click',async()=>{
+  const feedUrl=new URL('feed.xml',window.location.href).href;
+  const copyStatus=document.querySelector('#copyStatus');
+  try{
+    await navigator.clipboard.writeText(feedUrl);
+    copyStatus.textContent='订阅地址已复制，可粘贴到 RSS 阅读器。';
+  }catch{
+    const field=document.createElement('textarea');field.value=feedUrl;field.setAttribute('readonly','');field.style.position='fixed';field.style.opacity='0';document.body.append(field);field.select();
+    const copied=document.execCommand('copy');field.remove();
+    copyStatus.textContent=copied?'订阅地址已复制，可粘贴到 RSS 阅读器。':`订阅地址：${feedUrl}`;
+  }
+});
 
 const initialParams=new URLSearchParams(window.location.search);
 const initialTopic=initialParams.get('topic');
