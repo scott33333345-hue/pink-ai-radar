@@ -24,8 +24,11 @@ const emptyReset=document.querySelector('#emptyReset');
 const savedFilter=document.querySelector('#savedFilter');
 const savedCount=document.querySelector('#savedCount');
 const saveToast=document.querySelector('#saveToast');
+const archiveGrid=document.querySelector('#archiveGrid');
+const archiveSummary=document.querySelector('#archiveSummary');
 let activeTopic='all';
 let savedOnly=false;
+let activeDate='all';
 let openNewsId=null;
 const savedStorageKey='pink-ai-radar:saved-news';
 const feedbackStorageKey='pink-ai-radar:news-feedback';
@@ -41,6 +44,7 @@ const topicMap={
 };
 const topicLabels={product:'产品体验',model:'模型能力',agent:'Agent',governance:'安全治理',developer:'开发者'};
 const regionLabels={global:'全球',china:'中国'};
+const archiveDates=[...new Set(news.map(item=>item.date))].sort((a,b)=>b.localeCompare(a));
 
 function renderTags(tags){return tags.map(tag=>`<span># ${tag}</span>`).join('')}
 function renderList(items){return `<ul>${items.map(item=>`<li>${item}</li>`).join('')}</ul>`}
@@ -78,6 +82,29 @@ function submitFeedback(id,value){
   const item=news.find(entry=>entry.id===id);if(item)renderDialog(item);
   showSaveToast(value==='helpful'?'谢谢，这条反馈已保存在本机':'谢谢，我们已记录你的选择');
 }
+function formatArchiveDate(value){
+  const [year,month,day]=value.split('-');
+  return {year,label:`${Number(month)} 月 ${Number(day)} 日`};
+}
+function renderArchive(){
+  archiveSummary.textContent=`已归档 ${archiveDates.length} 个发布日期 · 共 ${news.length} 条正式简报`;
+  archiveGrid.innerHTML=archiveDates.map((date,index)=>{
+    const items=news.filter(item=>item.date===date);
+    const formatted=formatArchiveDate(date);
+    const topics=[...new Set(items.flatMap(item=>item.tags))].slice(0,3);
+    return `<button type="button" class="archive-day ${activeDate===date?'active':''}" data-archive-date="${date}" aria-pressed="${activeDate===date}">
+      <span class="archive-index">${String(index+1).padStart(2,'0')}</span>
+      <span class="archive-date"><strong>${formatted.label}</strong><small>${formatted.year}</small></span>
+      <span class="archive-count">${items.length} 条</span>
+      <span class="archive-topics">${topics.map(tag=>`#${escapeHtml(tag)}`).join(' ')}</span>
+      <span class="archive-arrow" aria-hidden="true">→</span>
+    </button>`;
+  }).join('');
+  archiveGrid.querySelectorAll('[data-archive-date]').forEach(button=>button.addEventListener('click',()=>{
+    activeDate=button.dataset.archiveDate;timeFilter.value='all';syncUrl();render();
+    document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+}
 
 function render(){
   const query=search.value.trim().toLowerCase();
@@ -87,17 +114,19 @@ function render(){
     const matchesRegion=regionFilter.value==='all'||item.group.includes(regionFilter.value);
     const ageInDays=Math.floor((newestDate-new Date(`${item.date}T00:00:00`).getTime())/86400000);
     const matchesTime=timeFilter.value==='all'||ageInDays<Number(timeFilter.value);
+    const matchesDate=activeDate==='all'||item.date===activeDate;
     const matchesSaved=!savedOnly||isSaved(item.id);
     const searchable=[item.source,item.status,item.title,item.summary,item.fact,item.background,item.why,...item.tags,...item.impact,...item.actions].join(' ').toLowerCase();
-    return matchesTopic&&matchesRegion&&matchesTime&&matchesSaved&&(!query||searchable.includes(query));
+    return matchesTopic&&matchesRegion&&matchesTime&&matchesDate&&matchesSaved&&(!query||searchable.includes(query));
   });
-  resultCount.textContent=query||activeTopic!=='all'||regionFilter.value!=='all'||timeFilter.value!=='all'||savedOnly?`找到 ${list.length} 条相关简报`:`共 ${list.length} 条今日精选`;
+  resultCount.textContent=query||activeTopic!=='all'||regionFilter.value!=='all'||timeFilter.value!=='all'||activeDate!=='all'||savedOnly?`找到 ${list.length} 条相关简报`:`共 ${list.length} 条今日精选`;
   savedCount.textContent=String(savedIds.size);
   savedFilter.classList.toggle('active',savedOnly);
   savedFilter.setAttribute('aria-pressed',String(savedOnly));
   savedFilter.querySelector('span').textContent=savedOnly?'♥':'♡';
   clearSearch.hidden=!query;
   renderActiveFilters(query);
+  renderArchive();
   grid.innerHTML=list.map((item,index)=>`
     <article class="news-card ${index===0?'news-card--lead':''}" data-id="${item.id}" tabindex="0" aria-label="阅读：${item.title}" style="--accent:${item.accent}">
       <div class="news-rank">${String(index+1).padStart(2,'0')}</div>
@@ -131,6 +160,7 @@ function renderActiveFilters(query){
   if(activeTopic!=='all')selections.push({type:'topic',label:topicLabels[activeTopic]});
   if(regionFilter.value!=='all')selections.push({type:'region',label:regionLabels[regionFilter.value]});
   if(timeFilter.value!=='all')selections.push({type:'time',label:`近 ${timeFilter.value} 天`});
+  if(activeDate!=='all')selections.push({type:'date',label:`日期：${formatArchiveDate(activeDate).label}`});
   if(savedOnly)selections.push({type:'saved',label:'我的收藏'});
   activeFilters.hidden=selections.length===0;
   activeFilterList.innerHTML=selections.map(item=>`<button type="button" data-remove="${item.type}" aria-label="移除条件：${escapeHtml(item.label)}">${escapeHtml(item.label)}<span aria-hidden="true">×</span></button>`).join('');
@@ -151,21 +181,23 @@ function removeFilter(type){
   if(type==='topic')selectTopic('all');
   if(type==='region')regionFilter.value='all';
   if(type==='time')timeFilter.value='all';
+  if(type==='date')activeDate='all';
   if(type==='saved')savedOnly=false;
   syncUrl();render();
 }
 
 function resetDiscovery(){
-  search.value='';selectTopic('all');regionFilter.value='all';timeFilter.value='all';savedOnly=false;syncUrl();render();search.focus();
+  search.value='';selectTopic('all');regionFilter.value='all';timeFilter.value='all';activeDate='all';savedOnly=false;syncUrl();render();search.focus();
 }
 
 function syncUrl(){
   const params=new URLSearchParams(window.location.search);
-  ['q','topic','region','time','saved'].forEach(key=>params.delete(key));
+  ['q','topic','region','time','date','saved'].forEach(key=>params.delete(key));
   if(search.value.trim())params.set('q',search.value.trim());
   if(activeTopic!=='all')params.set('topic',activeTopic);
   if(regionFilter.value!=='all')params.set('region',regionFilter.value);
   if(timeFilter.value!=='all')params.set('time',timeFilter.value);
+  if(activeDate!=='all')params.set('date',activeDate);
   if(savedOnly)params.set('saved','1');
   const next=`${window.location.pathname}${params.size?`?${params}`:''}${window.location.hash}`;
   window.history.replaceState({},'',next);
@@ -225,11 +257,14 @@ const initialParams=new URLSearchParams(window.location.search);
 const initialTopic=initialParams.get('topic');
 const initialRegion=initialParams.get('region');
 const initialTime=initialParams.get('time');
+const initialDate=initialParams.get('date');
 search.value=initialParams.get('q')||'';
 if(initialTopic&&Object.hasOwn(topicMap,initialTopic))selectTopic(initialTopic);
 if(['global','china'].includes(initialRegion))regionFilter.value=initialRegion;
 if(['3','7','30'].includes(initialTime))timeFilter.value=initialTime;
+if(archiveDates.includes(initialDate))activeDate=initialDate;
 savedOnly=initialParams.get('saved')==='1';
 render();
 const requestedNews=Number(initialParams.get('news'));
 if(requestedNews)openNews(requestedNews);
+if(['#briefing','#archive','#sources','#method'].includes(window.location.hash))window.addEventListener('load',()=>document.querySelector(window.location.hash)?.scrollIntoView({block:'start'}));

@@ -14,7 +14,7 @@
   <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
-    <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
+    <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#archive">历史简报</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
     <button class="subscribe" id="subscribeBtn">订阅早报 <span>↗</span></button>
   </header>
 
@@ -46,6 +46,12 @@
       </div>
       <div class="news-grid" id="newsGrid"></div>
       <div class="empty" id="emptyState" hidden><strong>暂时没有匹配的简报</strong><p>可以减少筛选条件，或换一个更宽泛的关键词。</p><button id="emptyReset" type="button">查看全部资讯</button></div>
+    </section>
+
+    <section class="archive" id="archive">
+      <div class="section-head"><div><span class="kicker">BRIEFING ARCHIVE</span><h2>按日期回看，不让重要变化消失在信息流里</h2></div><p id="archiveSummary"></p></div>
+      <div class="archive-grid" id="archiveGrid" aria-label="历史简报日期"></div>
+      <p class="archive-note">仅展示已有正式简报的日期；没有发布内容的日期不会生成空记录。</p>
     </section>
 
     <section class="sources" id="sources">
