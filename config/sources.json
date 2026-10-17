@@ -1,0 +1,27 @@
+[
+  {
+    "id": "openai-news",
+    "name": "OpenAI",
+    "type": "rss",
+    "url": "https://openai.com/news/rss.xml",
+    "enabled": true,
+    "defaultGroup": ["global"]
+  },
+  {
+    "id": "google-ai-blog",
+    "name": "Google AI",
+    "type": "rss",
+    "url": "https://blog.google/technology/ai/rss/",
+    "enabled": true,
+    "defaultGroup": ["global"]
+  },
+  {
+    "id": "microsoft-ai-blog",
+    "name": "Microsoft AI",
+    "type": "rss",
+    "url": "https://blogs.microsoft.com/ai/feed/",
+    "enabled": false,
+    "note": "2026-10-17 实测返回 HTTP 410，找到新的稳定官方订阅源前不启用。",
+    "defaultGroup": ["global"]
+  }
+]

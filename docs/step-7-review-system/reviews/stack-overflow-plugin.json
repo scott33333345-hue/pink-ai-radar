@@ -1,0 +1,16 @@
+{
+  "candidateId": "openai-news-9e63539289",
+  "status": "案例发布",
+  "title": "Stack Overflow 用 ChatGPT 插件把 Agent 产品嵌入分发入口",
+  "summary": "Stack Overflow for Agents 通过 ChatGPT 插件降低发现和使用门槛，展示 AI 产品从独立站点走向宿主平台入口的分发思路。",
+  "fact": "OpenAI 客户案例称，Stack Overflow 为其 Agent 产品开发 ChatGPT 插件，并通过模型路由在不同任务间平衡推理需求与成本。",
+  "background": "AI 产品的竞争不只发生在模型层，插件、连接器与宿主平台正在成为新的用户获取和工作流入口。",
+  "why": "对产品经理而言，这个案例比单纯增加功能更有启示：先判断用户在哪个工作环境中产生需求，再决定产品入口。",
+  "impact": ["AI 工具产品经理", "增长与平台生态团队", "开发者产品团队"],
+  "actions": ["梳理用户最常驻的宿主平台", "评估插件入口与独立产品的转化差异", "将增长数据视为案例方口径并自行验证"],
+  "tags": ["分发", "插件", "Agent"],
+  "group": ["global", "product"],
+  "grade": "A",
+  "sourceReason": "OpenAI 官方客户案例提供产品形态、实现方式和客户陈述；增长数字属于案例方口径，并非独立审计结果。",
+  "accent": "#ffe0ea"
+}

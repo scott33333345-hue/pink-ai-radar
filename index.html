@@ -14,46 +14,56 @@
   <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
-    <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#sources">信源矩阵</a><a href="#method">核验方法</a></nav>
+    <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
     <button class="subscribe" id="subscribeBtn">订阅早报 <span>↗</span></button>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="eyebrow"><span class="pulse"></span> 2026.10.11 · 上海时间 09:30 更新</div>
+      <div class="eyebrow"><span class="pulse"></span> <span id="briefingUpdated">正在读取最新简报…</span></div>
       <h1>把 AI 世界的喧嚣，<br><em>过滤成值得读的 7 条。</em></h1>
       <p class="hero-copy">追踪全球与中文互联网的一手动态。每条资讯都经过来源确认、上下文补全与人工式摘要，让你 5 分钟掌握真正重要的变化。</p>
       <div class="hero-actions"><a class="primary" href="#briefing">阅读今日简报 <span>↓</span></a><a class="secondary" href="#method">查看核验标准</a></div>
-      <div class="hero-meta"><span><strong>12</strong> 个重点渠道</span><i></i><span><strong>7</strong> 条今日精选</span><i></i><span><strong>100%</strong> 原始来源可追溯</span></div>
+      <div class="hero-meta"><span><strong id="briefingCount">0</strong> 条精确原文</span><i></i><span><strong>5</strong> 步核验流程</span><i></i><span><strong id="traceRate">0%</strong> 原始来源可追溯</span></div>
       <div class="orbit-card" aria-hidden="true"><div class="orbit-ring"><span class="orb o1">O</span><span class="orb o2">G</span><span class="orb o3">A</span><span class="orb o4">百</span><div class="center-spark">✦</div></div><p>Signal, not noise.</p></div>
     </section>
 
     <section class="briefing" id="briefing">
-      <div class="section-head"><div><span class="kicker">TODAY'S BRIEFING</span><h2>今日 AI 精选</h2></div><p>按发布时间排序 · 点击卡片查看背景与核验说明</p></div>
-      <div class="toolbar">
-        <div class="filters" role="group" aria-label="资讯来源筛选"><button class="active" data-filter="all">全部</button><button data-filter="global">全球</button><button data-filter="china">中国</button><button data-filter="product">产品</button><button data-filter="industry">产业</button></div>
-        <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索公司或关键词" aria-label="搜索资讯"></label>
+      <div class="section-head"><div><span class="kicker">TODAY'S BRIEFING</span><h2>今天最值得产品人关注的 AI 变化</h2></div><p>重点优先 · 点击资讯查看事实、影响与行动建议</p></div>
+      <div class="discovery-panel" aria-label="资讯检索工具">
+        <div class="search-row">
+          <label class="search" for="searchInput"><span class="search-label">搜索简报</span><input id="searchInput" type="search" placeholder="搜索公司、主题或行动建议" autocomplete="off"><button id="clearSearch" type="button" hidden>清除</button></label>
+          <p class="result-count" id="resultCount" aria-live="polite"></p>
+        </div>
+        <div class="filter-row">
+          <fieldset class="topic-filter"><legend>关注主题</legend><div class="filters" role="group" aria-label="按主题筛选"><button class="active" data-topic="all" aria-pressed="true">全部</button><button data-topic="product" aria-pressed="false">产品体验</button><button data-topic="model" aria-pressed="false">模型能力</button><button data-topic="agent" aria-pressed="false">Agent</button><button data-topic="governance" aria-pressed="false">安全治理</button><button data-topic="developer" aria-pressed="false">开发者</button></div></fieldset>
+          <div class="filter-selects">
+            <label><span>地区</span><select id="regionFilter"><option value="all">全部地区</option><option value="global">全球</option><option value="china">中国</option></select></label>
+            <label><span>时间</span><select id="timeFilter"><option value="all">全部时间</option><option value="3">近 3 天</option><option value="7">近 7 天</option><option value="30">近 30 天</option></select></label>
+          </div>
+        </div>
+        <div class="active-filters" id="activeFilters" hidden><span>已选条件</span><div id="activeFilterList"></div><button class="reset-filters" id="resetFilters" type="button">清除全部</button></div>
       </div>
       <div class="news-grid" id="newsGrid"></div>
-      <div class="empty" id="emptyState" hidden>没有找到匹配的资讯，换个关键词试试。</div>
+      <div class="empty" id="emptyState" hidden><strong>暂时没有匹配的简报</strong><p>可以减少筛选条件，或换一个更宽泛的关键词。</p><button id="emptyReset" type="button">查看全部资讯</button></div>
     </section>
 
     <section class="sources" id="sources">
-      <div class="section-head light"><div><span class="kicker">SOURCE MAP</span><h2>全天候信源矩阵</h2></div><p>官方渠道优先，社交平台用于发现线索而非单独定论。</p></div>
-      <div class="source-marquee"><span>OpenAI</span><span>Google</span><span>Microsoft</span><span>Anthropic</span><span>百度</span><span>腾讯</span><span>知乎</span><span>微博</span><span>微信公众号</span></div>
-      <div class="source-stats"><article><b>01</b><h3>发现</h3><p>持续扫描官方博客、研究发布与公开社交渠道。</p></article><article><b>02</b><h3>核验</h3><p>回到原始发布页，检查日期、主体与关键表述。</p></article><article><b>03</b><h3>提炼</h3><p>补足事件背景，压缩为可快速决策的中文摘要。</p></article><article><b>04</b><h3>标注</h3><p>保留来源链接、核验等级与更新时间，全程可追溯。</p></article></div>
+      <div class="section-head light"><div><span class="kicker">HOW WE WORK</span><h2>从线索到可追溯的产品判断</h2></div><p>机器提升处理效率，最终发布责任由人承担。</p></div>
+      <div class="source-stats workflow"><article><b>01</b><h3>发现</h3><p>扫描官方发布与公开渠道，社交内容只作为线索。</p></article><article><b>02</b><h3>筛选</h3><p>判断是否影响产品决策，排除重复与低价值动态。</p></article><article><b>03</b><h3>AI 提炼</h3><p>辅助翻译、归纳事实并生成摘要初稿，不自动发布。</p></article><article><b>04</b><h3>人工复核</h3><p>逐项核对主体、时间、状态、限制条件与精确原文。</p></article><article><b>05</b><h3>发布纠错</h3><p>保留核验时间和评级理由，发现错误后更新记录。</p></article></div>
     </section>
 
     <section class="method" id="method">
-      <div class="method-copy"><span class="kicker">EDITORIAL STANDARD</span><h2>不是搬运，<br>是经过验证的判断。</h2><p>我们把“可信”设计进每一条资讯。官方原始发布标为 A 级；经两家独立权威媒体互证标为 B 级；只有社交平台单一信源的内容只进入观察池，不进入今日精选。</p><div class="legend"><span><i class="grade a">A</i> 官方原始来源</span><span><i class="grade b">B</i> 多源交叉确认</span><span><i class="grade c">C</i> 观察中，不发布</span></div></div>
-      <div class="method-card"><div class="check-row"><span>✓</span><div><b>主体确认</b><small>发布账号与机构官网相互匹配</small></div></div><div class="check-row"><span>✓</span><div><b>时间确认</b><small>区分发布日期、事件日期与更新时间</small></div></div><div class="check-row"><span>✓</span><div><b>语境确认</b><small>不省略限制条件，不把预览写成正式发布</small></div></div><div class="check-row"><span>✓</span><div><b>链接留档</b><small>读者可直接回到原文复核</small></div></div></div>
+      <div class="method-copy"><span class="kicker">EDITORIAL STANDARD</span><h2>事实、判断与机器边界。</h2><p>每条简报先记录官方事实，再补充面向产品工作的影响判断。AI 只参与信息整理，不决定重要性、可信度或最终发布。</p><div class="legend"><span><i class="grade a">A</i> 官方原始来源，可直接追溯</span><span><i class="grade b">B</i> 两个独立可靠来源互证</span><span><i class="grade c">C</i> 单一线索，进入观察池但不发布</span></div></div>
+      <div class="responsibility-grid"><article><span>AI 辅助</span><h3>提高整理效率</h3><ul><li>聚合同类信息与去重</li><li>翻译并生成摘要初稿</li><li>提取公司、主题与时间</li></ul><small>AI 输出可能遗漏语境或产生错误，不能直接发布。</small></article><article><span>人工负责</span><h3>承担发布判断</h3><ul><li>打开原文核对关键事实</li><li>区分发布、预览、公测与传闻</li><li>判断影响对象和行动建议</li></ul><small>编辑对最终文字、评级和链接准确性负责。</small></article></div>
     </section>
   </main>
 
   <footer><div class="brand"><span class="logo">P</span><span>Pink AI Radar</span></div><p>少一点噪音，多一点确定。</p><span>© 2026 · Curated with care</span></footer>
 
-  <dialog id="newsDialog"><button class="dialog-close" aria-label="关闭">×</button><div id="dialogContent"></div></dialog>
+  <dialog id="newsDialog"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialogContent"></div></dialog>
   <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">♡</span><h2>明早见。</h2><p>留下邮箱，每天 9:30 收到 5–8 条经核验的 AI 资讯。</p><form id="subscribeForm"><input type="email" placeholder="you@example.com" required><button type="submit">订阅早报</button></form><small>演示页面 · 不会真实收集或发送数据</small></div></dialog>
+  <script src="data/news.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

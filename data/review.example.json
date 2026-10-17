@@ -1,0 +1,16 @@
+{
+  "candidateId": "请填写候选 ID",
+  "status": "正式发布",
+  "title": "面向中文读者重新编辑的标题",
+  "summary": "一句话说明发生了什么。",
+  "fact": "仅陈述已由原文确认的事实。",
+  "background": "补充理解这条资讯所需的背景。",
+  "why": "说明这件事为什么值得产品从业者关注。",
+  "impact": ["受影响的用户或团队"],
+  "actions": ["一个可执行的下一步"],
+  "tags": ["产品"],
+  "group": ["global", "product"],
+  "grade": "A",
+  "sourceReason": "说明来源为何可信，以及人工核对了什么。",
+  "accent": "#ffe0ea"
+}

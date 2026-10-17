@@ -1,0 +1,12 @@
+{
+  "name": "pink-ai-radar",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data:build": "node scripts/build-data.mjs",
+    "data:check": "node scripts/build-data.mjs --check",
+    "news:collect": "node scripts/collect-news.mjs",
+    "review:list": "node scripts/review-news.mjs list",
+    "check": "node --check app.js && npm run data:check"
+  }
+}

@@ -1,17 +1,167 @@
-const news = [
-  {id:1,source:'OpenAI',icon:'O',date:'2026-10-08',display:'10 月 8 日 · 08:00',title:'OpenAI 更新 AI 滥用行动报告，披露“虚假门面”操作',summary:'官方安全报告聚焦利用生成式 AI 包装虚假身份与组织的行为，并说明平台如何识别、阻断相关网络。',background:'生成式 AI 降低了批量生成内容和伪造身份材料的成本，平台治理正从单条内容审核转向识别协同行为网络。',detail:'OpenAI 在官方新闻页发布最新安全内容，重点讨论 AI 如何被用于营造看似真实的组织或身份，以及对应的检测与处置。该信息来自 OpenAI 官方发布，关键表述未依赖二手转述。',url:'https://openai.com/news/',tags:['安全','治理'],group:['global','industry'],accent:'#ffe0ea',grade:'A'},
-  {id:2,source:'Google',icon:'G',date:'2026-10-08',display:'10 月 8 日 · 06:30',title:'Google Cloud 发布面向企业工作的通用 Gemini Agent',summary:'新 Agent 可结合企业上下文，调用技能和工具完成知识工作、内容创作与编码任务，并带有成本和治理控制。',background:'企业 AI 的竞争焦点正在从“回答问题”转向“完成工作”，权限、上下文和可治理性成为落地门槛。',detail:'Google 官方博客在 Gemini at Work 2026 期间发布信息，明确其定位为企业通用工作 Agent，可在组织现有文档、邮箱及开发环境中执行任务。',url:'https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-at-work/',tags:['Agent','企业'],group:['global','product'],accent:'#e1efff',grade:'A'},
-  {id:3,source:'Anthropic',icon:'A',date:'2026-10-08',display:'10 月 8 日 · 05:00',title:'Anthropic 发布 2026 年 Usage Policy 更新',summary:'新版使用政策进一步整理高风险场景与平台责任边界，反映前沿模型进入更多专业场景后的治理需求。',background:'模型能力加速进入网络安全、生命科学等领域，服务商正在同步调整访问验证和可接受使用政策。',detail:'该动态出现在 Anthropic 官方 Newsroom 的 Announcements 列表。本站只概括发布动作与政策背景，具体约束应以官方完整政策文本为准。',url:'https://www.anthropic.com/news?subjects=announcements',tags:['政策','安全'],group:['global','industry'],accent:'#f4e5da',grade:'A'},
-  {id:4,source:'Anthropic',icon:'A',date:'2026-10-07',display:'10 月 7 日 · 09:00',title:'Claude Haiku 5.5 发布：主打高吞吐与成本敏感任务',summary:'Anthropic 将其定义为更快、更便宜的小型模型，目标是高并发客服、分类、提取等大规模工作负载。',background:'小模型正成为 AI 产品商业化的重要拼图：在能力足够的前提下，时延和单位成本通常比极限智能更关键。',detail:'信息来自 Anthropic 官方 Newsroom 的产品公告。性能和价格描述为厂商口径，实际选型仍需结合自有数据集评测。',url:'https://www.anthropic.com/news?subjects=announcements',tags:['模型','产品'],group:['global','product'],accent:'#f4e5da',grade:'A'},
-  {id:5,source:'OpenAI',icon:'O',date:'2026-10-07',display:'10 月 7 日 · 07:30',title:'OpenAI 发布 GPT-6 与 Intelligent UI 面向大众的新进展',summary:'更新聚焦模型与界面的协同：回答不再局限于文本墙，而是根据任务动态组织更可操作的交互界面。',background:'“生成界面”正在成为模型竞争的新维度，AI 输出从内容生成走向可直接操作的任务空间。',detail:'该信息列于 OpenAI 官方 News 的 Product 分类中。本站将产品方向与行业背景分开陈述，避免把厂商愿景误写成已全面可用的能力。',url:'https://openai.com/news/?topics=product',tags:['GPT-6','交互'],group:['global','product'],accent:'#ffe0ea',grade:'A'},
-  {id:6,source:'腾讯云',icon:'腾',date:'2026-09-29',display:'9 月 29 日 · 15:06',title:'腾讯云通知 MiMo-V2.5-Pro 下线，建议迁移至 V2.6-Pro',summary:'旧模型计划于 10 月 20 日晚停止服务，使用 TokenHub 的开发者需提前修改 model 参数并验证成本与效果。',background:'模型平台的版本迭代可能直接影响线上调用，停服公告属于开发团队需要持续监控的运维级资讯。',detail:'腾讯云官方公告给出明确下线时间、受影响的模型参数值和替代型号。本站保留了迁移期限，便于使用方安排变更。',url:'https://intl.cloud.tencent.com/zh/announce/detail/101536',tags:['开发者','迁移提醒'],group:['china','product'],accent:'#e4f0ff',grade:'A'},
-  {id:7,source:'百度 AI',icon:'百',date:'2026-09-16',display:'9 月 16 日 · 15:21',title:'百度端到端语音语言大模型 Flex 开启公测',summary:'模型将语音理解与任务执行结合，并支持 Function Call，面向更自然的实时语音交互与业务办理。',background:'传统语音链路常由识别、文本模型、语音合成多段串联；端到端方案试图降低时延与信息损耗。',detail:'百度 AI 开放平台新闻页将该能力标记为“公测”，因此本站没有将其描述为全面正式商用；可用范围与调用条件应以平台文档为准。',url:'https://ai.baidu.com/support/news?module=AIOfficialWeb&tag=13',tags:['语音','公测'],group:['china','product'],accent:'#e7e8ff',grade:'A'}
-];
+const news=window.PINK_AI_NEWS;
+if(!Array.isArray(news))throw new Error('资讯数据未生成，请运行 node scripts/build-data.mjs');
 
-const grid=document.querySelector('#newsGrid'), search=document.querySelector('#searchInput'), empty=document.querySelector('#emptyState'); let active='all';
-function render(){const q=search.value.trim().toLowerCase();const list=news.filter(n=>(active==='all'||n.group.includes(active))&&(!q||[n.source,n.title,n.summary,...n.tags].join(' ').toLowerCase().includes(q)));grid.innerHTML=list.map(n=>`<article class="news-card" data-id="${n.id}" tabindex="0" style="--accent:${n.accent}"><div class="card-top"><div class="source-badge"><span class="source-icon">${n.icon}</span>${n.source}</div><i class="grade ${n.grade.toLowerCase()}" title="官方原始来源">${n.grade}</i></div><time datetime="${n.date}">${n.display}</time><h3>${n.title}</h3><p>${n.summary}</p><div class="tags">${n.tags.map(t=>`<span># ${t}</span>`).join('')}</div><span class="arrow">↗</span></article>`).join('');empty.hidden=list.length>0;grid.querySelectorAll('.news-card').forEach(c=>{c.onclick=()=>openNews(+c.dataset.id);c.onkeydown=e=>{if(e.key==='Enter')openNews(+c.dataset.id)}})}
-document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{document.querySelector('.filters .active').classList.remove('active');b.classList.add('active');active=b.dataset.filter;render()});search.addEventListener('input',render);
-const newsDialog=document.querySelector('#newsDialog');function openNews(id){const n=news.find(x=>x.id===id);document.querySelector('#dialogContent').innerHTML=`<span class="dialog-label">${n.display} · ${n.source}</span><h2 class="dialog-title">${n.title}</h2><div class="dialog-section"><h4>背景</h4><p>${n.background}</p></div><div class="dialog-section"><h4>核心内容</h4><p>${n.detail}</p></div><div class="dialog-section"><h4>来源与核验</h4><p><i class="grade a">A</i> 官方原始发布 · 已核对发布主体、日期与关键表述。</p><a class="source-link" href="${n.url}" target="_blank" rel="noopener">查看官方原文 ↗</a></div>`;newsDialog.showModal()}
-document.querySelectorAll('.dialog-close').forEach(b=>b.onclick=()=>b.closest('dialog').close());document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close()}));
-const sub=document.querySelector('#subscribeDialog');document.querySelector('#subscribeBtn').onclick=()=>sub.showModal();document.querySelector('#subscribeForm').onsubmit=e=>{e.preventDefault();e.target.innerHTML='<p style="color:#ef3b85;font-weight:800">订阅演示完成 ♡</p>'};render();
+const latestNews=[...news].sort((a,b)=>b.date.localeCompare(a.date))[0];
+const dataMeta=window.PINK_AI_META||{generatedOn:new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Shanghai'}),coverageThrough:latestNews.date};
+const formatDate=value=>value.replaceAll('-','.');
+document.querySelector('#briefingUpdated').textContent=`演示数据截至 ${formatDate(dataMeta.coverageThrough)} · 页面版本 ${formatDate(dataMeta.generatedOn)}`;
+document.querySelector('#briefingCount').textContent=String(news.length);
+document.querySelector('#traceRate').textContent=`${Math.round(news.filter(item=>item.url&&item.sourceReason).length/news.length*100)}%`;
 
+const grid=document.querySelector('#newsGrid');
+const search=document.querySelector('#searchInput');
+const empty=document.querySelector('#emptyState');
+const newsDialog=document.querySelector('#newsDialog');
+const dialogContent=document.querySelector('#dialogContent');
+const regionFilter=document.querySelector('#regionFilter');
+const timeFilter=document.querySelector('#timeFilter');
+const resultCount=document.querySelector('#resultCount');
+const clearSearch=document.querySelector('#clearSearch');
+const activeFilters=document.querySelector('#activeFilters');
+const activeFilterList=document.querySelector('#activeFilterList');
+const resetFilters=document.querySelector('#resetFilters');
+const emptyReset=document.querySelector('#emptyReset');
+let activeTopic='all';
+
+const topicMap={
+  product:['产品','交互','语音','企业'],
+  model:['模型','语音'],
+  agent:['Agent'],
+  governance:['安全','治理','政策'],
+  developer:['开发者','迁移提醒']
+};
+const topicLabels={product:'产品体验',model:'模型能力',agent:'Agent',governance:'安全治理',developer:'开发者'};
+const regionLabels={global:'全球',china:'中国'};
+
+function renderTags(tags){return tags.map(tag=>`<span># ${tag}</span>`).join('')}
+function renderList(items){return `<ul>${items.map(item=>`<li>${item}</li>`).join('')}</ul>`}
+function escapeHtml(value){return String(value).replace(/[&<>'"]/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]))}
+
+function render(){
+  const query=search.value.trim().toLowerCase();
+  const newestDate=Math.max(...news.map(item=>new Date(`${item.date}T00:00:00`).getTime()));
+  const list=news.filter(item=>{
+    const matchesTopic=activeTopic==='all'||topicMap[activeTopic].some(tag=>item.tags.includes(tag));
+    const matchesRegion=regionFilter.value==='all'||item.group.includes(regionFilter.value);
+    const ageInDays=Math.floor((newestDate-new Date(`${item.date}T00:00:00`).getTime())/86400000);
+    const matchesTime=timeFilter.value==='all'||ageInDays<Number(timeFilter.value);
+    const searchable=[item.source,item.status,item.title,item.summary,item.fact,item.background,item.why,...item.tags,...item.impact,...item.actions].join(' ').toLowerCase();
+    return matchesTopic&&matchesRegion&&matchesTime&&(!query||searchable.includes(query));
+  });
+  resultCount.textContent=query||activeTopic!=='all'||regionFilter.value!=='all'||timeFilter.value!=='all'?`找到 ${list.length} 条相关简报`:`共 ${list.length} 条今日精选`;
+  clearSearch.hidden=!query;
+  renderActiveFilters(query);
+  grid.innerHTML=list.map((item,index)=>`
+    <article class="news-card ${index===0?'news-card--lead':''}" data-id="${item.id}" tabindex="0" aria-label="阅读：${item.title}" style="--accent:${item.accent}">
+      <div class="news-rank">${String(index+1).padStart(2,'0')}</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="source-badge"><span class="source-icon">${item.icon}</span>${item.source}</span>
+          <span class="status">${item.status}</span>
+          <time datetime="${item.date}">${item.display}</time>
+          <span class="verified">核验于 ${item.verified}</span>
+          <span class="source-grade"><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> 官方信源</span>
+        </div>
+        <h3>${item.title}</h3>
+        <p class="news-summary">${item.summary}</p>
+        ${index===0&&item.image?`<img class="lead-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
+        ${index===0?`<p class="news-why"><strong>为什么重要</strong>${item.why}</p>`:''}
+        <div class="news-footer"><div class="tags">${renderTags(item.tags)}</div><div class="card-actions"><button class="read-decision" type="button">查看完整判断</button><a class="source-direct" href="${item.url}" target="_blank" rel="noopener" aria-label="查看 ${item.source} 官方原文">官方原文</a></div></div>
+      </div>
+    </article>`).join('');
+  empty.hidden=list.length>0;
+  grid.querySelectorAll('.news-card').forEach(card=>{
+    card.addEventListener('click',event=>{if(event.target.closest('a'))return;openNews(Number(card.dataset.id))});
+    card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openNews(Number(card.dataset.id))}});
+  });
+}
+
+function renderActiveFilters(query){
+  const selections=[];
+  if(query)selections.push({type:'search',label:`搜索：${search.value.trim()}`});
+  if(activeTopic!=='all')selections.push({type:'topic',label:topicLabels[activeTopic]});
+  if(regionFilter.value!=='all')selections.push({type:'region',label:regionLabels[regionFilter.value]});
+  if(timeFilter.value!=='all')selections.push({type:'time',label:`近 ${timeFilter.value} 天`});
+  activeFilters.hidden=selections.length===0;
+  activeFilterList.innerHTML=selections.map(item=>`<button type="button" data-remove="${item.type}" aria-label="移除条件：${escapeHtml(item.label)}">${escapeHtml(item.label)}<span aria-hidden="true">×</span></button>`).join('');
+  activeFilterList.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>removeFilter(button.dataset.remove)));
+}
+
+function selectTopic(value){
+  activeTopic=value;
+  document.querySelectorAll('[data-topic]').forEach(button=>{
+    const selected=button.dataset.topic===value;
+    button.classList.toggle('active',selected);
+    button.setAttribute('aria-pressed',String(selected));
+  });
+}
+
+function removeFilter(type){
+  if(type==='search')search.value='';
+  if(type==='topic')selectTopic('all');
+  if(type==='region')regionFilter.value='all';
+  if(type==='time')timeFilter.value='all';
+  syncUrl();render();
+}
+
+function resetDiscovery(){
+  search.value='';selectTopic('all');regionFilter.value='all';timeFilter.value='all';syncUrl();render();search.focus();
+}
+
+function syncUrl(){
+  const params=new URLSearchParams(window.location.search);
+  ['q','topic','region','time'].forEach(key=>params.delete(key));
+  if(search.value.trim())params.set('q',search.value.trim());
+  if(activeTopic!=='all')params.set('topic',activeTopic);
+  if(regionFilter.value!=='all')params.set('region',regionFilter.value);
+  if(timeFilter.value!=='all')params.set('time',timeFilter.value);
+  const next=`${window.location.pathname}${params.size?`?${params}`:''}${window.location.hash}`;
+  window.history.replaceState({},'',next);
+}
+
+function openNews(id){
+  const item=news.find(entry=>entry.id===id);if(!item)return;
+  dialogContent.innerHTML=`
+    <article class="article-layout">
+      <div class="article-main">
+        <div class="article-meta"><span class="source-badge"><span class="source-icon" style="--accent:${item.accent}">${item.icon}</span>${item.source}</span><span>${item.display}</span><span>${item.status}</span></div>
+        <h2 class="dialog-title" id="dialogTitle">${item.title}</h2>
+        <div class="tags article-tags">${renderTags(item.tags)}</div>
+        ${item.image?`<img class="article-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
+        <section class="article-section article-lead"><span class="section-number">01</span><div><h3>事实摘要</h3><p>${item.fact}</p></div></section>
+        <section class="article-section"><span class="section-number">02</span><div><h3>背景</h3><p>${item.background}</p></div></section>
+      </div>
+      <aside class="article-insight" aria-label="产品判断">
+        <section><span class="insight-label">为什么重要</span><p>${item.why}</p></section>
+        <section><span class="insight-label">影响对象</span>${renderList(item.impact)}</section>
+        <section><span class="insight-label">建议行动</span>${renderList(item.actions)}</section>
+        <section class="source-proof"><span class="insight-label">来源与核验</span><p><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> ${item.sourceType} · ${item.status}</p><dl><div><dt>原文标题</dt><dd>${item.sourceTitle}</dd></div><div><dt>评级理由</dt><dd>${item.sourceReason}</dd></div><div><dt>发布时间</dt><dd>${item.display}</dd></div><div><dt>核验时间</dt><dd>${item.verified}</dd></div></dl><a class="source-link" href="${item.url}" target="_blank" rel="noopener">查看精确原文</a></section>
+      </aside>
+    </article>`;
+  newsDialog.setAttribute('aria-labelledby','dialogTitle');newsDialog.showModal();
+}
+
+document.querySelectorAll('[data-topic]').forEach(button=>button.addEventListener('click',()=>{selectTopic(button.dataset.topic);syncUrl();render()}));
+search.addEventListener('input',()=>{syncUrl();render()});
+regionFilter.addEventListener('change',()=>{syncUrl();render()});
+timeFilter.addEventListener('change',()=>{syncUrl();render()});
+clearSearch.addEventListener('click',()=>{search.value='';syncUrl();render();search.focus()});
+resetFilters.addEventListener('click',resetDiscovery);
+emptyReset.addEventListener('click',resetDiscovery);
+document.querySelectorAll('.dialog-close').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
+document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()}));
+const subscribeDialog=document.querySelector('#subscribeDialog');
+document.querySelector('#subscribeBtn').addEventListener('click',()=>subscribeDialog.showModal());
+document.querySelector('#subscribeForm').addEventListener('submit',event=>{event.preventDefault();event.target.innerHTML='<p class="subscribe-success">订阅演示完成</p>'});
+
+const initialParams=new URLSearchParams(window.location.search);
+const initialTopic=initialParams.get('topic');
+const initialRegion=initialParams.get('region');
+const initialTime=initialParams.get('time');
+search.value=initialParams.get('q')||'';
+if(initialTopic&&Object.hasOwn(topicMap,initialTopic))selectTopic(initialTopic);
+if(['global','china'].includes(initialRegion))regionFilter.value=initialRegion;
+if(['3','7','30'].includes(initialTime))timeFilter.value=initialTime;
+render();
+const requestedNews=Number(initialParams.get('news'));
+if(requestedNews)openNews(requestedNews);
