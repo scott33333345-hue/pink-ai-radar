@@ -21,8 +21,8 @@
   <main id="top">
     <section class="hero">
       <div class="eyebrow"><span class="pulse"></span> <span id="briefingUpdated">正在读取最新简报…</span></div>
-      <h1>把 AI 世界的喧嚣，<br><em>过滤成值得读的 7 条。</em></h1>
-      <p class="hero-copy">追踪全球与中文互联网的一手动态。每条资讯都经过来源确认、上下文补全与人工式摘要，让你 5 分钟掌握真正重要的变化。</p>
+      <h1>把 AI 世界的喧嚣，<br><em>过滤成值得行动的变化。</em></h1>
+      <p class="hero-copy">追踪全球与中文互联网的一手动态。每条资讯都经过来源确认、上下文补全、AI 辅助提炼与人工复核，让你 5 分钟掌握真正重要的变化。</p>
       <div class="hero-actions"><a class="primary" href="#briefing">阅读今日简报 <span>↓</span></a><a class="secondary" href="#method">查看核验标准</a></div>
       <div class="hero-meta"><span><strong id="briefingCount">0</strong> 条精确原文</span><i></i><span><strong>5</strong> 步核验流程</span><i></i><span><strong id="traceRate">0%</strong> 原始来源可追溯</span></div>
       <div class="orbit-card" aria-hidden="true"><div class="orbit-ring"><span class="orb o1">O</span><span class="orb o2">G</span><span class="orb o3">A</span><span class="orb o4">百</span><div class="center-spark">✦</div></div><p>Signal, not noise.</p></div>
@@ -33,7 +33,7 @@
       <div class="discovery-panel" aria-label="资讯检索工具">
         <div class="search-row">
           <label class="search" for="searchInput"><span class="search-label">搜索简报</span><input id="searchInput" type="search" placeholder="搜索公司、主题或行动建议" autocomplete="off"><button id="clearSearch" type="button" hidden>清除</button></label>
-          <p class="result-count" id="resultCount" aria-live="polite"></p>
+          <div class="result-tools"><button class="saved-filter" id="savedFilter" type="button" aria-pressed="false"><span aria-hidden="true">♡</span> 我的收藏 <b id="savedCount">0</b></button><p class="result-count" id="resultCount" aria-live="polite"></p></div>
         </div>
         <div class="filter-row">
           <fieldset class="topic-filter"><legend>关注主题</legend><div class="filters" role="group" aria-label="按主题筛选"><button class="active" data-topic="all" aria-pressed="true">全部</button><button data-topic="product" aria-pressed="false">产品体验</button><button data-topic="model" aria-pressed="false">模型能力</button><button data-topic="agent" aria-pressed="false">Agent</button><button data-topic="governance" aria-pressed="false">安全治理</button><button data-topic="developer" aria-pressed="false">开发者</button></div></fieldset>
@@ -63,6 +63,7 @@
 
   <dialog id="newsDialog"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialogContent"></div></dialog>
   <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">♡</span><h2>明早见。</h2><p>留下邮箱，每天 9:30 收到 5–8 条经核验的 AI 资讯。</p><form id="subscribeForm"><input type="email" placeholder="you@example.com" required><button type="submit">订阅早报</button></form><small>演示页面 · 不会真实收集或发送数据</small></div></dialog>
+  <div class="save-toast" id="saveToast" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="data/news.js"></script>
   <script src="app.js"></script>
 </body>

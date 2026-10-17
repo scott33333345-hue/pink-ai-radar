@@ -21,7 +21,14 @@ const activeFilters=document.querySelector('#activeFilters');
 const activeFilterList=document.querySelector('#activeFilterList');
 const resetFilters=document.querySelector('#resetFilters');
 const emptyReset=document.querySelector('#emptyReset');
+const savedFilter=document.querySelector('#savedFilter');
+const savedCount=document.querySelector('#savedCount');
+const saveToast=document.querySelector('#saveToast');
 let activeTopic='all';
+let savedOnly=false;
+let openNewsId=null;
+const savedStorageKey='pink-ai-radar:saved-news';
+let savedIds=loadSavedIds();
 
 const topicMap={
   product:['产品','交互','语音','企业'],
@@ -36,6 +43,23 @@ const regionLabels={global:'全球',china:'中国'};
 function renderTags(tags){return tags.map(tag=>`<span># ${tag}</span>`).join('')}
 function renderList(items){return `<ul>${items.map(item=>`<li>${item}</li>`).join('')}</ul>`}
 function escapeHtml(value){return String(value).replace(/[&<>'"]/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]))}
+function loadSavedIds(){
+  try{return new Set(JSON.parse(localStorage.getItem(savedStorageKey)||'[]').map(Number).filter(Number.isInteger))}catch{return new Set()}
+}
+function persistSavedIds(){
+  try{localStorage.setItem(savedStorageKey,JSON.stringify([...savedIds]))}catch{showSaveToast('浏览器阻止了本地保存')}
+}
+function isSaved(id){return savedIds.has(id)}
+function showSaveToast(message){
+  saveToast.textContent=message;saveToast.classList.add('show');
+  window.clearTimeout(showSaveToast.timer);showSaveToast.timer=window.setTimeout(()=>saveToast.classList.remove('show'),1800);
+}
+function toggleSaved(id){
+  const item=news.find(entry=>entry.id===id);if(!item)return;
+  if(isSaved(id)){savedIds.delete(id);showSaveToast('已取消收藏')}else{savedIds.add(id);showSaveToast('已加入我的收藏')}
+  persistSavedIds();render();
+  if(openNewsId===id)renderDialog(item);
+}
 
 function render(){
   const query=search.value.trim().toLowerCase();
@@ -45,10 +69,15 @@ function render(){
     const matchesRegion=regionFilter.value==='all'||item.group.includes(regionFilter.value);
     const ageInDays=Math.floor((newestDate-new Date(`${item.date}T00:00:00`).getTime())/86400000);
     const matchesTime=timeFilter.value==='all'||ageInDays<Number(timeFilter.value);
+    const matchesSaved=!savedOnly||isSaved(item.id);
     const searchable=[item.source,item.status,item.title,item.summary,item.fact,item.background,item.why,...item.tags,...item.impact,...item.actions].join(' ').toLowerCase();
-    return matchesTopic&&matchesRegion&&matchesTime&&(!query||searchable.includes(query));
+    return matchesTopic&&matchesRegion&&matchesTime&&matchesSaved&&(!query||searchable.includes(query));
   });
-  resultCount.textContent=query||activeTopic!=='all'||regionFilter.value!=='all'||timeFilter.value!=='all'?`找到 ${list.length} 条相关简报`:`共 ${list.length} 条今日精选`;
+  resultCount.textContent=query||activeTopic!=='all'||regionFilter.value!=='all'||timeFilter.value!=='all'||savedOnly?`找到 ${list.length} 条相关简报`:`共 ${list.length} 条今日精选`;
+  savedCount.textContent=String(savedIds.size);
+  savedFilter.classList.toggle('active',savedOnly);
+  savedFilter.setAttribute('aria-pressed',String(savedOnly));
+  savedFilter.querySelector('span').textContent=savedOnly?'♥':'♡';
   clearSearch.hidden=!query;
   renderActiveFilters(query);
   grid.innerHTML=list.map((item,index)=>`
@@ -66,13 +95,15 @@ function render(){
         <p class="news-summary">${item.summary}</p>
         ${index===0&&item.image?`<img class="lead-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
         ${index===0?`<p class="news-why"><strong>为什么重要</strong>${item.why}</p>`:''}
-        <div class="news-footer"><div class="tags">${renderTags(item.tags)}</div><div class="card-actions"><button class="read-decision" type="button">查看完整判断</button><a class="source-direct" href="${item.url}" target="_blank" rel="noopener" aria-label="查看 ${item.source} 官方原文">官方原文</a></div></div>
+        <div class="news-footer"><div class="tags">${renderTags(item.tags)}</div><div class="card-actions"><button class="save-button ${isSaved(item.id)?'active':''}" type="button" data-save-id="${item.id}" aria-pressed="${isSaved(item.id)}" aria-label="${isSaved(item.id)?'取消收藏':'收藏'}：${escapeHtml(item.title)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏'}</button><button class="read-decision" type="button">查看完整判断</button><a class="source-direct" href="${item.url}" target="_blank" rel="noopener" aria-label="查看 ${item.source} 官方原文">官方原文</a></div></div>
       </div>
     </article>`).join('');
   empty.hidden=list.length>0;
+  if(!list.length&&savedOnly){empty.querySelector('strong').textContent='还没有符合条件的收藏';empty.querySelector('p').textContent='先收藏值得跟进的资讯，之后可以从这里集中查看。'}else{empty.querySelector('strong').textContent='暂时没有匹配的简报';empty.querySelector('p').textContent='可以减少筛选条件，或换一个更宽泛的关键词。'}
+  grid.querySelectorAll('[data-save-id]').forEach(button=>button.addEventListener('click',event=>{event.stopPropagation();toggleSaved(Number(button.dataset.saveId))}));
   grid.querySelectorAll('.news-card').forEach(card=>{
-    card.addEventListener('click',event=>{if(event.target.closest('a'))return;openNews(Number(card.dataset.id))});
-    card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openNews(Number(card.dataset.id))}});
+    card.addEventListener('click',event=>{if(event.target.closest('a,button'))return;openNews(Number(card.dataset.id))});
+    card.addEventListener('keydown',event=>{if(event.target!==card)return;if(event.key==='Enter'||event.key===' '){event.preventDefault();openNews(Number(card.dataset.id))}});
   });
 }
 
@@ -82,6 +113,7 @@ function renderActiveFilters(query){
   if(activeTopic!=='all')selections.push({type:'topic',label:topicLabels[activeTopic]});
   if(regionFilter.value!=='all')selections.push({type:'region',label:regionLabels[regionFilter.value]});
   if(timeFilter.value!=='all')selections.push({type:'time',label:`近 ${timeFilter.value} 天`});
+  if(savedOnly)selections.push({type:'saved',label:'我的收藏'});
   activeFilters.hidden=selections.length===0;
   activeFilterList.innerHTML=selections.map(item=>`<button type="button" data-remove="${item.type}" aria-label="移除条件：${escapeHtml(item.label)}">${escapeHtml(item.label)}<span aria-hidden="true">×</span></button>`).join('');
   activeFilterList.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>removeFilter(button.dataset.remove)));
@@ -101,30 +133,36 @@ function removeFilter(type){
   if(type==='topic')selectTopic('all');
   if(type==='region')regionFilter.value='all';
   if(type==='time')timeFilter.value='all';
+  if(type==='saved')savedOnly=false;
   syncUrl();render();
 }
 
 function resetDiscovery(){
-  search.value='';selectTopic('all');regionFilter.value='all';timeFilter.value='all';syncUrl();render();search.focus();
+  search.value='';selectTopic('all');regionFilter.value='all';timeFilter.value='all';savedOnly=false;syncUrl();render();search.focus();
 }
 
 function syncUrl(){
   const params=new URLSearchParams(window.location.search);
-  ['q','topic','region','time'].forEach(key=>params.delete(key));
+  ['q','topic','region','time','saved'].forEach(key=>params.delete(key));
   if(search.value.trim())params.set('q',search.value.trim());
   if(activeTopic!=='all')params.set('topic',activeTopic);
   if(regionFilter.value!=='all')params.set('region',regionFilter.value);
   if(timeFilter.value!=='all')params.set('time',timeFilter.value);
+  if(savedOnly)params.set('saved','1');
   const next=`${window.location.pathname}${params.size?`?${params}`:''}${window.location.hash}`;
   window.history.replaceState({},'',next);
 }
 
 function openNews(id){
   const item=news.find(entry=>entry.id===id);if(!item)return;
+  openNewsId=id;renderDialog(item);newsDialog.setAttribute('aria-labelledby','dialogTitle');newsDialog.showModal();
+}
+
+function renderDialog(item){
   dialogContent.innerHTML=`
     <article class="article-layout">
       <div class="article-main">
-        <div class="article-meta"><span class="source-badge"><span class="source-icon" style="--accent:${item.accent}">${item.icon}</span>${item.source}</span><span>${item.display}</span><span>${item.status}</span></div>
+        <div class="article-meta"><span class="source-badge"><span class="source-icon" style="--accent:${item.accent}">${item.icon}</span>${item.source}</span><span>${item.display}</span><span>${item.status}</span><button class="save-button detail-save ${isSaved(item.id)?'active':''}" type="button" data-dialog-save="${item.id}" aria-pressed="${isSaved(item.id)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏稍后读'}</button></div>
         <h2 class="dialog-title" id="dialogTitle">${item.title}</h2>
         <div class="tags article-tags">${renderTags(item.tags)}</div>
         ${item.image?`<img class="article-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
@@ -138,18 +176,19 @@ function openNews(id){
         <section class="source-proof"><span class="insight-label">来源与核验</span><p><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> ${item.sourceType} · ${item.status}</p><dl><div><dt>原文标题</dt><dd>${item.sourceTitle}</dd></div><div><dt>评级理由</dt><dd>${item.sourceReason}</dd></div><div><dt>发布时间</dt><dd>${item.display}</dd></div><div><dt>核验时间</dt><dd>${item.verified}</dd></div></dl><a class="source-link" href="${item.url}" target="_blank" rel="noopener">查看精确原文</a></section>
       </aside>
     </article>`;
-  newsDialog.setAttribute('aria-labelledby','dialogTitle');newsDialog.showModal();
+  dialogContent.querySelector('[data-dialog-save]').addEventListener('click',event=>toggleSaved(Number(event.currentTarget.dataset.dialogSave)));
 }
 
 document.querySelectorAll('[data-topic]').forEach(button=>button.addEventListener('click',()=>{selectTopic(button.dataset.topic);syncUrl();render()}));
 search.addEventListener('input',()=>{syncUrl();render()});
 regionFilter.addEventListener('change',()=>{syncUrl();render()});
 timeFilter.addEventListener('change',()=>{syncUrl();render()});
+savedFilter.addEventListener('click',()=>{savedOnly=!savedOnly;syncUrl();render()});
 clearSearch.addEventListener('click',()=>{search.value='';syncUrl();render();search.focus()});
 resetFilters.addEventListener('click',resetDiscovery);
 emptyReset.addEventListener('click',resetDiscovery);
 document.querySelectorAll('.dialog-close').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
-document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()}));
+document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{if(dialog===newsDialog)openNewsId=null})});
 const subscribeDialog=document.querySelector('#subscribeDialog');
 document.querySelector('#subscribeBtn').addEventListener('click',()=>subscribeDialog.showModal());
 document.querySelector('#subscribeForm').addEventListener('submit',event=>{event.preventDefault();event.target.innerHTML='<p class="subscribe-success">订阅演示完成</p>'});
@@ -162,6 +201,7 @@ search.value=initialParams.get('q')||'';
 if(initialTopic&&Object.hasOwn(topicMap,initialTopic))selectTopic(initialTopic);
 if(['global','china'].includes(initialRegion))regionFilter.value=initialRegion;
 if(['3','7','30'].includes(initialTime))timeFilter.value=initialTime;
+savedOnly=initialParams.get('saved')==='1';
 render();
 const requestedNews=Number(initialParams.get('news'));
 if(requestedNews)openNews(requestedNews);
