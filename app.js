@@ -26,6 +26,10 @@ const savedCount=document.querySelector('#savedCount');
 const saveToast=document.querySelector('#saveToast');
 const archiveGrid=document.querySelector('#archiveGrid');
 const archiveSummary=document.querySelector('#archiveSummary');
+const trendChart=document.querySelector('#trendChart');
+const trendInsight=document.querySelector('#trendInsight');
+const sourceMixSummary=document.querySelector('#sourceMixSummary');
+const sourceMixList=document.querySelector('#sourceMixList');
 let activeTopic='all';
 let savedOnly=false;
 let activeDate='all';
@@ -104,6 +108,28 @@ function renderArchive(){
     activeDate=button.dataset.archiveDate;timeFilter.value='all';syncUrl();render();
     document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'});
   }));
+}
+function renderTrends(){
+  const windowDates=archiveDates.slice(0,7);
+  const windowNews=news.filter(item=>windowDates.includes(item.date));
+  const rows=Object.entries(topicMap).map(([key,tags])=>({key,label:topicLabels[key],count:windowNews.filter(item=>tags.some(tag=>item.tags.includes(tag))).length})).sort((a,b)=>b.count-a.count||a.label.localeCompare(b.label,'zh-CN'));
+  const maxCount=Math.max(1,...rows.map(row=>row.count));
+  trendChart.innerHTML=rows.map(row=>`<button type="button" class="trend-row" data-trend-topic="${row.key}" aria-label="查看${row.label}资讯，共 ${row.count} 条">
+    <span class="trend-label">${row.label}</span><span class="trend-track"><i style="--trend-width:${row.count/maxCount*100}%"></i></span><strong>${row.count}</strong><small>查看 →</small>
+  </button>`).join('');
+  trendChart.querySelectorAll('[data-trend-topic]').forEach(button=>button.addEventListener('click',()=>{
+    selectTopic(button.dataset.trendTopic);activeDate='all';timeFilter.value='all';syncUrl();render();
+    document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+  const peak=rows[0].count;
+  const leaders=rows.filter(row=>row.count===peak).map(row=>row.label);
+  const sources=Object.entries(windowNews.reduce((summary,item)=>{summary[item.source]=(summary[item.source]||0)+1;return summary},{})).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'zh-CN'));
+  const [topSource,topSourceCount]=sources[0];
+  const topShare=Math.round(topSourceCount/windowNews.length*100);
+  trendInsight.innerHTML=`<span>本期判断</span><h3>${leaders.join('与')}是出现最频繁的信号</h3><p>在最近 ${windowDates.length} 个有内容的发布日期中，相关主题各出现 ${peak} 次。它适合用来确定持续跟踪方向，而不能直接证明市场热度。</p><a href="#briefing" data-lead-topic="${rows[0].key}">查看代表性简报 →</a><small>编辑提示：${topSource} 占样本 ${topShare}%，结论可能受到信源结构影响。</small>`;
+  trendInsight.querySelector('[data-lead-topic]').addEventListener('click',event=>{event.preventDefault();selectTopic(event.currentTarget.dataset.leadTopic);activeDate='all';timeFilter.value='all';syncUrl();render();document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'})});
+  sourceMixSummary.textContent=`${sources.length} 个来源 · ${windowNews.length} 条简报`;
+  sourceMixList.innerHTML=sources.map(([source,count])=>`<span>${escapeHtml(source)} <b>${count}</b></span>`).join('');
 }
 
 function render(){
@@ -275,7 +301,8 @@ if(['global','china'].includes(initialRegion))regionFilter.value=initialRegion;
 if(['3','7','30'].includes(initialTime))timeFilter.value=initialTime;
 if(archiveDates.includes(initialDate))activeDate=initialDate;
 savedOnly=initialParams.get('saved')==='1';
+renderTrends();
 render();
 const requestedNews=Number(initialParams.get('news'));
 if(requestedNews)openNews(requestedNews);
-if(['#briefing','#archive','#sources','#method'].includes(window.location.hash))window.addEventListener('load',()=>document.querySelector(window.location.hash)?.scrollIntoView({block:'start'}));
+if(['#briefing','#archive','#trends','#sources','#method'].includes(window.location.hash))window.addEventListener('load',()=>document.querySelector(window.location.hash)?.scrollIntoView({block:'start'}));

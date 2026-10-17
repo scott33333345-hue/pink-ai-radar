@@ -15,7 +15,7 @@
   <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
-    <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#archive">历史简报</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
+    <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#archive">历史简报</a><a href="#trends">趋势洞察</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
     <button class="subscribe" id="subscribeBtn">订阅更新 <span>↗</span></button>
   </header>
 
@@ -53,6 +53,15 @@
       <div class="section-head"><div><span class="kicker">BRIEFING ARCHIVE</span><h2>按日期回看，不让重要变化消失在信息流里</h2></div><p id="archiveSummary"></p></div>
       <div class="archive-grid" id="archiveGrid" aria-label="历史简报日期"></div>
       <p class="archive-note">仅展示已有正式简报的日期；没有发布内容的日期不会生成空记录。</p>
+    </section>
+
+    <section class="trends" id="trends">
+      <div class="section-head"><div><span class="kicker">SIGNAL REVIEW</span><h2>最近 7 期，哪些方向正在持续出现？</h2></div><p>主题出现次数，不代表市场份额</p></div>
+      <div class="trend-layout">
+        <div class="trend-chart" id="trendChart" aria-label="最近七期主题出现次数"></div>
+        <aside class="trend-insight" id="trendInsight"></aside>
+      </div>
+      <div class="source-mix"><div><span>信源构成</span><strong id="sourceMixSummary"></strong></div><div class="source-mix-list" id="sourceMixList"></div></div>
     </section>
 
     <section class="sources" id="sources">
