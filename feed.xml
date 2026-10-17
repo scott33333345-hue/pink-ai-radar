@@ -9,8 +9,8 @@
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://scott33333345-hue.github.io/pink-ai-radar/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Stack Overflow 用 ChatGPT 插件把 Agent 产品嵌入分发入口</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=9</link>
-      <guid isPermaLink="false">pink-ai-radar-9</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/9/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/9/</guid>
       <pubDate>Fri, 16 Oct 2026 04:00:00 GMT</pubDate>
       <description>Stack Overflow for Agents 通过 ChatGPT 插件降低发现和使用门槛，展示 AI 产品从独立站点走向宿主平台入口的分发思路。
 
@@ -22,8 +22,8 @@
     </item>
     <item>
       <title>巴西银行 Itaú 用治理平台支撑面向客户的生成式 AI</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=10</link>
-      <guid isPermaLink="false">pink-ai-radar-10</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/10/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/10/</guid>
       <pubDate>Fri, 16 Oct 2026 04:00:00 GMT</pubDate>
       <description>Itaú 将对话式客户入口与内部治理平台并行建设，说明受监管行业规模化使用 AI 时，体验与治理需要同步产品化。
 
@@ -35,8 +35,8 @@
     </item>
     <item>
       <title>Third Moment 展示万级 Agent 长时运行的工程方法</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=11</link>
-      <guid isPermaLink="false">pink-ai-radar-11</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/11/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/11/</guid>
       <pubDate>Wed, 14 Oct 2026 04:00:00 GMT</pubDate>
       <description>案例展示 1 万个 Agent 并发、持续 36–48 小时的研究系统，并通过外层调度、缓存优化和安全测试控制长任务。
 
@@ -48,8 +48,8 @@
     </item>
     <item>
       <title>Amp 将编程 Agent 延伸到产品规划、设计与增长工作</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=12</link>
-      <guid isPermaLink="false">pink-ai-radar-12</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/12/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/12/</guid>
       <pubDate>Wed, 14 Oct 2026 04:00:00 GMT</pubDate>
       <description>Amp 的使用场景从写代码扩展到决定做什么、设计页面和市场增长，体现 Agent 产品边界正在由岗位工具转向跨流程协作。
 
@@ -61,8 +61,8 @@
     </item>
     <item>
       <title>Google 发布 Gemini 4 Argon，面向复杂专业任务开放</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=8</link>
-      <guid isPermaLink="false">pink-ai-radar-8</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/8/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/8/</guid>
       <pubDate>Tue, 13 Oct 2026 04:00:00 GMT</pubDate>
       <description>Gemini 4 Argon 已向开发者、企业及订阅用户开放，主打长程推理、复杂工程与专业工作流，首发价格设有期限。
 
@@ -74,8 +74,8 @@
     </item>
     <item>
       <title>OpenAI 更新 AI 滥用行动报告，披露“虚假门面”操作</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=1</link>
-      <guid isPermaLink="false">pink-ai-radar-1</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/1/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/1/</guid>
       <pubDate>Thu, 08 Oct 2026 04:00:00 GMT</pubDate>
       <description>官方安全报告聚焦利用生成式 AI 包装虚假身份与组织的行为，并说明平台如何识别、阻断相关网络。
 
@@ -87,8 +87,8 @@
     </item>
     <item>
       <title>Google Cloud 发布面向企业工作的通用 Gemini Agent</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=2</link>
-      <guid isPermaLink="false">pink-ai-radar-2</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/2/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/2/</guid>
       <pubDate>Thu, 08 Oct 2026 04:00:00 GMT</pubDate>
       <description>新 Agent 可结合企业上下文，调用技能和工具完成知识工作、内容创作与编码任务，并带有成本和治理控制。
 
@@ -100,8 +100,8 @@
     </item>
     <item>
       <title>Anthropic 发布 2026 年 Usage Policy 更新</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=3</link>
-      <guid isPermaLink="false">pink-ai-radar-3</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/3/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/3/</guid>
       <pubDate>Thu, 08 Oct 2026 04:00:00 GMT</pubDate>
       <description>新版使用政策进一步整理高风险场景与平台责任边界，反映前沿模型进入更多专业场景后的治理需求。
 
@@ -113,8 +113,8 @@
     </item>
     <item>
       <title>Claude Haiku 5.5 发布：主打高吞吐与成本敏感任务</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=4</link>
-      <guid isPermaLink="false">pink-ai-radar-4</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/4/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/4/</guid>
       <pubDate>Wed, 07 Oct 2026 04:00:00 GMT</pubDate>
       <description>Anthropic 将其定义为更快、更便宜的小型模型，目标是高并发客服、分类、提取等大规模工作负载。
 
@@ -126,8 +126,8 @@
     </item>
     <item>
       <title>OpenAI 发布 GPT-6 与 Intelligent UI 面向大众的新进展</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=5</link>
-      <guid isPermaLink="false">pink-ai-radar-5</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/5/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/5/</guid>
       <pubDate>Wed, 07 Oct 2026 04:00:00 GMT</pubDate>
       <description>更新聚焦模型与界面的协同：回答不再局限于文本墙，而是根据任务动态组织更可操作的交互界面。
 
@@ -139,8 +139,8 @@
     </item>
     <item>
       <title>腾讯云通知 MiMo-V2.5-Pro 下线，建议迁移至 V2.6-Pro</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=6</link>
-      <guid isPermaLink="false">pink-ai-radar-6</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/6/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/6/</guid>
       <pubDate>Tue, 29 Sep 2026 04:00:00 GMT</pubDate>
       <description>旧模型计划于 10 月 20 日晚停止服务，使用 TokenHub 的开发者需提前修改 model 参数并验证成本与效果。
 
@@ -152,8 +152,8 @@
     </item>
     <item>
       <title>百度端到端语音语言大模型 Flex 开启公测</title>
-      <link>https://scott33333345-hue.github.io/pink-ai-radar/?news=7</link>
-      <guid isPermaLink="false">pink-ai-radar-7</guid>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/7/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/7/</guid>
       <pubDate>Wed, 16 Sep 2026 04:00:00 GMT</pubDate>
       <description>模型将语音理解与任务执行结合，并支持 Function Call，面向更自然的实时语音交互与业务办理。
 

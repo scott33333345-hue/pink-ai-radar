@@ -204,7 +204,7 @@ window.PINK_AI_NEWS=[
     "display": "10 月 8 日 · 08:00",
     "verified": "10 月 8 日 · 10:20",
     "status": "正式发布",
-    "image": "assets/ai-trust-signal.png",
+    "image": "assets/ai-trust-signal.jpg",
     "title": "OpenAI 更新 AI 滥用行动报告，披露“虚假门面”操作",
     "summary": "官方安全报告聚焦利用生成式 AI 包装虚假身份与组织的行为，并说明平台如何识别、阻断相关网络。",
     "fact": "OpenAI 发布最新安全报告，披露生成式 AI 被用于包装虚假身份与组织的案例，并介绍平台采取的检测、账号治理与协同处置措施。",

@@ -202,7 +202,7 @@ function render(){
         </div>
         <h3 id="news-title-${item.id}">${item.title}</h3>
         <p class="news-summary">${item.summary}</p>
-        ${index===0&&item.image?`<img class="lead-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
+        ${index===0&&item.image?`<img class="lead-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉" width="1200" height="675" loading="lazy" decoding="async">`:''}
         ${index===0?`<p class="news-why"><strong>为什么重要</strong>${item.why}</p>`:''}
         <div class="news-footer"><div class="tags">${renderTags(item.tags)}</div><div class="card-actions"><button class="save-button ${isSaved(item.id)?'active':''}" type="button" data-save-id="${item.id}" aria-pressed="${isSaved(item.id)}" aria-label="${isSaved(item.id)?'取消收藏':'收藏'}：${escapeHtml(item.title)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏'}</button><button class="read-decision" type="button" aria-haspopup="dialog" aria-label="查看完整判断：${escapeHtml(item.title)}">查看完整判断</button><a class="source-direct" href="${item.url}" target="_blank" rel="noopener" aria-label="查看 ${item.source} 官方原文（新窗口打开）">官方原文</a></div></div>
       </div>
@@ -279,7 +279,7 @@ function renderDialog(item){
         <div class="article-meta"><span class="source-badge"><span class="source-icon" aria-hidden="true" style="--accent:${item.accent}">${item.icon}</span>${item.source}</span><span>${item.display}</span><span>${item.status}</span><button class="save-button detail-save ${isSaved(item.id)?'active':''}" type="button" data-dialog-save="${item.id}" aria-pressed="${isSaved(item.id)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏稍后读'}</button></div>
         <h2 class="dialog-title" id="dialogTitle">${item.title}</h2>
         <div class="tags article-tags">${renderTags(item.tags)}</div>
-        ${item.image?`<img class="article-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
+        ${item.image?`<img class="article-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉" width="1200" height="675" decoding="async">`:''}
         <section class="article-section article-lead"><span class="section-number" aria-hidden="true">01</span><div><h3>事实摘要</h3><p>${item.fact}</p></div></section>
         <section class="article-section"><span class="section-number" aria-hidden="true">02</span><div><h3>背景</h3><p>${item.background}</p></div></section>
       </div>
@@ -296,7 +296,7 @@ function renderDialog(item){
           <p class="feedback-note">${feedbackById[item.id]?'已记录，可重新选择。反馈仅保存在当前浏览器。':'选择结果仅保存在当前浏览器，不会上传。'}</p>
           <a class="correction-link" href="${correctionUrl(item)}" target="_blank" rel="noopener">发现事实或链接错误？提交纠错 ↗</a><span class="correction-requirement">需登录 GitHub</span>
         </section>
-        <section class="source-proof"><h3 class="insight-label">来源与核验</h3><p><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> ${item.sourceType} · ${item.status}</p><dl><div><dt>原文标题</dt><dd>${item.sourceTitle}</dd></div><div><dt>评级理由</dt><dd>${item.sourceReason}</dd></div><div><dt>发布时间</dt><dd>${item.display}</dd></div><div><dt>核验时间</dt><dd>${item.verified}</dd></div></dl><a class="source-link" href="${item.url}" target="_blank" rel="noopener" aria-label="查看精确原文（新窗口打开）">查看精确原文</a></section>
+        <section class="source-proof"><h3 class="insight-label">来源与核验</h3><p><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> ${item.sourceType} · ${item.status}</p><dl><div><dt>原文标题</dt><dd>${item.sourceTitle}</dd></div><div><dt>评级理由</dt><dd>${item.sourceReason}</dd></div><div><dt>发布时间</dt><dd>${item.display}</dd></div><div><dt>核验时间</dt><dd>${item.verified}</dd></div></dl><div class="detail-links"><a class="source-link" href="${item.url}" target="_blank" rel="noopener" aria-label="查看精确原文（新窗口打开）">查看精确原文</a><a class="permalink" href="news/${item.id}/">打开独立阅读页</a></div></section>
       </aside>
     </article>`;
   dialogContent.querySelector('[data-dialog-save]').addEventListener('click',event=>toggleSaved(Number(event.currentTarget.dataset.dialogSave),'dialog'));

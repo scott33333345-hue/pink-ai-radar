@@ -5,8 +5,9 @@
   "scripts": {
     "data:build": "node scripts/build-data.mjs",
     "data:check": "node scripts/build-data.mjs --check",
+    "seo:check": "node scripts/check-seo.mjs",
     "news:collect": "node scripts/collect-news.mjs",
     "review:list": "node scripts/review-news.mjs list",
-    "check": "node --check app.js && npm run data:check"
+    "check": "node --check app.js && npm run data:check && npm run seo:check"
   }
 }

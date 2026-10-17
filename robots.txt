@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://scott33333345-hue.github.io/pink-ai-radar/sitemap.xml
