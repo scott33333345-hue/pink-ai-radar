@@ -1,0 +1,36 @@
+{
+  "staticAudit": {
+    "language": "zh-CN",
+    "mainCount": 1,
+    "skipLink": true,
+    "dialogs": true,
+    "unnamed": 0,
+    "duplicateIds": [],
+    "imagesWithoutAlt": 0,
+    "nestedInteractive": 0
+  },
+  "skipFocused": {
+    "className": "skip-link",
+    "text": "跳到主要内容"
+  },
+  "skipTarget": {
+    "id": "main-content"
+  },
+  "dialogOpened": {
+    "open": true,
+    "labelledBy": "dialogTitle",
+    "active": "dialog-close"
+  },
+  "saveFocus": {
+    "active": true,
+    "pressed": "false"
+  },
+  "feedbackFocus": {
+    "active": "helpful",
+    "pressed": "true"
+  },
+  "focusReturn": {
+    "closed": true,
+    "active": "read-decision"
+  }
+}

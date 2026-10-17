@@ -12,14 +12,15 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
   <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
+    <a class="brand" href="#main-content" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
     <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#archive">历史简报</a><a href="#trends">趋势洞察</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
     <button class="subscribe" id="subscribeBtn">订阅更新 <span>↗</span></button>
   </header>
 
-  <main id="top">
+  <main id="main-content" tabindex="-1">
     <section class="hero">
       <div class="eyebrow"><span class="pulse"></span> <span id="briefingUpdated">正在读取最新简报…</span></div>
       <h1>把 AI 世界的喧嚣，<br><em>过滤成值得行动的变化。</em></h1>
@@ -30,7 +31,7 @@
     </section>
 
     <section class="briefing" id="briefing">
-      <div class="section-head"><div><span class="kicker">TODAY'S BRIEFING</span><h2>今天最值得产品人关注的 AI 变化</h2></div><p>重点优先 · 点击资讯查看事实、影响与行动建议</p></div>
+      <div class="section-head"><div><span class="kicker">TODAY'S BRIEFING</span><h2 id="briefingTitle">今天最值得产品人关注的 AI 变化</h2></div><p>重点优先 · 点击资讯查看事实、影响与行动建议</p></div>
       <div class="discovery-panel" aria-label="资讯检索工具">
         <div class="search-row">
           <label class="search" for="searchInput"><span class="search-label">搜索简报</span><input id="searchInput" type="search" placeholder="搜索公司、主题或行动建议" autocomplete="off"><button id="clearSearch" type="button" hidden>清除</button></label>
@@ -45,7 +46,7 @@
         </div>
         <div class="active-filters" id="activeFilters" hidden><span>已选条件</span><div id="activeFilterList"></div><button class="reset-filters" id="resetFilters" type="button">清除全部</button></div>
       </div>
-      <div class="news-grid" id="newsGrid"></div>
+      <div class="news-grid" id="newsGrid" aria-labelledby="briefingTitle"></div>
       <div class="empty" id="emptyState" hidden><strong>暂时没有匹配的简报</strong><p>可以减少筛选条件，或换一个更宽泛的关键词。</p><button id="emptyReset" type="button">查看全部资讯</button></div>
     </section>
 
@@ -77,9 +78,9 @@
 
   <footer><div class="brand"><span class="logo">P</span><span>Pink AI Radar</span></div><p>少一点噪音，多一点确定。</p><div class="footer-tools"><button id="analyticsBtn" type="button">本机使用数据</button><span>© 2026 · Curated with care</span></div></footer>
 
-  <dialog id="newsDialog"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialogContent"></div></dialog>
-  <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">◌</span><h2>订阅可信更新。</h2><p>把正式发布的简报加入你的 RSS 阅读器。只有通过人工审核的内容才会进入订阅源。</p><div class="subscribe-actions"><a class="rss-subscribe" id="rssOpen" href="feed.xml" target="_blank" rel="noopener">打开 RSS 订阅源 ↗</a><button id="copyFeed" type="button">复制订阅地址</button></div><p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p><small>无需邮箱 · 不收集个人信息 · 更新频率以实际发布为准</small></div></dialog>
-  <dialog id="analyticsDialog"><button class="dialog-close" type="button" aria-label="关闭使用数据">×</button><div class="analytics-panel"><span class="kicker">LOCAL PRODUCT SIGNALS</span><h2>本机使用数据</h2><p>用于验证产品交互的最小事件记录。数据只保存在当前浏览器，不会上传，也不代表全部用户。</p><div class="metric-grid" id="metricGrid"></div><div class="analytics-actions"><button id="exportAnalytics" type="button">导出 JSON</button><button id="clearAnalytics" type="button">清除本机数据</button></div><p class="analytics-status" id="analyticsStatus" role="status" aria-live="polite"></p></div></dialog>
+  <dialog id="newsDialog" aria-labelledby="dialogTitle"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialogContent"></div></dialog>
+  <dialog id="subscribeDialog" aria-labelledby="subscribeTitle"><button class="dialog-close" type="button" aria-label="关闭订阅窗口">×</button><div class="subscribe-panel"><span class="mail-icon" aria-hidden="true">◌</span><h2 id="subscribeTitle">订阅可信更新。</h2><p>把正式发布的简报加入你的 RSS 阅读器。只有通过人工审核的内容才会进入订阅源。</p><div class="subscribe-actions"><a class="rss-subscribe" id="rssOpen" href="feed.xml" target="_blank" rel="noopener">打开 RSS 订阅源 ↗</a><button id="copyFeed" type="button">复制订阅地址</button></div><p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p><small>无需邮箱 · 不收集个人信息 · 更新频率以实际发布为准</small></div></dialog>
+  <dialog id="analyticsDialog" aria-labelledby="analyticsTitle"><button class="dialog-close" type="button" aria-label="关闭使用数据">×</button><div class="analytics-panel"><span class="kicker">LOCAL PRODUCT SIGNALS</span><h2 id="analyticsTitle">本机使用数据</h2><p>用于验证产品交互的最小事件记录。数据只保存在当前浏览器，不会上传，也不代表全部用户。</p><div class="metric-grid" id="metricGrid"></div><div class="analytics-actions"><button id="exportAnalytics" type="button">导出 JSON</button><button id="clearAnalytics" type="button">清除本机数据</button></div><p class="analytics-status" id="analyticsStatus" role="status" aria-live="polite"></p></div></dialog>
   <div class="save-toast" id="saveToast" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="data/news.js"></script>
   <script src="app.js"></script>

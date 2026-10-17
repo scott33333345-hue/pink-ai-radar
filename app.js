@@ -37,6 +37,7 @@ let activeTopic='all';
 let savedOnly=false;
 let activeDate='all';
 let openNewsId=null;
+let dialogReturnNewsId=null;
 const savedStorageKey='pink-ai-radar:saved-news';
 const feedbackStorageKey='pink-ai-radar:news-feedback';
 const analyticsStorageKey='pink-ai-radar:analytics-v1';
@@ -96,12 +97,16 @@ function showSaveToast(message){
   saveToast.textContent=message;saveToast.classList.add('show');
   window.clearTimeout(showSaveToast.timer);showSaveToast.timer=window.setTimeout(()=>saveToast.classList.remove('show'),1800);
 }
-function toggleSaved(id){
+function toggleSaved(id,focusSurface='card'){
   const item=news.find(entry=>entry.id===id);if(!item)return;
   if(isSaved(id)){savedIds.delete(id);showSaveToast('已取消收藏')}else{savedIds.add(id);showSaveToast('已加入我的收藏')}
   persistSavedIds();render();
   trackEvent('save_toggle',id,{saved:isSaved(id)});
   if(openNewsId===id)renderDialog(item);
+  window.requestAnimationFrame(()=>{
+    const selector=focusSurface==='dialog'?`[data-dialog-save="${id}"]`:`[data-save-id="${id}"]`;
+    document.querySelector(selector)?.focus();
+  });
 }
 function correctionUrl(item){
   const title=encodeURIComponent(`[内容纠错] ${item.title}`);
@@ -112,6 +117,7 @@ function submitFeedback(id,value){
   feedbackById[id]=value;persistFeedback();
   trackEvent('feedback_submit',id,{value});
   const item=news.find(entry=>entry.id===id);if(item)renderDialog(item);
+  window.requestAnimationFrame(()=>dialogContent.querySelector(`[data-feedback="${value}"]`)?.focus());
   showSaveToast(value==='helpful'?'谢谢，这条反馈已保存在本机':'谢谢，我们已记录你的选择');
 }
 function formatArchiveDate(value){
@@ -184,30 +190,30 @@ function render(){
   renderActiveFilters(query);
   renderArchive();
   grid.innerHTML=list.map((item,index)=>`
-    <article class="news-card ${index===0?'news-card--lead':''}" data-id="${item.id}" tabindex="0" aria-label="阅读：${item.title}" style="--accent:${item.accent}">
+    <article class="news-card ${index===0?'news-card--lead':''}" data-id="${item.id}" style="--accent:${item.accent}">
       <div class="news-rank">${String(index+1).padStart(2,'0')}</div>
       <div class="news-body">
         <div class="news-meta">
-          <span class="source-badge"><span class="source-icon">${item.icon}</span>${item.source}</span>
+          <span class="source-badge"><span class="source-icon" aria-hidden="true">${item.icon}</span>${item.source}</span>
           <span class="status">${item.status}</span>
           <time datetime="${item.date}">${item.display}</time>
           <span class="verified">核验于 ${item.verified}</span>
           <span class="source-grade"><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> 官方信源</span>
         </div>
-        <h3>${item.title}</h3>
+        <h3 id="news-title-${item.id}">${item.title}</h3>
         <p class="news-summary">${item.summary}</p>
         ${index===0&&item.image?`<img class="lead-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
         ${index===0?`<p class="news-why"><strong>为什么重要</strong>${item.why}</p>`:''}
-        <div class="news-footer"><div class="tags">${renderTags(item.tags)}</div><div class="card-actions"><button class="save-button ${isSaved(item.id)?'active':''}" type="button" data-save-id="${item.id}" aria-pressed="${isSaved(item.id)}" aria-label="${isSaved(item.id)?'取消收藏':'收藏'}：${escapeHtml(item.title)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏'}</button><button class="read-decision" type="button">查看完整判断</button><a class="source-direct" href="${item.url}" target="_blank" rel="noopener" aria-label="查看 ${item.source} 官方原文">官方原文</a></div></div>
+        <div class="news-footer"><div class="tags">${renderTags(item.tags)}</div><div class="card-actions"><button class="save-button ${isSaved(item.id)?'active':''}" type="button" data-save-id="${item.id}" aria-pressed="${isSaved(item.id)}" aria-label="${isSaved(item.id)?'取消收藏':'收藏'}：${escapeHtml(item.title)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏'}</button><button class="read-decision" type="button" aria-haspopup="dialog" aria-label="查看完整判断：${escapeHtml(item.title)}">查看完整判断</button><a class="source-direct" href="${item.url}" target="_blank" rel="noopener" aria-label="查看 ${item.source} 官方原文（新窗口打开）">官方原文</a></div></div>
       </div>
     </article>`).join('');
   empty.hidden=list.length>0;
   if(!list.length&&savedOnly){empty.querySelector('strong').textContent='还没有符合条件的收藏';empty.querySelector('p').textContent='先收藏值得跟进的资讯，之后可以从这里集中查看。'}else{empty.querySelector('strong').textContent='暂时没有匹配的简报';empty.querySelector('p').textContent='可以减少筛选条件，或换一个更宽泛的关键词。'}
-  grid.querySelectorAll('[data-save-id]').forEach(button=>button.addEventListener('click',event=>{event.stopPropagation();toggleSaved(Number(button.dataset.saveId))}));
+  grid.querySelectorAll('[data-save-id]').forEach(button=>button.addEventListener('click',event=>{event.stopPropagation();toggleSaved(Number(button.dataset.saveId),'card')}));
+  grid.querySelectorAll('.read-decision').forEach(button=>button.addEventListener('click',event=>{event.stopPropagation();openNews(Number(button.closest('.news-card').dataset.id))}));
   grid.querySelectorAll('.source-direct').forEach(link=>link.addEventListener('click',()=>trackEvent('source_open',Number(link.closest('.news-card').dataset.id),{surface:'card'})));
   grid.querySelectorAll('.news-card').forEach(card=>{
     card.addEventListener('click',event=>{if(event.target.closest('a,button'))return;openNews(Number(card.dataset.id))});
-    card.addEventListener('keydown',event=>{if(event.target!==card)return;if(event.key==='Enter'||event.key===' '){event.preventDefault();openNews(Number(card.dataset.id))}});
   });
 }
 
@@ -263,26 +269,26 @@ function syncUrl(){
 function openNews(id){
   const item=news.find(entry=>entry.id===id);if(!item)return;
   trackEvent('detail_open',id);
-  openNewsId=id;renderDialog(item);newsDialog.setAttribute('aria-labelledby','dialogTitle');newsDialog.showModal();
+  openNewsId=id;dialogReturnNewsId=id;renderDialog(item);newsDialog.setAttribute('aria-labelledby','dialogTitle');newsDialog.showModal();
 }
 
 function renderDialog(item){
   dialogContent.innerHTML=`
     <article class="article-layout">
       <div class="article-main">
-        <div class="article-meta"><span class="source-badge"><span class="source-icon" style="--accent:${item.accent}">${item.icon}</span>${item.source}</span><span>${item.display}</span><span>${item.status}</span><button class="save-button detail-save ${isSaved(item.id)?'active':''}" type="button" data-dialog-save="${item.id}" aria-pressed="${isSaved(item.id)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏稍后读'}</button></div>
+        <div class="article-meta"><span class="source-badge"><span class="source-icon" aria-hidden="true" style="--accent:${item.accent}">${item.icon}</span>${item.source}</span><span>${item.display}</span><span>${item.status}</span><button class="save-button detail-save ${isSaved(item.id)?'active':''}" type="button" data-dialog-save="${item.id}" aria-pressed="${isSaved(item.id)}"><span aria-hidden="true">${isSaved(item.id)?'♥':'♡'}</span>${isSaved(item.id)?'已收藏':'收藏稍后读'}</button></div>
         <h2 class="dialog-title" id="dialogTitle">${item.title}</h2>
         <div class="tags article-tags">${renderTags(item.tags)}</div>
         ${item.image?`<img class="article-visual" src="${item.image}" alt="AI 信任与信息筛选的抽象视觉">`:''}
-        <section class="article-section article-lead"><span class="section-number">01</span><div><h3>事实摘要</h3><p>${item.fact}</p></div></section>
-        <section class="article-section"><span class="section-number">02</span><div><h3>背景</h3><p>${item.background}</p></div></section>
+        <section class="article-section article-lead"><span class="section-number" aria-hidden="true">01</span><div><h3>事实摘要</h3><p>${item.fact}</p></div></section>
+        <section class="article-section"><span class="section-number" aria-hidden="true">02</span><div><h3>背景</h3><p>${item.background}</p></div></section>
       </div>
       <aside class="article-insight" aria-label="产品判断">
-        <section><span class="insight-label">为什么重要</span><p>${item.why}</p></section>
-        <section><span class="insight-label">影响对象</span>${renderList(item.impact)}</section>
-        <section><span class="insight-label">建议行动</span>${renderList(item.actions)}</section>
+        <section><h3 class="insight-label">为什么重要</h3><p>${item.why}</p></section>
+        <section><h3 class="insight-label">影响对象</h3>${renderList(item.impact)}</section>
+        <section><h3 class="insight-label">建议行动</h3>${renderList(item.actions)}</section>
         <section class="article-feedback" aria-labelledby="feedbackTitle">
-          <span class="insight-label" id="feedbackTitle">这条简报对你的判断有帮助吗？</span>
+          <h3 class="insight-label" id="feedbackTitle">这条简报对你的判断有帮助吗？</h3>
           <div class="feedback-actions" role="group" aria-label="简报有用性评价">
             <button type="button" data-feedback="helpful" class="${feedbackById[item.id]==='helpful'?'active':''}" aria-pressed="${feedbackById[item.id]==='helpful'}">有帮助</button>
             <button type="button" data-feedback="not-helpful" class="${feedbackById[item.id]==='not-helpful'?'active':''}" aria-pressed="${feedbackById[item.id]==='not-helpful'}">帮助不大</button>
@@ -290,10 +296,10 @@ function renderDialog(item){
           <p class="feedback-note">${feedbackById[item.id]?'已记录，可重新选择。反馈仅保存在当前浏览器。':'选择结果仅保存在当前浏览器，不会上传。'}</p>
           <a class="correction-link" href="${correctionUrl(item)}" target="_blank" rel="noopener">发现事实或链接错误？提交纠错 ↗</a><span class="correction-requirement">需登录 GitHub</span>
         </section>
-        <section class="source-proof"><span class="insight-label">来源与核验</span><p><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> ${item.sourceType} · ${item.status}</p><dl><div><dt>原文标题</dt><dd>${item.sourceTitle}</dd></div><div><dt>评级理由</dt><dd>${item.sourceReason}</dd></div><div><dt>发布时间</dt><dd>${item.display}</dd></div><div><dt>核验时间</dt><dd>${item.verified}</dd></div></dl><a class="source-link" href="${item.url}" target="_blank" rel="noopener">查看精确原文</a></section>
+        <section class="source-proof"><h3 class="insight-label">来源与核验</h3><p><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> ${item.sourceType} · ${item.status}</p><dl><div><dt>原文标题</dt><dd>${item.sourceTitle}</dd></div><div><dt>评级理由</dt><dd>${item.sourceReason}</dd></div><div><dt>发布时间</dt><dd>${item.display}</dd></div><div><dt>核验时间</dt><dd>${item.verified}</dd></div></dl><a class="source-link" href="${item.url}" target="_blank" rel="noopener" aria-label="查看精确原文（新窗口打开）">查看精确原文</a></section>
       </aside>
     </article>`;
-  dialogContent.querySelector('[data-dialog-save]').addEventListener('click',event=>toggleSaved(Number(event.currentTarget.dataset.dialogSave)));
+  dialogContent.querySelector('[data-dialog-save]').addEventListener('click',event=>toggleSaved(Number(event.currentTarget.dataset.dialogSave),'dialog'));
   dialogContent.querySelectorAll('[data-feedback]').forEach(button=>button.addEventListener('click',()=>submitFeedback(item.id,button.dataset.feedback)));
   dialogContent.querySelector('.source-link').addEventListener('click',()=>trackEvent('source_open',item.id,{surface:'detail'}));
 }
@@ -308,7 +314,7 @@ clearSearch.addEventListener('click',()=>{search.value='';syncUrl();render();sea
 resetFilters.addEventListener('click',resetDiscovery);
 emptyReset.addEventListener('click',resetDiscovery);
 document.querySelectorAll('.dialog-close').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
-document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{if(dialog===newsDialog)openNewsId=null})});
+document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{if(dialog===newsDialog){const returnId=dialogReturnNewsId;openNewsId=null;dialogReturnNewsId=null;window.requestAnimationFrame(()=>document.querySelector(`[data-id="${returnId}"] .read-decision`)?.focus())}})});
 const subscribeDialog=document.querySelector('#subscribeDialog');
 document.querySelector('#subscribeBtn').addEventListener('click',()=>subscribeDialog.showModal());
 document.querySelector('#rssOpen').addEventListener('click',()=>trackEvent('rss_open'));
