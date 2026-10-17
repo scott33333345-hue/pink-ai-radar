@@ -36,3 +36,6 @@ html{scroll-behavior:auto}.briefing{scroll-margin-top:78px}
 @media(max-width:760px){.result-tools{align-items:flex-end;flex-direction:column;gap:8px}.detail-save{margin-left:0}.card-actions{flex-wrap:wrap;justify-content:flex-end}}
 @media(max-width:620px){.result-tools{align-items:flex-start;margin-top:12px}.result-count{padding-top:0}.save-button{padding:7px 9px}.news-footer{gap:10px}.card-actions{gap:8px}.save-toast{bottom:18px}}
 
+/* Step 9: usefulness and correction feedback */
+.feedback-actions{display:flex;gap:8px}.feedback-actions button{flex:1;border:1px solid var(--line);border-radius:10px;background:white;color:#725d68;padding:9px 10px;font-size:12px;font-weight:800;cursor:pointer}.feedback-actions button:hover,.feedback-actions button.active{border-color:#ef9fbe;background:#fff0f5;color:var(--hot)}.feedback-actions button:focus-visible,.correction-link:focus-visible{outline:2px solid var(--hot);outline-offset:2px}.article-insight .feedback-note{margin:9px 0 14px;color:#9b8993;font-size:11px}.correction-link{color:#725d68;font-size:12px;font-weight:700;text-underline-offset:3px}.correction-link:hover{color:var(--hot)}.correction-requirement{display:block;margin-top:5px;color:#a6959e;font-size:10px}
+

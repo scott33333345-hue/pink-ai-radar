@@ -28,7 +28,9 @@ let activeTopic='all';
 let savedOnly=false;
 let openNewsId=null;
 const savedStorageKey='pink-ai-radar:saved-news';
+const feedbackStorageKey='pink-ai-radar:news-feedback';
 let savedIds=loadSavedIds();
+let feedbackById=loadFeedback();
 
 const topicMap={
   product:['产品','交互','语音','企业'],
@@ -49,6 +51,12 @@ function loadSavedIds(){
 function persistSavedIds(){
   try{localStorage.setItem(savedStorageKey,JSON.stringify([...savedIds]))}catch{showSaveToast('浏览器阻止了本地保存')}
 }
+function loadFeedback(){
+  try{return JSON.parse(localStorage.getItem(feedbackStorageKey)||'{}')}catch{return {}}
+}
+function persistFeedback(){
+  try{localStorage.setItem(feedbackStorageKey,JSON.stringify(feedbackById))}catch{showSaveToast('浏览器阻止了本地保存')}
+}
 function isSaved(id){return savedIds.has(id)}
 function showSaveToast(message){
   saveToast.textContent=message;saveToast.classList.add('show');
@@ -59,6 +67,16 @@ function toggleSaved(id){
   if(isSaved(id)){savedIds.delete(id);showSaveToast('已取消收藏')}else{savedIds.add(id);showSaveToast('已加入我的收藏')}
   persistSavedIds();render();
   if(openNewsId===id)renderDialog(item);
+}
+function correctionUrl(item){
+  const title=encodeURIComponent(`[内容纠错] ${item.title}`);
+  const body=encodeURIComponent(`## 对应资讯\n\n- 标题：${item.title}\n- 来源：${item.source}\n- 原文：${item.url}\n- 资讯 ID：${item.id}\n\n## 需要纠正的内容\n\n请描述具体问题，并尽可能附上依据：\n`);
+  return `https://github.com/scott33333345-hue/pink-ai-radar/issues/new?title=${title}&body=${body}`;
+}
+function submitFeedback(id,value){
+  feedbackById[id]=value;persistFeedback();
+  const item=news.find(entry=>entry.id===id);if(item)renderDialog(item);
+  showSaveToast(value==='helpful'?'谢谢，这条反馈已保存在本机':'谢谢，我们已记录你的选择');
 }
 
 function render(){
@@ -173,10 +191,20 @@ function renderDialog(item){
         <section><span class="insight-label">为什么重要</span><p>${item.why}</p></section>
         <section><span class="insight-label">影响对象</span>${renderList(item.impact)}</section>
         <section><span class="insight-label">建议行动</span>${renderList(item.actions)}</section>
+        <section class="article-feedback" aria-labelledby="feedbackTitle">
+          <span class="insight-label" id="feedbackTitle">这条简报对你的判断有帮助吗？</span>
+          <div class="feedback-actions" role="group" aria-label="简报有用性评价">
+            <button type="button" data-feedback="helpful" class="${feedbackById[item.id]==='helpful'?'active':''}" aria-pressed="${feedbackById[item.id]==='helpful'}">有帮助</button>
+            <button type="button" data-feedback="not-helpful" class="${feedbackById[item.id]==='not-helpful'?'active':''}" aria-pressed="${feedbackById[item.id]==='not-helpful'}">帮助不大</button>
+          </div>
+          <p class="feedback-note">${feedbackById[item.id]?'已记录，可重新选择。反馈仅保存在当前浏览器。':'选择结果仅保存在当前浏览器，不会上传。'}</p>
+          <a class="correction-link" href="${correctionUrl(item)}" target="_blank" rel="noopener">发现事实或链接错误？提交纠错 ↗</a><span class="correction-requirement">需登录 GitHub</span>
+        </section>
         <section class="source-proof"><span class="insight-label">来源与核验</span><p><i class="grade ${item.grade.toLowerCase()}">${item.grade}</i> ${item.sourceType} · ${item.status}</p><dl><div><dt>原文标题</dt><dd>${item.sourceTitle}</dd></div><div><dt>评级理由</dt><dd>${item.sourceReason}</dd></div><div><dt>发布时间</dt><dd>${item.display}</dd></div><div><dt>核验时间</dt><dd>${item.verified}</dd></div></dl><a class="source-link" href="${item.url}" target="_blank" rel="noopener">查看精确原文</a></section>
       </aside>
     </article>`;
   dialogContent.querySelector('[data-dialog-save]').addEventListener('click',event=>toggleSaved(Number(event.currentTarget.dataset.dialogSave)));
+  dialogContent.querySelectorAll('[data-feedback]').forEach(button=>button.addEventListener('click',()=>submitFeedback(item.id,button.dataset.feedback)));
 }
 
 document.querySelectorAll('[data-topic]').forEach(button=>button.addEventListener('click',()=>{selectTopic(button.dataset.topic);syncUrl();render()}));
