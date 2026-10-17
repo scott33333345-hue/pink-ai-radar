@@ -30,14 +30,19 @@ const trendChart=document.querySelector('#trendChart');
 const trendInsight=document.querySelector('#trendInsight');
 const sourceMixSummary=document.querySelector('#sourceMixSummary');
 const sourceMixList=document.querySelector('#sourceMixList');
+const analyticsDialog=document.querySelector('#analyticsDialog');
+const metricGrid=document.querySelector('#metricGrid');
+const analyticsStatus=document.querySelector('#analyticsStatus');
 let activeTopic='all';
 let savedOnly=false;
 let activeDate='all';
 let openNewsId=null;
 const savedStorageKey='pink-ai-radar:saved-news';
 const feedbackStorageKey='pink-ai-radar:news-feedback';
+const analyticsStorageKey='pink-ai-radar:analytics-v1';
 let savedIds=loadSavedIds();
 let feedbackById=loadFeedback();
+let analyticsEvents=loadAnalyticsEvents();
 
 const topicMap={
   product:['产品','交互','语音','企业'],
@@ -65,6 +70,27 @@ function loadFeedback(){
 function persistFeedback(){
   try{localStorage.setItem(feedbackStorageKey,JSON.stringify(feedbackById))}catch{showSaveToast('浏览器阻止了本地保存')}
 }
+function loadAnalyticsEvents(){
+  try{const value=JSON.parse(localStorage.getItem(analyticsStorageKey)||'[]');return Array.isArray(value)?value:[]}catch{return []}
+}
+function trackEvent(type,newsId=null,meta={}){
+  analyticsEvents.push({type,newsId:Number.isInteger(newsId)?newsId:null,meta,at:new Date().toISOString()});
+  analyticsEvents=analyticsEvents.slice(-300);
+  try{localStorage.setItem(analyticsStorageKey,JSON.stringify(analyticsEvents))}catch{}
+}
+function eventCount(...types){return analyticsEvents.filter(event=>types.includes(event.type)).length}
+function renderAnalytics(){
+  const metrics=[
+    {label:'详情打开',value:eventCount('detail_open'),note:'衡量用户是否进入完整判断'},
+    {label:'原文跳转',value:eventCount('source_open'),note:'衡量用户是否继续事实复核'},
+    {label:'发现工具使用',value:eventCount('search_used','filter_used','archive_selected','trend_selected'),note:'搜索、筛选、归档与趋势点击'},
+    {label:'收藏操作',value:eventCount('save_toggle'),note:'衡量持续跟踪意愿'},
+    {label:'反馈提交',value:eventCount('feedback_submit'),note:'衡量判断是否有帮助'},
+    {label:'订阅操作',value:eventCount('rss_open','rss_copy'),note:'衡量持续获取意愿'}
+  ];
+  metricGrid.innerHTML=metrics.map(metric=>`<article><strong>${metric.value}</strong><span>${metric.label}</span><small>${metric.note}</small></article>`).join('');
+  analyticsStatus.textContent=`共记录 ${analyticsEvents.length} 个本机事件，最多保留最近 300 个。`;
+}
 function isSaved(id){return savedIds.has(id)}
 function showSaveToast(message){
   saveToast.textContent=message;saveToast.classList.add('show');
@@ -74,6 +100,7 @@ function toggleSaved(id){
   const item=news.find(entry=>entry.id===id);if(!item)return;
   if(isSaved(id)){savedIds.delete(id);showSaveToast('已取消收藏')}else{savedIds.add(id);showSaveToast('已加入我的收藏')}
   persistSavedIds();render();
+  trackEvent('save_toggle',id,{saved:isSaved(id)});
   if(openNewsId===id)renderDialog(item);
 }
 function correctionUrl(item){
@@ -83,6 +110,7 @@ function correctionUrl(item){
 }
 function submitFeedback(id,value){
   feedbackById[id]=value;persistFeedback();
+  trackEvent('feedback_submit',id,{value});
   const item=news.find(entry=>entry.id===id);if(item)renderDialog(item);
   showSaveToast(value==='helpful'?'谢谢，这条反馈已保存在本机':'谢谢，我们已记录你的选择');
 }
@@ -105,6 +133,7 @@ function renderArchive(){
     </button>`;
   }).join('');
   archiveGrid.querySelectorAll('[data-archive-date]').forEach(button=>button.addEventListener('click',()=>{
+    trackEvent('archive_selected',null,{date:button.dataset.archiveDate});
     activeDate=button.dataset.archiveDate;timeFilter.value='all';syncUrl();render();
     document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'});
   }));
@@ -118,6 +147,7 @@ function renderTrends(){
     <span class="trend-label">${row.label}</span><span class="trend-track"><i style="--trend-width:${row.count/maxCount*100}%"></i></span><strong>${row.count}</strong><small>查看 →</small>
   </button>`).join('');
   trendChart.querySelectorAll('[data-trend-topic]').forEach(button=>button.addEventListener('click',()=>{
+    trackEvent('trend_selected',null,{topic:button.dataset.trendTopic});
     selectTopic(button.dataset.trendTopic);activeDate='all';timeFilter.value='all';syncUrl();render();
     document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'});
   }));
@@ -127,7 +157,7 @@ function renderTrends(){
   const [topSource,topSourceCount]=sources[0];
   const topShare=Math.round(topSourceCount/windowNews.length*100);
   trendInsight.innerHTML=`<span>本期判断</span><h3>${leaders.join('与')}是出现最频繁的信号</h3><p>在最近 ${windowDates.length} 个有内容的发布日期中，相关主题各出现 ${peak} 次。它适合用来确定持续跟踪方向，而不能直接证明市场热度。</p><a href="#briefing" data-lead-topic="${rows[0].key}">查看代表性简报 →</a><small>编辑提示：${topSource} 占样本 ${topShare}%，结论可能受到信源结构影响。</small>`;
-  trendInsight.querySelector('[data-lead-topic]').addEventListener('click',event=>{event.preventDefault();selectTopic(event.currentTarget.dataset.leadTopic);activeDate='all';timeFilter.value='all';syncUrl();render();document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'})});
+  trendInsight.querySelector('[data-lead-topic]').addEventListener('click',event=>{event.preventDefault();trackEvent('trend_selected',null,{topic:event.currentTarget.dataset.leadTopic,surface:'insight'});selectTopic(event.currentTarget.dataset.leadTopic);activeDate='all';timeFilter.value='all';syncUrl();render();document.querySelector('#briefing').scrollIntoView({behavior:'smooth',block:'start'})});
   sourceMixSummary.textContent=`${sources.length} 个来源 · ${windowNews.length} 条简报`;
   sourceMixList.innerHTML=sources.map(([source,count])=>`<span>${escapeHtml(source)} <b>${count}</b></span>`).join('');
 }
@@ -174,6 +204,7 @@ function render(){
   empty.hidden=list.length>0;
   if(!list.length&&savedOnly){empty.querySelector('strong').textContent='还没有符合条件的收藏';empty.querySelector('p').textContent='先收藏值得跟进的资讯，之后可以从这里集中查看。'}else{empty.querySelector('strong').textContent='暂时没有匹配的简报';empty.querySelector('p').textContent='可以减少筛选条件，或换一个更宽泛的关键词。'}
   grid.querySelectorAll('[data-save-id]').forEach(button=>button.addEventListener('click',event=>{event.stopPropagation();toggleSaved(Number(button.dataset.saveId))}));
+  grid.querySelectorAll('.source-direct').forEach(link=>link.addEventListener('click',()=>trackEvent('source_open',Number(link.closest('.news-card').dataset.id),{surface:'card'})));
   grid.querySelectorAll('.news-card').forEach(card=>{
     card.addEventListener('click',event=>{if(event.target.closest('a,button'))return;openNews(Number(card.dataset.id))});
     card.addEventListener('keydown',event=>{if(event.target!==card)return;if(event.key==='Enter'||event.key===' '){event.preventDefault();openNews(Number(card.dataset.id))}});
@@ -231,6 +262,7 @@ function syncUrl(){
 
 function openNews(id){
   const item=news.find(entry=>entry.id===id);if(!item)return;
+  trackEvent('detail_open',id);
   openNewsId=id;renderDialog(item);newsDialog.setAttribute('aria-labelledby','dialogTitle');newsDialog.showModal();
 }
 
@@ -263,13 +295,15 @@ function renderDialog(item){
     </article>`;
   dialogContent.querySelector('[data-dialog-save]').addEventListener('click',event=>toggleSaved(Number(event.currentTarget.dataset.dialogSave)));
   dialogContent.querySelectorAll('[data-feedback]').forEach(button=>button.addEventListener('click',()=>submitFeedback(item.id,button.dataset.feedback)));
+  dialogContent.querySelector('.source-link').addEventListener('click',()=>trackEvent('source_open',item.id,{surface:'detail'}));
 }
 
-document.querySelectorAll('[data-topic]').forEach(button=>button.addEventListener('click',()=>{selectTopic(button.dataset.topic);syncUrl();render()}));
-search.addEventListener('input',()=>{syncUrl();render()});
-regionFilter.addEventListener('change',()=>{syncUrl();render()});
-timeFilter.addEventListener('change',()=>{syncUrl();render()});
-savedFilter.addEventListener('click',()=>{savedOnly=!savedOnly;syncUrl();render()});
+document.querySelectorAll('[data-topic]').forEach(button=>button.addEventListener('click',()=>{trackEvent('filter_used',null,{kind:'topic',value:button.dataset.topic});selectTopic(button.dataset.topic);syncUrl();render()}));
+let searchTimer;
+search.addEventListener('input',()=>{syncUrl();render();window.clearTimeout(searchTimer);if(search.value.trim().length>=2)searchTimer=window.setTimeout(()=>trackEvent('search_used',null,{queryLength:search.value.trim().length}),500)});
+regionFilter.addEventListener('change',()=>{trackEvent('filter_used',null,{kind:'region',value:regionFilter.value});syncUrl();render()});
+timeFilter.addEventListener('change',()=>{trackEvent('filter_used',null,{kind:'time',value:timeFilter.value});syncUrl();render()});
+savedFilter.addEventListener('click',()=>{savedOnly=!savedOnly;trackEvent('filter_used',null,{kind:'saved',value:savedOnly});syncUrl();render()});
 clearSearch.addEventListener('click',()=>{search.value='';syncUrl();render();search.focus()});
 resetFilters.addEventListener('click',resetDiscovery);
 emptyReset.addEventListener('click',resetDiscovery);
@@ -277,7 +311,9 @@ document.querySelectorAll('.dialog-close').forEach(button=>button.addEventListen
 document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('close',()=>{if(dialog===newsDialog)openNewsId=null})});
 const subscribeDialog=document.querySelector('#subscribeDialog');
 document.querySelector('#subscribeBtn').addEventListener('click',()=>subscribeDialog.showModal());
+document.querySelector('#rssOpen').addEventListener('click',()=>trackEvent('rss_open'));
 document.querySelector('#copyFeed').addEventListener('click',async()=>{
+  trackEvent('rss_copy');
   const feedUrl=new URL('feed.xml',window.location.href).href;
   const copyStatus=document.querySelector('#copyStatus');
   try{
@@ -288,6 +324,16 @@ document.querySelector('#copyFeed').addEventListener('click',async()=>{
     const copied=document.execCommand('copy');field.remove();
     copyStatus.textContent=copied?'订阅地址已复制，可粘贴到 RSS 阅读器。':`订阅地址：${feedUrl}`;
   }
+});
+document.querySelector('#analyticsBtn').addEventListener('click',()=>{renderAnalytics();analyticsDialog.showModal()});
+document.querySelector('#exportAnalytics').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),events:analyticsEvents},null,2)],{type:'application/json'});
+  const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=`pink-ai-radar-events-${new Date().toISOString().slice(0,10)}.json`;link.click();URL.revokeObjectURL(link.href);
+  analyticsStatus.textContent='本机事件数据已导出。';
+});
+document.querySelector('#clearAnalytics').addEventListener('click',()=>{
+  if(!window.confirm('确定清除当前浏览器中的全部使用数据吗？此操作无法撤销。'))return;
+  analyticsEvents=[];localStorage.removeItem(analyticsStorageKey);renderAnalytics();analyticsStatus.textContent='本机使用数据已清除。';
 });
 
 const initialParams=new URLSearchParams(window.location.search);
@@ -303,6 +349,8 @@ if(archiveDates.includes(initialDate))activeDate=initialDate;
 savedOnly=initialParams.get('saved')==='1';
 renderTrends();
 render();
+trackEvent('page_view');
+if(initialParams.get('analytics')==='1'){renderAnalytics();analyticsDialog.showModal()}
 const requestedNews=Number(initialParams.get('news'));
 if(requestedNews)openNews(requestedNews);
 if(['#briefing','#archive','#trends','#sources','#method'].includes(window.location.hash))window.addEventListener('load',()=>document.querySelector(window.location.hash)?.scrollIntoView({block:'start'}));

@@ -75,10 +75,11 @@
     </section>
   </main>
 
-  <footer><div class="brand"><span class="logo">P</span><span>Pink AI Radar</span></div><p>少一点噪音，多一点确定。</p><span>© 2026 · Curated with care</span></footer>
+  <footer><div class="brand"><span class="logo">P</span><span>Pink AI Radar</span></div><p>少一点噪音，多一点确定。</p><div class="footer-tools"><button id="analyticsBtn" type="button">本机使用数据</button><span>© 2026 · Curated with care</span></div></footer>
 
   <dialog id="newsDialog"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialogContent"></div></dialog>
-  <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">◌</span><h2>订阅可信更新。</h2><p>把正式发布的简报加入你的 RSS 阅读器。只有通过人工审核的内容才会进入订阅源。</p><div class="subscribe-actions"><a class="rss-subscribe" href="feed.xml" target="_blank" rel="noopener">打开 RSS 订阅源 ↗</a><button id="copyFeed" type="button">复制订阅地址</button></div><p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p><small>无需邮箱 · 不收集个人信息 · 更新频率以实际发布为准</small></div></dialog>
+  <dialog id="subscribeDialog"><button class="dialog-close" aria-label="关闭">×</button><div class="subscribe-panel"><span class="mail-icon">◌</span><h2>订阅可信更新。</h2><p>把正式发布的简报加入你的 RSS 阅读器。只有通过人工审核的内容才会进入订阅源。</p><div class="subscribe-actions"><a class="rss-subscribe" id="rssOpen" href="feed.xml" target="_blank" rel="noopener">打开 RSS 订阅源 ↗</a><button id="copyFeed" type="button">复制订阅地址</button></div><p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p><small>无需邮箱 · 不收集个人信息 · 更新频率以实际发布为准</small></div></dialog>
+  <dialog id="analyticsDialog"><button class="dialog-close" type="button" aria-label="关闭使用数据">×</button><div class="analytics-panel"><span class="kicker">LOCAL PRODUCT SIGNALS</span><h2>本机使用数据</h2><p>用于验证产品交互的最小事件记录。数据只保存在当前浏览器，不会上传，也不代表全部用户。</p><div class="metric-grid" id="metricGrid"></div><div class="analytics-actions"><button id="exportAnalytics" type="button">导出 JSON</button><button id="clearAnalytics" type="button">清除本机数据</button></div><p class="analytics-status" id="analyticsStatus" role="status" aria-live="polite"></p></div></dialog>
   <div class="save-toast" id="saveToast" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="data/news.js"></script>
   <script src="app.js"></script>
