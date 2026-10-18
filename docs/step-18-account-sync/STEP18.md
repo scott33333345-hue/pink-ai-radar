@@ -45,4 +45,9 @@
 
 ## 当前状态
 
-前端、数据库脚本和异常降级已完成。真实注册与跨设备同步需要填入当前 Supabase 项目的 Project URL 和 Publishable key 后才能联调。
+- Supabase Project URL 与 Publishable key 已配置；
+- `favorites` 表已建立，公开接口可发现该表；
+- 匿名读取被数据库拒绝，邮箱注册已启用；
+- Site URL 与 Redirect URL 已由项目所有者配置为正式 GitHub Pages 地址；
+- SDK 固定为 `@supabase/supabase-js@2.118.0`；
+- 尚需使用两个已验证邮箱完成最终跨账号隔离验收。

@@ -99,7 +99,7 @@
   <dialog id="accountDialog" aria-labelledby="accountTitle"><button class="dialog-close" type="button" aria-label="关闭账号窗口">×</button><div class="account-panel"><span class="kicker">CLOUD READING LIST</span><div id="signedOutPanel"><h2 id="accountTitle">登录并同步收藏</h2><p>使用邮箱账号保存阅读清单。登录后，当前浏览器里的收藏会自动合并到你的账号。</p><form id="authForm"><label>邮箱<input id="authEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label><label>密码<input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="至少 8 位"></label><div class="auth-actions"><button class="auth-primary" id="signInBtn" type="submit">登录</button><button id="signUpBtn" type="button">注册账号</button></div></form><p class="auth-status" id="authStatus" role="status" aria-live="polite"></p><small>密码由认证服务加密处理，本站不会读取或保存明文密码。</small></div><div id="signedInPanel" hidden><span class="account-avatar" aria-hidden="true">P</span><h2>收藏已同步</h2><p id="accountEmail"></p><p class="sync-note" id="syncStatus">账号收藏会在登录后自动加载。</p><button class="sign-out" id="signOutBtn" type="button">退出登录</button></div></div></dialog>
   <div class="save-toast" id="saveToast" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="data/news.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0"></script>
   <script src="supabase-config.js"></script>
   <script src="app.js"></script>
 </body>
