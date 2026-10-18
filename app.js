@@ -4,7 +4,7 @@ if(!Array.isArray(news))throw new Error('资讯数据未生成，请运行 node 
 const latestNews=[...news].sort((a,b)=>b.date.localeCompare(a.date))[0];
 const dataMeta=window.PINK_AI_META||{generatedOn:new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Shanghai'}),coverageThrough:latestNews.date};
 const formatDate=value=>value.replaceAll('-','.');
-document.querySelector('#briefingUpdated').textContent=`演示数据截至 ${formatDate(dataMeta.coverageThrough)} · 页面版本 ${formatDate(dataMeta.generatedOn)}`;
+document.querySelector('#briefingUpdated').textContent=`资讯核验至 ${formatDate(dataMeta.generatedOn)} · 最新入选 ${formatDate(dataMeta.coverageThrough)}`;
 document.querySelector('#briefingCount').textContent=String(news.length);
 document.querySelector('#traceRate').textContent=`${Math.round(news.filter(item=>item.url&&item.sourceReason).length/news.length*100)}%`;
 

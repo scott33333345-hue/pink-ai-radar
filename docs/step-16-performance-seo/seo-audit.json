@@ -1,18 +1,18 @@
 {
-  "checkedAt": "2026-10-17T13:40:53.123Z",
+  "checkedAt": "2026-10-18T05:21:55.497Z",
   "home": {
     "requiredMetadata": 6,
     "passed": true
   },
   "articles": {
-    "expected": 12,
-    "generated": 12,
+    "expected": 8,
+    "generated": 8,
     "allChecksPassed": true
   },
   "discovery": {
     "robots": true,
-    "sitemapUrls": 13,
-    "feedItems": 12
+    "sitemapUrls": 9,
+    "feedItems": 8
   },
   "performance": {
     "shareImageBytes": 68444,
