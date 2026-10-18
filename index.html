@@ -32,7 +32,7 @@
   <header class="site-header">
     <a class="brand" href="#main-content" aria-label="Pink AI Radar 首页"><span class="logo">P</span><span>Pink AI Radar</span></a>
     <nav aria-label="主导航"><a href="#briefing">今日精选</a><a href="#archive">历史简报</a><a href="#trends">趋势洞察</a><a href="#sources">工作方式</a><a href="#method">核验标准</a></nav>
-    <button class="subscribe" id="subscribeBtn">订阅更新 <span>↗</span></button>
+    <div class="header-actions"><button class="account-button" id="accountBtn" type="button"><span aria-hidden="true">○</span><b id="accountLabel">登录</b></button><button class="subscribe" id="subscribeBtn">订阅更新 <span>↗</span></button></div>
   </header>
 
   <main id="main-content" tabindex="-1">
@@ -96,8 +96,11 @@
   <dialog id="newsDialog" aria-labelledby="dialogTitle"><button class="dialog-close" type="button" aria-label="关闭详情">×</button><div id="dialogContent"></div></dialog>
   <dialog id="subscribeDialog" aria-labelledby="subscribeTitle"><button class="dialog-close" type="button" aria-label="关闭订阅窗口">×</button><div class="subscribe-panel"><span class="mail-icon" aria-hidden="true">◌</span><h2 id="subscribeTitle">订阅可信更新。</h2><p>把正式发布的简报加入你的 RSS 阅读器。只有通过人工审核的内容才会进入订阅源。</p><div class="subscribe-actions"><a class="rss-subscribe" id="rssOpen" href="feed.xml" target="_blank" rel="noopener">打开 RSS 订阅源 ↗</a><button id="copyFeed" type="button">复制订阅地址</button></div><p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p><small>无需邮箱 · 不收集个人信息 · 更新频率以实际发布为准</small></div></dialog>
   <dialog id="analyticsDialog" aria-labelledby="analyticsTitle"><button class="dialog-close" type="button" aria-label="关闭使用数据">×</button><div class="analytics-panel"><span class="kicker">LOCAL PRODUCT SIGNALS</span><h2 id="analyticsTitle">本机使用数据</h2><p>用于验证产品交互的最小事件记录。数据只保存在当前浏览器，不会上传，也不代表全部用户。</p><div class="metric-grid" id="metricGrid"></div><div class="analytics-actions"><button id="exportAnalytics" type="button">导出 JSON</button><button id="clearAnalytics" type="button">清除本机数据</button></div><p class="analytics-status" id="analyticsStatus" role="status" aria-live="polite"></p></div></dialog>
+  <dialog id="accountDialog" aria-labelledby="accountTitle"><button class="dialog-close" type="button" aria-label="关闭账号窗口">×</button><div class="account-panel"><span class="kicker">CLOUD READING LIST</span><div id="signedOutPanel"><h2 id="accountTitle">登录并同步收藏</h2><p>使用邮箱账号保存阅读清单。登录后，当前浏览器里的收藏会自动合并到你的账号。</p><form id="authForm"><label>邮箱<input id="authEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label><label>密码<input id="authPassword" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="至少 8 位"></label><div class="auth-actions"><button class="auth-primary" id="signInBtn" type="submit">登录</button><button id="signUpBtn" type="button">注册账号</button></div></form><p class="auth-status" id="authStatus" role="status" aria-live="polite"></p><small>密码由认证服务加密处理，本站不会读取或保存明文密码。</small></div><div id="signedInPanel" hidden><span class="account-avatar" aria-hidden="true">P</span><h2>收藏已同步</h2><p id="accountEmail"></p><p class="sync-note" id="syncStatus">账号收藏会在登录后自动加载。</p><button class="sign-out" id="signOutBtn" type="button">退出登录</button></div></div></dialog>
   <div class="save-toast" id="saveToast" role="status" aria-live="polite" aria-atomic="true"></div>
   <script src="data/news.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

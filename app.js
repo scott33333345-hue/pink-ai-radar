@@ -33,6 +33,14 @@ const sourceMixList=document.querySelector('#sourceMixList');
 const analyticsDialog=document.querySelector('#analyticsDialog');
 const metricGrid=document.querySelector('#metricGrid');
 const analyticsStatus=document.querySelector('#analyticsStatus');
+const accountDialog=document.querySelector('#accountDialog');
+const accountBtn=document.querySelector('#accountBtn');
+const accountLabel=document.querySelector('#accountLabel');
+const authForm=document.querySelector('#authForm');
+const authStatus=document.querySelector('#authStatus');
+const signedOutPanel=document.querySelector('#signedOutPanel');
+const signedInPanel=document.querySelector('#signedInPanel');
+const syncStatus=document.querySelector('#syncStatus');
 let activeTopic='all';
 let savedOnly=false;
 let activeDate='all';
@@ -41,9 +49,13 @@ let dialogReturnNewsId=null;
 const savedStorageKey='pink-ai-radar:saved-news';
 const feedbackStorageKey='pink-ai-radar:news-feedback';
 const analyticsStorageKey='pink-ai-radar:analytics-v1';
-let savedIds=loadSavedIds();
+let guestSavedIds=loadSavedIds();
+let savedIds=new Set(guestSavedIds);
 let feedbackById=loadFeedback();
 let analyticsEvents=loadAnalyticsEvents();
+let authUser=null;
+let cloudSyncing=false;
+let supabaseClient=null;
 
 const topicMap={
   product:['产品','交互','语音','企业'],
@@ -63,7 +75,8 @@ function loadSavedIds(){
   try{return new Set(JSON.parse(localStorage.getItem(savedStorageKey)||'[]').map(Number).filter(Number.isInteger))}catch{return new Set()}
 }
 function persistSavedIds(){
-  try{localStorage.setItem(savedStorageKey,JSON.stringify([...savedIds]))}catch{showSaveToast('浏览器阻止了本地保存')}
+  guestSavedIds=new Set(savedIds);
+  try{localStorage.setItem(savedStorageKey,JSON.stringify([...guestSavedIds]))}catch{showSaveToast('浏览器阻止了本地保存')}
 }
 function loadFeedback(){
   try{return JSON.parse(localStorage.getItem(feedbackStorageKey)||'{}')}catch{return {}}
@@ -97,15 +110,83 @@ function showSaveToast(message){
   saveToast.textContent=message;saveToast.classList.add('show');
   window.clearTimeout(showSaveToast.timer);showSaveToast.timer=window.setTimeout(()=>saveToast.classList.remove('show'),1800);
 }
-function toggleSaved(id,focusSurface='card'){
+async function toggleSaved(id,focusSurface='card'){
   const item=news.find(entry=>entry.id===id);if(!item)return;
+  if(cloudSyncing)return;
+  const wasSaved=isSaved(id);
   if(isSaved(id)){savedIds.delete(id);showSaveToast('已取消收藏')}else{savedIds.add(id);showSaveToast('已加入我的收藏')}
-  persistSavedIds();render();
+  if(!authUser)persistSavedIds();
+  render();
   trackEvent('save_toggle',id,{saved:isSaved(id)});
   if(openNewsId===id)renderDialog(item);
+  if(authUser&&supabaseClient){
+    cloudSyncing=true;
+    const result=wasSaved
+      ?await supabaseClient.from('favorites').delete().eq('user_id',authUser.id).eq('news_id',id)
+      :await supabaseClient.from('favorites').upsert({user_id:authUser.id,news_id:id},{onConflict:'user_id,news_id'});
+    cloudSyncing=false;
+    if(result.error){
+      if(wasSaved)savedIds.add(id);else savedIds.delete(id);
+      render();if(openNewsId===id)renderDialog(item);
+      showSaveToast('云端同步失败，请稍后重试');
+      return;
+    }
+    syncStatus.textContent=`云端已保存 ${savedIds.size} 篇资讯。`;
+  }
   window.requestAnimationFrame(()=>{
     const selector=focusSurface==='dialog'?`[data-dialog-save="${id}"]`:`[data-save-id="${id}"]`;
     document.querySelector(selector)?.focus();
+  });
+}
+
+function authConfigured(){
+  const config=window.PINK_AI_SUPABASE;
+  return Boolean(config?.url&&config?.publishableKey&&window.supabase?.createClient);
+}
+function setAuthBusy(busy){
+  authForm.querySelectorAll('button,input').forEach(element=>element.disabled=busy);
+}
+function updateAccountUI(){
+  const signedIn=Boolean(authUser);
+  signedOutPanel.hidden=signedIn;signedInPanel.hidden=!signedIn;
+  accountBtn.classList.toggle('signed-in',signedIn);
+  accountLabel.textContent=signedIn?(authUser.email||'我的账号'):'登录';
+  if(signedIn)document.querySelector('#accountEmail').textContent=authUser.email||'已登录账号';
+}
+async function loadCloudFavorites({mergeLocal=false}={}){
+  if(!authUser||!supabaseClient)return;
+  cloudSyncing=true;syncStatus.textContent='正在同步收藏…';
+  if(mergeLocal&&guestSavedIds.size){
+    const rows=[...guestSavedIds].map(newsId=>({user_id:authUser.id,news_id:newsId}));
+    const {error}=await supabaseClient.from('favorites').upsert(rows,{onConflict:'user_id,news_id'});
+    if(error){cloudSyncing=false;syncStatus.textContent='本机收藏合并失败，请稍后重试。';showSaveToast('收藏合并失败');return}
+  }
+  const {data,error}=await supabaseClient.from('favorites').select('news_id').eq('user_id',authUser.id);
+  cloudSyncing=false;
+  if(error){syncStatus.textContent='云端收藏读取失败，请稍后重试。';showSaveToast('无法读取账号收藏');return}
+  savedIds=new Set((data||[]).map(row=>Number(row.news_id)).filter(Number.isInteger));
+  if(mergeLocal&&guestSavedIds.size){guestSavedIds.clear();localStorage.removeItem(savedStorageKey)}
+  syncStatus.textContent=`云端已保存 ${savedIds.size} 篇资讯。`;
+  render();if(openNewsId)renderDialog(news.find(item=>item.id===openNewsId));
+}
+async function applySession(session,{mergeLocal=false}={}){
+  authUser=session?.user||null;updateAccountUI();
+  if(authUser)await loadCloudFavorites({mergeLocal});
+  else{savedIds=new Set(guestSavedIds);render();if(openNewsId)renderDialog(news.find(item=>item.id===openNewsId))}
+}
+async function initializeAuth(){
+  if(!authConfigured()){
+    authStatus.textContent='云端账号尚未配置，当前仍使用本机收藏。';
+    return;
+  }
+  const config=window.PINK_AI_SUPABASE;
+  supabaseClient=window.supabase.createClient(config.url,config.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+  const {data,error}=await supabaseClient.auth.getSession();
+  if(error)authStatus.textContent='登录状态读取失败，请重新登录。';
+  await applySession(data?.session,{mergeLocal:Boolean(data?.session)});
+  supabaseClient.auth.onAuthStateChange((event,session)=>{
+    if(event==='INITIAL_SESSION')return;
+    window.setTimeout(()=>applySession(session,{mergeLocal:event==='SIGNED_IN'}),0);
   });
 }
 function correctionUrl(item){
@@ -342,6 +423,40 @@ document.querySelector('#clearAnalytics').addEventListener('click',()=>{
   analyticsEvents=[];localStorage.removeItem(analyticsStorageKey);renderAnalytics();analyticsStatus.textContent='本机使用数据已清除。';
 });
 
+accountBtn.addEventListener('click',()=>{
+  authStatus.textContent=authConfigured()?'':'云端账号尚未配置，当前仍使用本机收藏。';
+  updateAccountUI();accountDialog.showModal();
+});
+authForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!supabaseClient){authStatus.textContent='请先完成 Supabase 配置。';return}
+  setAuthBusy(true);authStatus.textContent='正在登录…';
+  const email=document.querySelector('#authEmail').value.trim();
+  const password=document.querySelector('#authPassword').value;
+  const {error}=await supabaseClient.auth.signInWithPassword({email,password});
+  setAuthBusy(false);
+  authStatus.textContent=error?`登录失败：${error.message}`:'登录成功，正在同步收藏…';
+});
+document.querySelector('#signUpBtn').addEventListener('click',async()=>{
+  if(!supabaseClient){authStatus.textContent='请先完成 Supabase 配置。';return}
+  if(!authForm.reportValidity())return;
+  setAuthBusy(true);authStatus.textContent='正在创建账号…';
+  const email=document.querySelector('#authEmail').value.trim();
+  const password=document.querySelector('#authPassword').value;
+  const emailRedirectTo=new URL(window.location.pathname,window.location.origin).href;
+  const {data,error}=await supabaseClient.auth.signUp({email,password,options:{emailRedirectTo}});
+  setAuthBusy(false);
+  if(error){authStatus.textContent=`注册失败：${error.message}`;return}
+  authStatus.textContent=data.session?'注册成功，正在同步收藏…':'注册成功，请打开验证邮件后再登录。';
+});
+document.querySelector('#signOutBtn').addEventListener('click',async()=>{
+  if(!supabaseClient)return;
+  syncStatus.textContent='正在退出…';
+  const {error}=await supabaseClient.auth.signOut();
+  if(error){syncStatus.textContent=`退出失败：${error.message}`;return}
+  accountDialog.close();showSaveToast('已退出，切换回本机收藏');
+});
+
 const initialParams=new URLSearchParams(window.location.search);
 const initialTopic=initialParams.get('topic');
 const initialRegion=initialParams.get('region');
@@ -360,3 +475,4 @@ if(initialParams.get('analytics')==='1'){renderAnalytics();analyticsDialog.showM
 const requestedNews=Number(initialParams.get('news'));
 if(requestedNews)openNews(requestedNews);
 if(['#briefing','#archive','#trends','#sources','#method'].includes(window.location.hash))window.addEventListener('load',()=>document.querySelector(window.location.hash)?.scrollIntoView({block:'start'}));
+initializeAuth();
