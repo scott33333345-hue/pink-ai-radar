@@ -1,21 +1,516 @@
 {
-  "generatedAt": "2026-10-17T08:44:21.369Z",
+  "generatedAt": "2026-10-29T05:14:27.068Z",
   "windowDays": 30,
   "sources": [
     {
       "id": "openai-news",
       "name": "OpenAI",
       "status": "ok",
-      "found": 67
+      "found": 72
     },
     {
       "id": "google-ai-blog",
       "name": "Google AI",
       "status": "ok",
-      "found": 8
+      "found": 5
     }
   ],
   "items": [
+    {
+      "candidateId": "openai-news-709cc8e2bd",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Legora is building the agentic operating system for legal work",
+      "url": "https://openai.com/index/legora",
+      "publishedAt": "2026-10-28",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-a395c7da35",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
+      "publishedAt": "2026-10-28",
+      "collectedAt": "2026-10-29T05:14:25.767Z",
+      "status": "approved",
+      "group": [
+        "global"
+      ],
+      "publishedNewsId": 11
+    },
+    {
+      "candidateId": "openai-news-e2ed7680c5",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "The future of the firm",
+      "url": "https://openai.com/index/the-future-of-the-firm",
+      "publishedAt": "2026-10-28",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-c44dc9ed27",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How Check Point accelerates vulnerability research with Daybreak",
+      "url": "https://openai.com/index/check-point-daybreak",
+      "publishedAt": "2026-10-27",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-c417f8e3d3",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT",
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+      "publishedAt": "2026-10-27",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-1e3ebf94e4",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Retell uses OpenAI models to help power 100M monthly calls",
+      "url": "https://openai.com/index/retell-ai",
+      "publishedAt": "2026-10-27",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-27334100e8",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "ChatGPT’s expanding world of work",
+      "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-7d972df501",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-a9c488820a",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Greptile takes bug detection beyond code review with GPT-6 Astra",
+      "url": "https://openai.com/index/greptile-code-review-codex-astra",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-7e73eebe3e",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How Fanatics and OpenAI streamline the fan experience",
+      "url": "https://openai.com/index/fanatics-streamline-fan-experience",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-742d30efdc",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI",
+      "url": "https://openai.com/index/openai-cut-incident-investigation",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-35e334c198",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Introducing GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "approved",
+      "group": [
+        "global"
+      ],
+      "publishedNewsId": 12
+    },
+    {
+      "candidateId": "google-ai-blog-b1d7eb2ded",
+      "sourceId": "google-ai-blog",
+      "source": "Google AI",
+      "sourceType": "官方原始来源",
+      "title": "Our newest AI Quest: Mapping the human brain",
+      "url": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:27.055Z",
+      "status": "approved",
+      "group": [
+        "global"
+      ],
+      "publishedNewsId": 13
+    },
+    {
+      "candidateId": "openai-news-8eb6001a83",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Working with academic communities to build scientific understanding",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+      "publishedAt": "2026-10-26",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-3b5a2a6a27",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live",
+      "url": "https://openai.com/index/anima",
+      "publishedAt": "2026-10-23",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-1a543055a0",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+      "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+      "publishedAt": "2026-10-23",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-ee4c22366e",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "publishedAt": "2026-10-23",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-f8c156dba7",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Securing our frontier model training environment",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "publishedAt": "2026-10-23",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-891b7e0bbf",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Build more responsive apps with the Decisions API",
+      "url": "https://openai.com/index/decisions-api",
+      "publishedAt": "2026-10-22",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "approved",
+      "group": [
+        "global"
+      ],
+      "publishedNewsId": 14
+    },
+    {
+      "candidateId": "openai-news-eda525050c",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+      "url": "https://openai.com/index/uber-chatgpt-work-rollout",
+      "publishedAt": "2026-10-22",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-6400feb681",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "What FDE means at OpenAI",
+      "url": "https://openai.com/index/forward-deployed-engineering-means",
+      "publishedAt": "2026-10-22",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-3f1a119564",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Broad access through consistent standards",
+      "url": "https://openai.com/index/broad-access-through-consistent-standards",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-b1215e1aef",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+      "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-3fe372fb2e",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
+      "url": "https://openai.com/index/cloudflare-cyber",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-e270f5ba46",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Democratic governance of frontier AI, part II: Empowering cyber defenders",
+      "url": "https://openai.com/index/empowering-cyber-defenders",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-39cad894cd",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How AT&T is rethinking in-house legal work with OpenAI",
+      "url": "https://openai.com/index/att-legal",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-ea92da5c12",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+      "url": "https://openai.com/index/building-chatgpt-ad-stack",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-95dedf578d",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "OpenAI models are coming to Google Cloud",
+      "url": "https://openai.com/index/openai-models-google-cloud",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "approved",
+      "group": [
+        "global"
+      ],
+      "publishedNewsId": 15
+    },
+    {
+      "candidateId": "openai-news-de9db6f384",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
+      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.768Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "google-ai-blog-c7c1db1d24",
+      "sourceId": "google-ai-blog",
+      "source": "Google AI",
+      "sourceType": "官方原始来源",
+      "title": "Southeast Asia’s digital economy to hit $368 billion",
+      "url": "https://blog.google/company-news/inside-google/around-the-globe/google-asia/e-conomy-sea-report-2026/",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:27.055Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-64ddfb139f",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Using thousands of AI agents to uncover new leads in biological data",
+      "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+      "publishedAt": "2026-10-21",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-1725d137aa",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
+      "url": "https://openai.com/index/ted-taylor-restaurant",
+      "publishedAt": "2026-10-20",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-1cfb6291fa",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "OpenAI acquires Orchestra Bio",
+      "url": "https://openai.com/index/openai-to-acquire-orchestra-bio",
+      "publishedAt": "2026-10-20",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-aa8847d44c",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
+      "url": "https://openai.com/index/terminal-x",
+      "publishedAt": "2026-10-20",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "openai-news-1dbe226330",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Advancing coding in low‑resource programming languages",
+      "url": "https://openai.com/index/low-resource-programming-languages",
+      "publishedAt": "2026-10-19",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
     {
       "candidateId": "openai-news-b6756c0a18",
       "sourceId": "openai-news",
@@ -31,6 +526,20 @@
       ]
     },
     {
+      "candidateId": "openai-news-86dbfdb5b4",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How Grupo Boticário uses AI to strengthen human connections",
+      "url": "https://openai.com/index/grupo-boticario",
+      "publishedAt": "2026-10-16",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
       "candidateId": "openai-news-9732b2763d",
       "sourceId": "openai-news",
       "source": "OpenAI",
@@ -39,12 +548,24 @@
       "url": "https://openai.com/index/itau-generative-ai",
       "publishedAt": "2026-10-16",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "approved",
+      "status": "pending",
       "group": [
         "global"
-      ],
-      "reviewedAt": "2026-10-17T10:43:30.827Z",
-      "publishedNewsId": 10
+      ]
+    },
+    {
+      "candidateId": "openai-news-d3b9ba6f7b",
+      "sourceId": "openai-news",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How Localiza reorganized work around generative AI",
+      "url": "https://openai.com/index/localiza-generative-ai",
+      "publishedAt": "2026-10-16",
+      "collectedAt": "2026-10-29T05:14:25.769Z",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
     },
     {
       "candidateId": "openai-news-9e63539289",
@@ -55,12 +576,10 @@
       "url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
       "publishedAt": "2026-10-16",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "approved",
+      "status": "pending",
       "group": [
         "global"
-      ],
-      "reviewedAt": "2026-10-17T10:43:30.520Z",
-      "publishedNewsId": 9
+      ]
     },
     {
       "candidateId": "openai-news-32165ee6af",
@@ -71,10 +590,11 @@
       "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
       "publishedAt": "2026-10-15",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "pending",
+      "status": "approved",
       "group": [
         "global"
-      ]
+      ],
+      "publishedNewsId": 1
     },
     {
       "candidateId": "openai-news-94eadcab22",
@@ -113,12 +633,10 @@
       "url": "https://openai.com/index/amp-beyond-coding",
       "publishedAt": "2026-10-14",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "approved",
+      "status": "pending",
       "group": [
         "global"
-      ],
-      "reviewedAt": "2026-10-17T10:43:31.446Z",
-      "publishedNewsId": 12
+      ]
     },
     {
       "candidateId": "openai-news-94ee28b93f",
@@ -143,12 +661,10 @@
       "url": "https://openai.com/index/third-moment-research",
       "publishedAt": "2026-10-14",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "approved",
+      "status": "pending",
       "group": [
         "global"
-      ],
-      "reviewedAt": "2026-10-17T10:43:31.142Z",
-      "publishedNewsId": 11
+      ]
     },
     {
       "candidateId": "openai-news-004cd593ad",
@@ -187,12 +703,10 @@
       "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
       "publishedAt": "2026-10-13",
       "collectedAt": "2026-10-17T08:43:51.572Z",
-      "status": "approved",
+      "status": "pending",
       "group": [
         "global"
-      ],
-      "reviewedAt": "2026-10-17T10:43:30.139Z",
-      "publishedNewsId": 8
+      ]
     },
     {
       "candidateId": "openai-news-8d45898e53",
@@ -245,10 +759,11 @@
       "url": "https://openai.com/index/disrupting-ai-enabled-false-front-operations",
       "publishedAt": "2026-10-08",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "pending",
+      "status": "approved",
       "group": [
         "global"
-      ]
+      ],
+      "publishedNewsId": 6
     },
     {
       "candidateId": "openai-news-db7b9e6fe2",
@@ -301,10 +816,11 @@
       "url": "https://openai.com/index/gpt-6-for-everyone",
       "publishedAt": "2026-10-07",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "pending",
+      "status": "approved",
       "group": [
         "global"
-      ]
+      ],
+      "publishedNewsId": 7
     },
     {
       "candidateId": "openai-news-661f64ddb5",
@@ -371,10 +887,11 @@
       "url": "https://openai.com/index/atlassian-partnership",
       "publishedAt": "2026-10-06",
       "collectedAt": "2026-10-17T08:43:49.799Z",
-      "status": "pending",
+      "status": "approved",
       "group": [
         "global"
-      ]
+      ],
+      "publishedNewsId": 8
     },
     {
       "candidateId": "openai-news-ebb413cc53",
@@ -581,496 +1098,6 @@
       "url": "https://openai.com/index/introducing-gpt-6-1-sol",
       "publishedAt": "2026-09-29",
       "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-833e9419a3",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Are you a Codex Original?",
-      "url": "https://openai.com/form/codex-originals",
-      "publishedAt": "2026-09-28",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-eb674100bb",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
-      "url": "https://openai.com/index/basis-tax-workbook-with-astra",
-      "publishedAt": "2026-09-28",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-50d71cd524",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "How we will do better for Australia",
-      "url": "https://openai.com/index/how-we-will-do-better-for-australia",
-      "publishedAt": "2026-09-28",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-0adf5bb2a4",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "The Lenfest Institute grows landmark program with expanded OpenAI support",
-      "url": "https://openai.com/index/lenfest-ai-collaborative-expansion",
-      "publishedAt": "2026-09-28",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-2fc54b690d",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Towards safety cases for frontier AI training",
-      "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
-      "publishedAt": "2026-09-28",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "google-ai-blog-db713ef86b",
-      "sourceId": "google-ai-blog",
-      "source": "Google AI",
-      "sourceType": "官方原始来源",
-      "title": "Watch the winning trailer from the Future Vision XPRIZE, The Gifted.",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/winner-future-vision-xprize/",
-      "publishedAt": "2026-09-28",
-      "collectedAt": "2026-10-17T08:43:51.572Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-3971cab2d7",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Lowe’s answers millions of home improvement questions with OpenAI",
-      "url": "https://openai.com/index/lowes",
-      "publishedAt": "2026-09-25",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-9de028fbe4",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Proaction boosts sales 60% and saves 75+ hours with Codex",
-      "url": "https://openai.com/index/proaction",
-      "publishedAt": "2026-09-25",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-6c85667bb4",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Wayfair boosts catalog accuracy and support speed with OpenAI",
-      "url": "https://openai.com/index/wayfair",
-      "publishedAt": "2026-09-25",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-0765deb144",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
-      "url": "https://openai.com/index/airbnb-gpt-6-astra",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-bb71e409dd",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
-      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "google-ai-blog-1ccf342131",
-      "sourceId": "google-ai-blog",
-      "source": "Google AI",
-      "sourceType": "官方原始来源",
-      "title": "Google Beam expands with new regions, partners, and customers",
-      "url": "https://blog.google/innovation-and-ai/technology/research/google-beam-expansion/",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:51.572Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-5ab5908504",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Grab and OpenAI bring practical AI skills to Southeast Asia",
-      "url": "https://openai.com/index/grab-openai-ai-skills-southeast-asia",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-52b80abd4e",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
-      "url": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-f2ff7f7605",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "How invideo improves color grading 3x with GPT‑6 Astra",
-      "url": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-3d7b9aab56",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Introducing MentalHealthBench",
-      "url": "https://openai.com/index/introducing-mentalhealthbench",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-9328fa400d",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "OpenAI extends cyber access to Ukraine for civilian defense",
-      "url": "https://openai.com/index/openai-extends-cyber-access-to-ukraine-for-civilian-defense",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-4e56c73123",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
-      "url": "https://openai.com/index/ringg",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-347b65ce14",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Sam Altman’s remarks at the United Nations Security Council",
-      "url": "https://openai.com/index/sam-altman-un-security-council-remarks",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-52e46e8371",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Two years of OpenAI Academy",
-      "url": "https://openai.com/index/two-years-of-openai-academy",
-      "publishedAt": "2026-09-23",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-f9027d80e8",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Better prompt caching for GPT-6",
-      "url": "https://openai.com/index/better-prompt-caching-for-gpt-6",
-      "publishedAt": "2026-09-22",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-73461b3e97",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Introducing GPT-6 Sol and Luna",
-      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
-      "publishedAt": "2026-09-22",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-3fcefd9c66",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Parallel cut research time and cost in half with GPT‑6 Astra",
-      "url": "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
-      "publishedAt": "2026-09-22",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-60efaf744a",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Priorities and principles for effective third party assessments",
-      "url": "https://openai.com/index/priorities-principles-third-party-assessments",
-      "publishedAt": "2026-09-22",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-08ffdb24be",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Advisory Group on Mathematics and Artificial Intelligence",
-      "url": "https://openai.com/index/advisory-group-on-mathematics-and-ai",
-      "publishedAt": "2026-09-21",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-10538c0223",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Building standards for the next phase of AI",
-      "url": "https://openai.com/index/building-standards-next-phase-ai",
-      "publishedAt": "2026-09-21",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-2f8d9b98fc",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Expanding OpenAI Academy with new learning paths",
-      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths",
-      "publishedAt": "2026-09-21",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-8fe4474fdb",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Higgsfield AI ships new video features in a day with GPT-6 Astra",
-      "url": "https://openai.com/index/higgsfield-from-prompt-to-production-with-astra",
-      "publishedAt": "2026-09-21",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-d2871d486c",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "V7 cuts costs 78% while boosting accuracy with GPT-5.6 Luna",
-      "url": "https://openai.com/index/v7",
-      "publishedAt": "2026-09-21",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "google-ai-blog-44ec3a3d6f",
-      "sourceId": "google-ai-blog",
-      "source": "Google AI",
-      "sourceType": "官方原始来源",
-      "title": "Co-creating the future of fashion with Google",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/google-flow-fashion-week/",
-      "publishedAt": "2026-09-18",
-      "collectedAt": "2026-10-17T08:43:51.572Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-a00923bf4d",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Introducing the Australian Youth Safety Blueprint",
-      "url": "https://openai.com/index/australian-youth-safety-blueprint",
-      "publishedAt": "2026-09-18",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "google-ai-blog-d92122e53e",
-      "sourceId": "google-ai-blog",
-      "source": "Google AI",
-      "sourceType": "官方原始来源",
-      "title": "New experts join Google’s AI & Economy team",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench/",
-      "publishedAt": "2026-09-18",
-      "collectedAt": "2026-10-17T08:43:51.572Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-d22acfa5d0",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "How Cooley is accelerating IPO work with ChatGPT",
-      "url": "https://openai.com/index/cooley-gopublic",
-      "publishedAt": "2026-09-17",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "openai-news-192794312f",
-      "sourceId": "openai-news",
-      "source": "OpenAI",
-      "sourceType": "官方原始来源",
-      "title": "Introducing Astra for Law",
-      "url": "https://openai.com/index/astra-for-law",
-      "publishedAt": "2026-09-17",
-      "collectedAt": "2026-10-17T08:43:49.800Z",
-      "status": "pending",
-      "group": [
-        "global"
-      ]
-    },
-    {
-      "candidateId": "google-ai-blog-590df77dc8",
-      "sourceId": "google-ai-blog",
-      "source": "Google AI",
-      "sourceType": "官方原始来源",
-      "title": "Making global data easier to explore",
-      "url": "https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/",
-      "publishedAt": "2026-09-17",
-      "collectedAt": "2026-10-17T08:43:51.572Z",
       "status": "pending",
       "group": [
         "global"

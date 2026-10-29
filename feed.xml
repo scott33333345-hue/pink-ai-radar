@@ -5,8 +5,112 @@
     <link>https://scott33333345-hue.github.io/pink-ai-radar/</link>
     <description>面向中文产品从业者的 AI 决策简报</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 18 Oct 2026 04:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 04:00:00 GMT</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://scott33333345-hue.github.io/pink-ai-radar/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google 发布 Gemini 4 Carbon，先向网络安全团队开放</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/9/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/9/</guid>
+      <pubDate>Wed, 28 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Gemini 4 Carbon 主打长程任务与网络安全能力，本周先向部分网络安全防御团队开放，普通开发者和消费者暂时无法直接使用。
+
+为什么重要：产品团队评估高能力模型时，不能把发布公告等同于可用产品；目标用户、访问资格、价格和开放节奏都应进入产品判断。
+
+精确原文：https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/</description>
+      <category>Google</category>
+      <source url="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/">Google</source>
+    </item>
+    <item>
+      <title>Microsoft 发布 Copilot Harness，开放多模型 Agent 编排能力</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/10/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/10/</guid>
+      <pubDate>Wed, 28 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Microsoft 将内部使用的多模型 Agent 编排层通过 Foundry 对外提供，覆盖模型选择、上下文、工具调用、执行环境和控制机制。
+
+为什么重要：产品团队选型时应把模型和编排层分开评估，比较任务成功率、成本、可替换性与控制能力，而不是只追逐单一模型。
+
+精确原文：https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/</description>
+      <category>Microsoft</category>
+      <source url="https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/">Microsoft</source>
+    </item>
+    <item>
+      <title>OpenAI 与 ServiceNow 扩大合作，连接企业工作流与 Agent</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/11/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/11/</guid>
+      <pubDate>Wed, 28 Oct 2026 04:00:00 GMT</pubDate>
+      <description>双方将 ServiceNow 业务上下文和操作接入 ChatGPT 与 Codex；目前 MCP 插件已上线，语音、安全和 Codex 深度集成仍按计划逐步开放。
+
+为什么重要：合作公告常混合现有能力与未来路线。产品判断需要按功能拆分可用时间，避免把合作愿景写成已经交付的能力。
+
+精确原文：https://openai.com/index/openai-servicenow-partnership-expansion/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/openai-servicenow-partnership-expansion/">OpenAI</source>
+    </item>
+    <item>
+      <title>OpenAI 发布 GPT-6.1 Terra，强化视觉理解与计算机操作</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/12/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/12/</guid>
+      <pubDate>Mon, 26 Oct 2026 04:00:00 GMT</pubDate>
+      <description>GPT-6.1 Terra 面向视觉理解、计算机操作和日常工作任务，在 API、ChatGPT Work 与 Codex 中提供更低成本的自动化选择。
+
+为什么重要：产品选型应从单次回答质量转向完整任务完成率、人工接管频率、延迟和成本，尤其要验证视觉定位与操作错误。
+
+精确原文：https://openai.com/index/introducing-gpt-6-1-terra/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/introducing-gpt-6-1-terra/">OpenAI</source>
+    </item>
+    <item>
+      <title>Google 推出人脑图谱 AI Quest，训练学生理解 AI 过程</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/13/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/13/</guid>
+      <pubDate>Mon, 26 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Polar Peaks 面向 11 至 14 岁学生，通过清洗数据、测试模型和人工复核神经元图像，教授 AI 素养与负责任使用。
+
+为什么重要：教育产品若只展示正确答案，很难建立真正的 AI 素养；把错误、验证和人工判断设计成任务步骤，更能形成可迁移的认知。
+
+精确原文：https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/</description>
+      <category>Google</category>
+      <source url="https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/">Google</source>
+    </item>
+    <item>
+      <title>OpenAI Decisions API 正式开放，专门处理高频结构化判断</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/14/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/14/</guid>
+      <pubDate>Thu, 22 Oct 2026 04:00:00 GMT</pubDate>
+      <description>Decisions API 用 GPT-6 Luna 处理分类、选择和评分等边界明确的任务，支持文本、图像与 JSON，并面向低延迟、高频调用优化。
+
+为什么重要：AI 产品架构不必让同一个通用模型完成所有任务。把高频、边界明确的判断拆成专用能力，有助于提高稳定性和可测量性。
+
+精确原文：https://openai.com/index/decisions-api/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/decisions-api/">OpenAI</source>
+    </item>
+    <item>
+      <title>OpenAI 模型与 Codex 将进入 Google Cloud Model Garden</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/15/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/15/</guid>
+      <pubDate>Wed, 21 Oct 2026 04:00:00 GMT</pubDate>
+      <description>企业将可在 Google Cloud 中采购和使用 OpenAI 模型及 Codex 工作流，但官方说明全面可用仍计划在随后几周开放。
+
+为什么重要：模型可通过既有云采购和治理体系接入，会降低企业试用门槛，但产品团队仍需确认区域、价格、数据控制和真实开放时间。
+
+精确原文：https://openai.com/index/openai-models-google-cloud/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/openai-models-google-cloud/">OpenAI</source>
+    </item>
+    <item>
+      <title>腾讯云智能体平台新增上下文管理与企微群聊共享</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/16/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/16/</guid>
+      <pubDate>Mon, 19 Oct 2026 04:00:00 GMT</pubDate>
+      <description>腾讯云智能体开发平台支持按超时时间自动清理上下文，并允许企微群成员共享机器人对话历史，分别解决 Token 消耗和多人协作问题。
+
+为什么重要：上下文管理不是后台细节，它直接影响成本、连续体验和信息边界。产品设计需要让用户看得懂、能控制并知道清理或共享的后果。
+
+精确原文：https://cloud.tencent.com/document/product/1759/104191</description>
+      <category>腾讯云</category>
+      <source url="https://cloud.tencent.com/document/product/1759/104191">腾讯云</source>
+    </item>
     <item>
       <title>OpenAI 推出 GPT-Rosalind 学术计划，向美国高校实验室开放</title>
       <link>https://scott33333345-hue.github.io/pink-ai-radar/news/1/</link>
