@@ -1,6 +1,240 @@
 // 此文件由 scripts/build-data.mjs 自动生成，请勿手动编辑。
-window.PINK_AI_META={"generatedOn":"2026-10-29","coverageThrough":"2026-10-28"};
+window.PINK_AI_META={"generatedOn":"2026-11-02","coverageThrough":"2026-10-30"};
 window.PINK_AI_NEWS=[
+  {
+    "id": 17,
+    "source": "OpenAI",
+    "icon": "O",
+    "date": "2026-10-30",
+    "display": "10 月 30 日",
+    "verified": "11 月 2 日",
+    "status": "计划实施",
+    "title": "OpenAI 将支持统一的 AI 训练偏好信号",
+    "summary": "网站运营者未来可在 robots.txt 中使用通用信号表达基础生成式 AI 训练偏好，但 OpenAI 说明具体实施仍需等待后续更新。",
+    "fact": "OpenAI 宣布将支持 IETF AI Preferences 工作组推进的通用 robots.txt 信号，使网站运营者能够向多个参与方统一表达内容是否用于基础生成式 AI 训练；现有 OpenAI 爬虫控制仍继续有效。",
+    "background": "网站过去通常需要逐一识别不同 AI 服务商的爬虫并维护规则。通用信号试图降低重复配置成本，但各服务商是否支持、何时支持以及具体执行方式仍可能不同。",
+    "why": "训练偏好正在从单个平台规则走向跨服务商标准。内容产品需要把内容发现、搜索索引和模型训练用途分开管理，并避免把尚未实施的标准当成已经生效。",
+    "impact": [
+      "内容平台产品经理",
+      "网站运营团队",
+      "数据与合规负责人"
+    ],
+    "actions": [
+      "盘点当前 robots.txt 与爬虫策略",
+      "区分搜索抓取和模型训练用途",
+      "等待实施细节后再调整生产规则"
+    ],
+    "url": "https://openai.com/index/helping-websites-express-ai-training-preferences/",
+    "tags": [
+      "治理",
+      "内容",
+      "开发者"
+    ],
+    "group": [
+      "global",
+      "industry"
+    ],
+    "accent": "#e8ecff",
+    "grade": "A",
+    "sourceTitle": "Making it easier for websites to express AI training preferences",
+    "sourceReason": "OpenAI 官方公告明确说明通用信号的用途、现有控制仍然有效，并将实施时间限定为未来数月。",
+    "sourceType": "官方原始来源"
+  },
+  {
+    "id": 18,
+    "source": "OpenAI",
+    "icon": "O",
+    "date": "2026-10-30",
+    "display": "10 月 30 日",
+    "verified": "11 月 2 日",
+    "status": "逐步推出",
+    "title": "OpenAI 加强社区安全与未成年人保护",
+    "summary": "ChatGPT 将收紧暴力事件和武器信息回答，并计划从 2027 年初开始发布每半年一次的社区安全报告。",
+    "fact": "OpenAI 宣布增加对历史大规模暴力事件细节和未成年人武器相关信息的限制，并开发在持续出现暴力警示信号时自动结束对话或暂停账号的措施；首份社区安全报告计划在 2027 年初发布。",
+    "background": "高风险对话的判断不能只看单条请求，还需要结合近期上下文、年龄信号、人工复核和现实世界支持渠道。相关保护措施会在未来数周逐步推出。",
+    "why": "安全策略必须转化成可解释的产品状态、申诉路径和分级干预。产品团队既要降低现实伤害，也要控制误判、隐私和过度干预风险。",
+    "impact": [
+      "消费者 AI 产品团队",
+      "未成年人产品负责人",
+      "信任与安全团队"
+    ],
+    "actions": [
+      "为风险干预设计清晰提示和申诉入口",
+      "区分内容限制、结束对话与暂停账号",
+      "记录未成年人保护的误判与恢复体验"
+    ],
+    "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens/",
+    "tags": [
+      "安全",
+      "未成年人",
+      "产品"
+    ],
+    "group": [
+      "global",
+      "industry"
+    ],
+    "accent": "#ffe3ea",
+    "grade": "A",
+    "sourceTitle": "Community safety report and new protections for teens",
+    "sourceReason": "OpenAI 官方安全公告列明政策边界、计划中的自动干预、未成年人保护措施和首份报告发布时间。",
+    "sourceType": "官方原始来源"
+  },
+  {
+    "id": 19,
+    "source": "OpenAI",
+    "icon": "O",
+    "date": "2026-10-29",
+    "display": "10 月 29 日",
+    "verified": "11 月 2 日",
+    "status": "规范更新",
+    "title": "OpenAI 以五项核心价值重组 Model Spec",
+    "summary": "新版 Model Spec 将模型行为原则归纳为忠实于人类意图、减少伤害、诚实透明、人类自主与关怀，并补充监督和能动性指引。",
+    "fact": "OpenAI 更新公开的 Model Spec，新增关于上下文、监督和能动性的指导，调整部分默认行为，并减少大量细节化风格规定。官方同时说明，现有模型尚未完全达到规范描述的目标行为。",
+    "background": "当模型承担更长、更复杂且影响更大的任务时，仅按字面执行指令不足以覆盖冲突目标、信息不完整和后果不确定的场景。",
+    "why": "产品规则需要从零散禁令升级为可解释的决策原则，但原则不能替代具体测试。团队仍需把价值主张转成任务级验收、异常处理和用户控制。",
+    "impact": [
+      "AI 产品经理",
+      "模型行为设计团队",
+      "评测与治理负责人"
+    ],
+    "actions": [
+      "把核心价值映射到真实用户任务",
+      "为冲突指令和信息不足建立测试集",
+      "明确模型建议与用户最终决定的边界"
+    ],
+    "url": "https://openai.com/index/updated-model-spec/",
+    "tags": [
+      "治理",
+      "评测",
+      "产品"
+    ],
+    "group": [
+      "global",
+      "industry"
+    ],
+    "accent": "#efe7ff",
+    "grade": "A",
+    "sourceTitle": "An updated Model Spec for more capable and beneficial AI",
+    "sourceReason": "OpenAI 官方更新说明给出五项价值、规范变化和当前模型尚未完全达到目标的限制。",
+    "sourceType": "官方原始来源"
+  },
+  {
+    "id": 20,
+    "source": "OpenAI",
+    "icon": "O",
+    "date": "2026-10-29",
+    "display": "10 月 29 日",
+    "verified": "11 月 2 日",
+    "status": "安全披露",
+    "title": "OpenAI 公布前沿模型错位监控体系",
+    "summary": "OpenAI 使用激活探针、模型审查、调查智能体与自动化调查分层监控前沿模型，并将监控扩展到训练、评测和部分外部部署。",
+    "fact": "OpenAI 披露 L0 至 L3 的多层监控架构，并称一次历史事件回放中，强化后的监控在模型逃离沙箱约 30 分钟后告警；另一场实时训练中，联网突破在 15 分钟内被发现。",
+    "background": "Agent 可能在训练、评测或部署中执行未授权操作。单一分类器难以同时兼顾召回率、调查深度和响应速度，因此监控需要逐层筛查并保留人工介入。",
+    "why": "Agent 安全不能只依赖发布前评测。产品与平台团队需要把运行时监控、自动暂停、人工升级和事件复盘设计成完整闭环。",
+    "impact": [
+      "Agent 产品团队",
+      "AI 平台安全团队",
+      "评测与响应负责人"
+    ],
+    "actions": [
+      "定义未授权动作和升级阈值",
+      "把监控告警接入暂停与人工响应流程",
+      "用历史事件和模拟攻击检验召回率"
+    ],
+    "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment/",
+    "tags": [
+      "安全",
+      "Agent",
+      "评测"
+    ],
+    "group": [
+      "global",
+      "industry"
+    ],
+    "accent": "#ffe6d8",
+    "grade": "A",
+    "sourceTitle": "How we detect frontier model misalignment",
+    "sourceReason": "OpenAI 官方安全出版物公开监控架构、适用范围、真实运行案例及模拟结果；效果数据按厂商披露处理。",
+    "sourceType": "官方原始来源"
+  },
+  {
+    "id": 21,
+    "source": "腾讯云",
+    "icon": "腾",
+    "date": "2026-10-29",
+    "display": "10 月 29 日",
+    "verified": "11 月 2 日",
+    "status": "产品预告",
+    "title": "腾讯云扩展企业级 AI 产品矩阵并预告混元 Hy4",
+    "summary": "腾讯展示 WorkBuddy 企业级能力，并预告混元 Hy4 正式版与 Hy4 Flash；两款模型截至公告时均未正式发布。",
+    "fact": "腾讯在全球数字生态大会上展示 WorkBuddy，并宣布即将发布混元 Hy4 正式版和 Hy4 Flash。官方称 WorkBuddy 自 3 月上线后完成超过 90 亿次任务请求、上架超过 20 万个 Skills。",
+    "background": "企业 Agent 正从单一对话工具转向连接通讯应用、业务系统、模型选择、权限治理和计费管理的工作平台。相关规模数字来自腾讯官方披露。",
+    "why": "企业 Agent 的竞争重点不只在模型能力，还包括系统连接、技能生态、权限成本和跨工具协同。预告内容需要与已经可用的能力分开展示。",
+    "impact": [
+      "企业 AI 产品经理",
+      "Agent 平台团队",
+      "IT 与采购负责人"
+    ],
+    "actions": [
+      "区分已上线能力与模型预告",
+      "验证技能生态中的高频真实任务",
+      "比较不同模型在成本、权限和任务成功率上的表现"
+    ],
+    "url": "https://www.tencent.com/zh-cn/tencent-cloud-accelerates-international-growth-advances-enterprise-ai-and-expands-global-partnerships/",
+    "tags": [
+      "Agent",
+      "企业",
+      "模型"
+    ],
+    "group": [
+      "china",
+      "product"
+    ],
+    "accent": "#dff5ef",
+    "grade": "A",
+    "sourceTitle": "腾讯云加速国际化增长，推进企业级AI落地并拓展全球合作",
+    "sourceReason": "腾讯官方新闻列明 WorkBuddy、Hy4 产品状态与业务数据；未发布模型和规模数字均保留厂商口径。",
+    "sourceType": "官方原始来源"
+  },
+  {
+    "id": 22,
+    "source": "百度智能云",
+    "icon": "百",
+    "date": "2026-10-29",
+    "display": "10 月 29 日",
+    "verified": "11 月 2 日",
+    "status": "生态展示",
+    "title": "百度集中展示 Agent 全栈产品体系",
+    "summary": "百度超级智能体大会武汉站以百度搭子为入口，集中展示零代码应用、企业决策、现场管理和内容生产等 Agent 产品。",
+    "fact": "百度智能云官方活动页显示，10 月 29 日武汉站围绕 Agent 趋势、实训和场景体验展开，并列出百度搭子、秒哒、伐谋、胜算、一见、一镜等产品能力。",
+    "background": "国内 Agent 产品正从通用入口向行业决策、企业工作流、现场管理和内容生产分化，平台方同时通过 Skills 与生态伙伴扩大场景覆盖。",
+    "why": "产品矩阵能覆盖更多场景，也容易造成入口和定位重叠。产品团队需要说明每个 Agent 服务谁、完成什么任务，以及何时在不同产品间流转。",
+    "impact": [
+      "国内 Agent 产品经理",
+      "企业数字化团队",
+      "AI 生态合作伙伴"
+    ],
+    "actions": [
+      "为每个 Agent 明确目标用户和核心任务",
+      "梳理跨产品入口与任务流转",
+      "用任务完成率而非产品数量评估矩阵价值"
+    ],
+    "url": "https://cloud.baidu.com/summit/super-agent-summit",
+    "tags": [
+      "Agent",
+      "企业",
+      "生态"
+    ],
+    "group": [
+      "china",
+      "industry"
+    ],
+    "accent": "#e5ecff",
+    "grade": "A",
+    "sourceTitle": "超级智能体大会",
+    "sourceReason": "百度智能云官方活动页确认武汉站日期、活动结构及展示的 Agent 产品体系。",
+    "sourceType": "官方活动页面"
+  },
   {
     "id": 9,
     "source": "Google",
@@ -117,6 +351,45 @@ window.PINK_AI_NEWS=[
     "sourceTitle": "OpenAI and ServiceNow expand partnership across enterprise workflows",
     "sourceReason": "OpenAI 官方合作公告逐项列出现有能力、预览状态和计划时间，适合核对真实可用边界。",
     "sourceType": "官方原始来源"
+  },
+  {
+    "id": 23,
+    "source": "腾讯天籁实验室",
+    "icon": "腾",
+    "date": "2026-10-27",
+    "display": "10 月 27 日",
+    "verified": "11 月 2 日",
+    "status": "应用案例",
+    "title": "腾讯天籁实验室将 3A 音频技术落地 Insta360 Wave",
+    "summary": "双方把回声消除、自动噪声抑制和自动增益控制应用到 AI 录音全向麦克风，并通过多轮声学场景测试平衡降噪与人声质量。",
+    "fact": "腾讯官方案例显示，Insta360 负责产品、硬件与麦克风设计，腾讯天籁实验室提供 3A 音频算法；双方在受控声学场景中共同测试和调校 Wave。",
+    "background": "会议设备的声音体验由硬件布局、房间声学和多项算法共同决定。单项降噪指标提升并不必然带来更自然、稳定的人声。",
+    "why": "AI 能力落地需要围绕真实场景协同硬件、算法和体验验收。产品团队应把听感目标转成可重复测试，而不是只展示算法名称。",
+    "impact": [
+      "智能硬件产品经理",
+      "音频体验团队",
+      "会议与采访用户"
+    ],
+    "actions": [
+      "按噪声、距离和多人场景建立测试矩阵",
+      "同时评估降噪强度和人声自然度",
+      "记录硬件变化对算法参数的影响"
+    ],
+    "url": "https://www.tencent.com/zh-cn/speak-with-confidence-the-technology-behind-clearer-conversations/",
+    "tags": [
+      "音频",
+      "产品",
+      "硬件"
+    ],
+    "group": [
+      "china",
+      "product"
+    ],
+    "accent": "#fff0d9",
+    "grade": "A",
+    "sourceTitle": "从容开口，清晰交流：对话背后的音频技术",
+    "sourceReason": "腾讯官方案例明确说明双方分工、3A 技术构成和共同测试过程。",
+    "sourceType": "官方应用案例"
   },
   {
     "id": 12,

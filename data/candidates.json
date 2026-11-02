@@ -3,6 +3,104 @@
   "windowDays": 30,
   "sources": [
     {
+      "candidateId": "manual-openai-training-preferences-20261030",
+      "sourceId": "manual-official",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Making it easier for websites to express AI training preferences",
+      "url": "https://openai.com/index/helping-websites-express-ai-training-preferences/",
+      "publishedAt": "2026-10-30",
+      "collectedAt": "2026-11-02T12:00:00.000+08:00",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "manual-openai-community-safety-20261030",
+      "sourceId": "manual-official",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "Community safety report and new protections for teens",
+      "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens/",
+      "publishedAt": "2026-10-30",
+      "collectedAt": "2026-11-02T12:00:00.000+08:00",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "manual-openai-model-spec-20261029",
+      "sourceId": "manual-official",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "An updated Model Spec for more capable and beneficial AI",
+      "url": "https://openai.com/index/updated-model-spec/",
+      "publishedAt": "2026-10-29",
+      "collectedAt": "2026-11-02T12:00:00.000+08:00",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "manual-openai-misalignment-monitoring-20261029",
+      "sourceId": "manual-official",
+      "source": "OpenAI",
+      "sourceType": "官方原始来源",
+      "title": "How we detect frontier model misalignment",
+      "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment/",
+      "publishedAt": "2026-10-29",
+      "collectedAt": "2026-11-02T12:00:00.000+08:00",
+      "status": "pending",
+      "group": [
+        "global"
+      ]
+    },
+    {
+      "candidateId": "manual-tencent-enterprise-ai-20261029",
+      "sourceId": "manual-official",
+      "source": "腾讯云",
+      "sourceType": "官方原始来源",
+      "title": "腾讯云加速国际化增长，推进企业级AI落地并拓展全球合作",
+      "url": "https://www.tencent.com/zh-cn/tencent-cloud-accelerates-international-growth-advances-enterprise-ai-and-expands-global-partnerships/",
+      "publishedAt": "2026-10-29",
+      "collectedAt": "2026-11-02T12:00:00.000+08:00",
+      "status": "pending",
+      "group": [
+        "china"
+      ]
+    },
+    {
+      "candidateId": "manual-baidu-agent-summit-20261029",
+      "sourceId": "manual-official",
+      "source": "百度智能云",
+      "sourceType": "官方活动页面",
+      "title": "超级智能体大会",
+      "url": "https://cloud.baidu.com/summit/super-agent-summit",
+      "publishedAt": "2026-10-29",
+      "collectedAt": "2026-11-02T12:00:00.000+08:00",
+      "status": "pending",
+      "group": [
+        "china"
+      ]
+    },
+    {
+      "candidateId": "manual-tencent-audio-20261027",
+      "sourceId": "manual-official",
+      "source": "腾讯天籁实验室",
+      "sourceType": "官方应用案例",
+      "title": "从容开口，清晰交流：对话背后的音频技术",
+      "url": "https://www.tencent.com/zh-cn/speak-with-confidence-the-technology-behind-clearer-conversations/",
+      "publishedAt": "2026-10-27",
+      "collectedAt": "2026-11-02T12:00:00.000+08:00",
+      "status": "pending",
+      "group": [
+        "china"
+      ]
+    },
+    {
       "id": "openai-news",
       "name": "OpenAI",
       "status": "ok",

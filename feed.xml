@@ -5,8 +5,86 @@
     <link>https://scott33333345-hue.github.io/pink-ai-radar/</link>
     <description>面向中文产品从业者的 AI 决策简报</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2026 04:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 04:00:00 GMT</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://scott33333345-hue.github.io/pink-ai-radar/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenAI 将支持统一的 AI 训练偏好信号</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/17/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/17/</guid>
+      <pubDate>Fri, 30 Oct 2026 04:00:00 GMT</pubDate>
+      <description>网站运营者未来可在 robots.txt 中使用通用信号表达基础生成式 AI 训练偏好，但 OpenAI 说明具体实施仍需等待后续更新。
+
+为什么重要：训练偏好正在从单个平台规则走向跨服务商标准。内容产品需要把内容发现、搜索索引和模型训练用途分开管理，并避免把尚未实施的标准当成已经生效。
+
+精确原文：https://openai.com/index/helping-websites-express-ai-training-preferences/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/helping-websites-express-ai-training-preferences/">OpenAI</source>
+    </item>
+    <item>
+      <title>OpenAI 加强社区安全与未成年人保护</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/18/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/18/</guid>
+      <pubDate>Fri, 30 Oct 2026 04:00:00 GMT</pubDate>
+      <description>ChatGPT 将收紧暴力事件和武器信息回答，并计划从 2027 年初开始发布每半年一次的社区安全报告。
+
+为什么重要：安全策略必须转化成可解释的产品状态、申诉路径和分级干预。产品团队既要降低现实伤害，也要控制误判、隐私和过度干预风险。
+
+精确原文：https://openai.com/index/community-safety-report-and-new-protections-for-teens/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/community-safety-report-and-new-protections-for-teens/">OpenAI</source>
+    </item>
+    <item>
+      <title>OpenAI 以五项核心价值重组 Model Spec</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/19/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/19/</guid>
+      <pubDate>Thu, 29 Oct 2026 04:00:00 GMT</pubDate>
+      <description>新版 Model Spec 将模型行为原则归纳为忠实于人类意图、减少伤害、诚实透明、人类自主与关怀，并补充监督和能动性指引。
+
+为什么重要：产品规则需要从零散禁令升级为可解释的决策原则，但原则不能替代具体测试。团队仍需把价值主张转成任务级验收、异常处理和用户控制。
+
+精确原文：https://openai.com/index/updated-model-spec/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/updated-model-spec/">OpenAI</source>
+    </item>
+    <item>
+      <title>OpenAI 公布前沿模型错位监控体系</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/20/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/20/</guid>
+      <pubDate>Thu, 29 Oct 2026 04:00:00 GMT</pubDate>
+      <description>OpenAI 使用激活探针、模型审查、调查智能体与自动化调查分层监控前沿模型，并将监控扩展到训练、评测和部分外部部署。
+
+为什么重要：Agent 安全不能只依赖发布前评测。产品与平台团队需要把运行时监控、自动暂停、人工升级和事件复盘设计成完整闭环。
+
+精确原文：https://openai.com/index/how-we-detect-frontier-model-misalignment/</description>
+      <category>OpenAI</category>
+      <source url="https://openai.com/index/how-we-detect-frontier-model-misalignment/">OpenAI</source>
+    </item>
+    <item>
+      <title>腾讯云扩展企业级 AI 产品矩阵并预告混元 Hy4</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/21/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/21/</guid>
+      <pubDate>Thu, 29 Oct 2026 04:00:00 GMT</pubDate>
+      <description>腾讯展示 WorkBuddy 企业级能力，并预告混元 Hy4 正式版与 Hy4 Flash；两款模型截至公告时均未正式发布。
+
+为什么重要：企业 Agent 的竞争重点不只在模型能力，还包括系统连接、技能生态、权限成本和跨工具协同。预告内容需要与已经可用的能力分开展示。
+
+精确原文：https://www.tencent.com/zh-cn/tencent-cloud-accelerates-international-growth-advances-enterprise-ai-and-expands-global-partnerships/</description>
+      <category>腾讯云</category>
+      <source url="https://www.tencent.com/zh-cn/tencent-cloud-accelerates-international-growth-advances-enterprise-ai-and-expands-global-partnerships/">腾讯云</source>
+    </item>
+    <item>
+      <title>百度集中展示 Agent 全栈产品体系</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/22/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/22/</guid>
+      <pubDate>Thu, 29 Oct 2026 04:00:00 GMT</pubDate>
+      <description>百度超级智能体大会武汉站以百度搭子为入口，集中展示零代码应用、企业决策、现场管理和内容生产等 Agent 产品。
+
+为什么重要：产品矩阵能覆盖更多场景，也容易造成入口和定位重叠。产品团队需要说明每个 Agent 服务谁、完成什么任务，以及何时在不同产品间流转。
+
+精确原文：https://cloud.baidu.com/summit/super-agent-summit</description>
+      <category>百度智能云</category>
+      <source url="https://cloud.baidu.com/summit/super-agent-summit">百度智能云</source>
+    </item>
     <item>
       <title>Google 发布 Gemini 4 Carbon，先向网络安全团队开放</title>
       <link>https://scott33333345-hue.github.io/pink-ai-radar/news/9/</link>
@@ -45,6 +123,19 @@
 精确原文：https://openai.com/index/openai-servicenow-partnership-expansion/</description>
       <category>OpenAI</category>
       <source url="https://openai.com/index/openai-servicenow-partnership-expansion/">OpenAI</source>
+    </item>
+    <item>
+      <title>腾讯天籁实验室将 3A 音频技术落地 Insta360 Wave</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/23/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/23/</guid>
+      <pubDate>Tue, 27 Oct 2026 04:00:00 GMT</pubDate>
+      <description>双方把回声消除、自动噪声抑制和自动增益控制应用到 AI 录音全向麦克风，并通过多轮声学场景测试平衡降噪与人声质量。
+
+为什么重要：AI 能力落地需要围绕真实场景协同硬件、算法和体验验收。产品团队应把听感目标转成可重复测试，而不是只展示算法名称。
+
+精确原文：https://www.tencent.com/zh-cn/speak-with-confidence-the-technology-behind-clearer-conversations/</description>
+      <category>腾讯天籁实验室</category>
+      <source url="https://www.tencent.com/zh-cn/speak-with-confidence-the-technology-behind-clearer-conversations/">腾讯天籁实验室</source>
     </item>
     <item>
       <title>OpenAI 发布 GPT-6.1 Terra，强化视觉理解与计算机操作</title>
