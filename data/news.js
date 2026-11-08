@@ -1,6 +1,162 @@
 // 此文件由 scripts/build-data.mjs 自动生成，请勿手动编辑。
-window.PINK_AI_META={"generatedOn":"2026-11-02","coverageThrough":"2026-10-30"};
+window.PINK_AI_META={"generatedOn":"2026-11-09","coverageThrough":"2026-11-05"};
 window.PINK_AI_NEWS=[
+  {
+    "id": 24,
+    "source": "OpenAI",
+    "icon": "O",
+    "date": "2026-11-05",
+    "display": "11 月 5 日",
+    "verified": "11 月 9 日",
+    "status": "受限开放",
+    "title": "OpenAI 推出面向授权安全研究的 GPT-6-Cyber",
+    "summary": "GPT-6-Cyber 可用于漏洞调查、授权测试环境中的问题复现和修复验证，首次调用前需要完成 Daybreak 接入。",
+    "fact": "OpenAI API 更新日志显示，GPT-6-Cyber 于 11 月 5 日上线，可帮助获准用户调查漏洞、在授权测试环境中复现问题并验证修复；使用前需要按照 Daybreak 流程完成接入。",
+    "background": "网络安全模型可能同时具备防守和进攻价值，因此不能只依赖提示词限制。专业能力的开放通常还需要身份审核、场景授权、环境隔离和操作记录。",
+    "why": "高风险 AI 产品的重点不只是模型能做什么，还包括谁能使用、可在哪些环境操作，以及如何追踪和阻断越界行为。",
+    "impact": [
+      "网络安全产品经理",
+      "企业安全团队",
+      "AI 平台与治理负责人"
+    ],
+    "actions": [
+      "为高风险能力设置准入与授权流程",
+      "保留任务、工具调用和结果审计记录",
+      "把漏洞复现限制在明确授权的测试环境"
+    ],
+    "url": "https://developers.openai.com/api/docs/changelog",
+    "tags": [
+      "安全",
+      "开发者",
+      "治理"
+    ],
+    "group": [
+      "global",
+      "product"
+    ],
+    "accent": "#ffe3ea",
+    "grade": "A",
+    "sourceTitle": "OpenAI API Changelog — GPT-6-Cyber",
+    "sourceReason": "OpenAI 官方 API 更新日志明确给出模型上线时间、适用任务和 Daybreak 接入要求。",
+    "sourceType": "官方产品日志"
+  },
+  {
+    "id": 25,
+    "source": "百度 AI 开放平台",
+    "icon": "百",
+    "date": "2026-11-05",
+    "display": "11 月 5 日",
+    "verified": "11 月 9 日",
+    "status": "正式商用",
+    "title": "百度 Unlimited OCR 2 面向超长文档正式商用",
+    "summary": "百度上线 Unlimited OCR 2 文档解析服务，重点处理复杂版面、跨页表格和超长文档，并公布免费额度与限时价格。",
+    "fact": "百度 AI 开放平台宣布文档解析 Unlimited OCR 2 正式商用，提供每月 2000 页免费额度，官方强调复杂版面切分和跨页表格拼接能力；具体价格与活动期限以产品页面为准。",
+    "background": "传统 OCR 更关注单页文字识别，企业文档处理还需要恢复阅读顺序、标题层级、表格关系和跨页结构，才能进入检索、问答或审核流程。",
+    "why": "文档 AI 的交付指标正在从字符准确率扩展到结构还原、长文稳定性和单位页成本。产品评测需要覆盖完整业务链路。",
+    "impact": [
+      "知识库产品经理",
+      "合同与报告处理团队",
+      "企业 AI 开发者"
+    ],
+    "actions": [
+      "用真实长文档测试跨页表格和阅读顺序",
+      "分别记录文字准确率与结构还原率",
+      "核算解析、存储和后续模型调用的总成本"
+    ],
+    "url": "https://ai.baidu.com/support/news?action=detail&id=3291",
+    "tags": [
+      "文档",
+      "OCR",
+      "企业"
+    ],
+    "group": [
+      "china",
+      "product"
+    ],
+    "accent": "#e5ecff",
+    "grade": "A",
+    "sourceTitle": "文档解析（Unlimited-OCR 2）正式上线",
+    "sourceReason": "百度 AI 开放平台官方快报确认商用时间、免费额度和主要文档解析能力。",
+    "sourceType": "官方产品公告"
+  },
+  {
+    "id": 26,
+    "source": "OpenAI",
+    "icon": "O",
+    "date": "2026-11-04",
+    "display": "11 月 4 日",
+    "verified": "11 月 9 日",
+    "status": "逐步推出",
+    "title": "ChatGPT Images 2.6 加强连续编辑与参考图复用",
+    "summary": "新版图像模型提升生成速度和编辑细节保持能力，并在 ChatGPT 中逐步加入 GIF 创作与已保存参考图复用。",
+    "fact": "OpenAI 发布 ChatGPT Images 2.6，称其生成速度更快、在修改背景等编辑中更能保持服装等细节；GIF 创建正在逐步推出，用户还可以保存参考图供后续对话复用。",
+    "background": "图像生成已经从一次性出图进入连续创作阶段。人物、商品和视觉资产能否在多轮修改中保持一致，直接影响专业工作流的可用性。",
+    "why": "图像产品的竞争重点正从能否生成转向能否稳定修改、复用素材并缩短完成任务的时间。功能上线不等于所有场景都已稳定。",
+    "impact": [
+      "内容与设计产品经理",
+      "品牌与电商团队",
+      "创作者"
+    ],
+    "actions": [
+      "测试人物与商品在多轮编辑中的一致性",
+      "检查中文文字和局部修改的可控性",
+      "记录从首图到可交付结果的修改轮数"
+    ],
+    "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "tags": [
+      "图像",
+      "创作",
+      "产品"
+    ],
+    "group": [
+      "global",
+      "product"
+    ],
+    "accent": "#efe7ff",
+    "grade": "A",
+    "sourceTitle": "ChatGPT release notes — Introducing ChatGPT Images 2.6",
+    "sourceReason": "OpenAI 官方更新日志说明模型变化、GIF 功能状态和参考图复用方式。",
+    "sourceType": "官方产品日志"
+  },
+  {
+    "id": 27,
+    "source": "腾讯混元",
+    "icon": "腾",
+    "date": "2026-11-04",
+    "display": "11 月 4 日",
+    "verified": "11 月 9 日",
+    "status": "正式发布",
+    "title": "腾讯混元 Hy4 增加视觉理解与电脑操作能力",
+    "summary": "Hy4 强化长文理解、工具调用和长程智能体任务，首次支持视觉理解与电脑操作，并已接入腾讯云及多款腾讯产品。",
+    "fact": "腾讯正式发布混元 Hy4。官方称模型新增视觉理解与 Computer Use，可结合命令行和图形界面完成任务；目前已在腾讯云 TokenHub、WorkBuddy、CodeBuddy、元宝等产品上线，模型权重计划近期开源。",
+    "background": "通用模型正在从回答问题转向操作软件和跨应用执行任务。此类任务链路更长，任何一步识别、规划或操作错误都可能影响最终结果。",
+    "why": "评估电脑操作模型不能只看模型榜单，需要同时检查任务完成率、失败恢复、操作权限、成本和对高风险动作的确认机制。",
+    "impact": [
+      "Agent 产品经理",
+      "企业自动化团队",
+      "国内 AI 开发者"
+    ],
+    "actions": [
+      "用真实跨应用任务测试端到端完成率",
+      "记录失败步骤与人工接管频率",
+      "为删除、发送和支付等动作设置确认节点"
+    ],
+    "url": "https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
+    "tags": [
+      "模型",
+      "Agent",
+      "电脑操作"
+    ],
+    "group": [
+      "china",
+      "product"
+    ],
+    "accent": "#dff5ef",
+    "grade": "A",
+    "sourceTitle": "腾讯混元发布 Hy4，跻身最强开源模型之列",
+    "sourceReason": "腾讯官方发布说明列明模型能力、上线产品、定价和计划中的权重开放状态。",
+    "sourceType": "官方原始来源"
+  },
   {
     "id": 17,
     "source": "OpenAI",
@@ -280,7 +436,7 @@ window.PINK_AI_NEWS=[
     "icon": "M",
     "date": "2026-10-28",
     "display": "10 月 28 日",
-    "verified": "10 月 29 日",
+    "verified": "11 月 9 日",
     "status": "产品发布",
     "title": "Microsoft 发布 Copilot Harness，开放多模型 Agent 编排能力",
     "summary": "Microsoft 将内部使用的多模型 Agent 编排层通过 Foundry 对外提供，覆盖模型选择、上下文、工具调用、执行环境和控制机制。",
@@ -749,7 +905,7 @@ window.PINK_AI_NEWS=[
     "icon": "A",
     "date": "2026-10-08",
     "display": "10 月 8 日",
-    "verified": "10 月 18 日",
+    "verified": "11 月 9 日",
     "status": "政策更新",
     "title": "Anthropic 更新 2026 使用政策，11 月 12 日生效",
     "summary": "更新集中澄清欺骗活动、武器、监控、高风险场景和自主物理行动等规则，大部分内容是对既有要求的细化。",

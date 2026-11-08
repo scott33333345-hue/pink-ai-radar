@@ -5,8 +5,60 @@
     <link>https://scott33333345-hue.github.io/pink-ai-radar/</link>
     <description>面向中文产品从业者的 AI 决策简报</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 02 Nov 2026 04:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 04:00:00 GMT</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="https://scott33333345-hue.github.io/pink-ai-radar/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenAI 推出面向授权安全研究的 GPT-6-Cyber</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/24/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/24/</guid>
+      <pubDate>Thu, 05 Nov 2026 04:00:00 GMT</pubDate>
+      <description>GPT-6-Cyber 可用于漏洞调查、授权测试环境中的问题复现和修复验证，首次调用前需要完成 Daybreak 接入。
+
+为什么重要：高风险 AI 产品的重点不只是模型能做什么，还包括谁能使用、可在哪些环境操作，以及如何追踪和阻断越界行为。
+
+精确原文：https://developers.openai.com/api/docs/changelog</description>
+      <category>OpenAI</category>
+      <source url="https://developers.openai.com/api/docs/changelog">OpenAI</source>
+    </item>
+    <item>
+      <title>百度 Unlimited OCR 2 面向超长文档正式商用</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/25/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/25/</guid>
+      <pubDate>Thu, 05 Nov 2026 04:00:00 GMT</pubDate>
+      <description>百度上线 Unlimited OCR 2 文档解析服务，重点处理复杂版面、跨页表格和超长文档，并公布免费额度与限时价格。
+
+为什么重要：文档 AI 的交付指标正在从字符准确率扩展到结构还原、长文稳定性和单位页成本。产品评测需要覆盖完整业务链路。
+
+精确原文：https://ai.baidu.com/support/news?action=detail&amp;id=3291</description>
+      <category>百度 AI 开放平台</category>
+      <source url="https://ai.baidu.com/support/news?action=detail&amp;id=3291">百度 AI 开放平台</source>
+    </item>
+    <item>
+      <title>ChatGPT Images 2.6 加强连续编辑与参考图复用</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/26/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/26/</guid>
+      <pubDate>Wed, 04 Nov 2026 04:00:00 GMT</pubDate>
+      <description>新版图像模型提升生成速度和编辑细节保持能力，并在 ChatGPT 中逐步加入 GIF 创作与已保存参考图复用。
+
+为什么重要：图像产品的竞争重点正从能否生成转向能否稳定修改、复用素材并缩短完成任务的时间。功能上线不等于所有场景都已稳定。
+
+精确原文：https://help.openai.com/en/articles/6825453-chatgpt-release-notes</description>
+      <category>OpenAI</category>
+      <source url="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">OpenAI</source>
+    </item>
+    <item>
+      <title>腾讯混元 Hy4 增加视觉理解与电脑操作能力</title>
+      <link>https://scott33333345-hue.github.io/pink-ai-radar/news/27/</link>
+      <guid isPermaLink="true">https://scott33333345-hue.github.io/pink-ai-radar/news/27/</guid>
+      <pubDate>Wed, 04 Nov 2026 04:00:00 GMT</pubDate>
+      <description>Hy4 强化长文理解、工具调用和长程智能体任务，首次支持视觉理解与电脑操作，并已接入腾讯云及多款腾讯产品。
+
+为什么重要：评估电脑操作模型不能只看模型榜单，需要同时检查任务完成率、失败恢复、操作权限、成本和对高风险动作的确认机制。
+
+精确原文：https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/</description>
+      <category>腾讯混元</category>
+      <source url="https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/">腾讯混元</source>
+    </item>
     <item>
       <title>OpenAI 将支持统一的 AI 训练偏好信号</title>
       <link>https://scott33333345-hue.github.io/pink-ai-radar/news/17/</link>
